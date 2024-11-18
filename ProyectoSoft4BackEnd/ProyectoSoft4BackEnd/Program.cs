@@ -9,6 +9,23 @@ builder.Services.AddDbContext<ContextData>(options =>
 builder.Services.AddScoped<IProyectosRepository, ProyectosRepository>();
 builder.Services.AddScoped<ISubtareasRepository, SubtareasRepository>();
 builder.Services.AddScoped<IComentariosRepository, ComentariosRepository>();
+builder.Services.AddScoped<ITareasRepository, TareasRepository>();
+builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+builder.Services.AddScoped<IPermisosRepository, PermisosRepository>();
+builder.Services.AddScoped<IRolesRepository, RolesRepository>();
+builder.Services.AddScoped<IRolesPermisosRepository, RolesPermisosRepository>();
+builder.Services.AddScoped<IMiembrosDeEquiposRepository, MiembrosDeEquiposRepository>();
+builder.Services.AddScoped<IEquiposProyectosRepository, EquiposProyectosRepository>();
+builder.Services.AddScoped<IHistorialDeCambiosRepository, HistorialDeCambiosRepository>();
+builder.Services.AddScoped<IPortafolioRepository, PortafolioRepository>();
+builder.Services.AddScoped<IEquiposRepository, EquiposRepository>();
+
+
+
+
+
+
+
 
 
 
