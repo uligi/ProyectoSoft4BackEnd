@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("ProyectoSoft4BackEnd")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Negocio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c974f3f909e0bb967789494ed74b6207c2fc61e")]
-[assembly: System.Reflection.AssemblyProductAttribute("ProyectoSoft4BackEnd")]
-[assembly: System.Reflection.AssemblyTitleAttribute("ProyectoSoft4BackEnd")]
+[assembly: System.Reflection.AssemblyProductAttribute("Negocio")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Negocio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
