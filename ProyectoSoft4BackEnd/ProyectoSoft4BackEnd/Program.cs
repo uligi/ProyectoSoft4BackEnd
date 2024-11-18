@@ -7,6 +7,10 @@ builder.Services.AddDbContext<ContextData>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IProyectosRepository, ProyectosRepository>();
+builder.Services.AddScoped<ISubtareasRepository, SubtareasRepository>();
+builder.Services.AddScoped<IComentariosRepository, ComentariosRepository>();
+
+
 
 builder.Services.AddCors(options =>
 {

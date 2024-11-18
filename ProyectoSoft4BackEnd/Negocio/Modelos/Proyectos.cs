@@ -1,19 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Modelos
 {
-    public class AVIONES
+    public class Proyectos
     {
-        [Key] public int ID_AVION { get; set; }
-        public string MATRICULA { get; set; } = string.Empty;
-        public int ID_MARCA { get; set; }
-        public string MODELO { get; set; } = string.Empty;
-        public int NUM_ASIENTO { get; set; }
-
+        [Key] public int idProyectos { get; set; }
+        public string NombreProyecto { get; set; }
+        public string Descripcion { get; set; }
+        public bool Activo { get; set; }
+        public DateTime FechaEstimada { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFinal { get; set; }
+        public string Prioridad { get; set; }
+        public int Portafolio_idPortafolio { get; set; }
     }
 }
