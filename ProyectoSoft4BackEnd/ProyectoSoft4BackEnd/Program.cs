@@ -18,7 +18,7 @@ builder.Services.AddScoped<IPermisosRepository, PermisosRepository>();
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
 builder.Services.AddScoped<IRolesPermisosRepository, RolesPermisosRepository>();
 builder.Services.AddScoped<IMiembrosDeEquiposRepository, MiembrosDeEquiposRepository>();
-builder.Services.AddScoped<IEquiposProyectosRepository, EquiposProyectosRepository>();
+
 builder.Services.AddScoped<IHistorialDeCambiosRepository, HistorialDeCambiosRepository>();
 builder.Services.AddScoped<IPortafolioRepository, PortafolioRepository>();
 builder.Services.AddScoped<IEquiposRepository, EquiposRepository>();

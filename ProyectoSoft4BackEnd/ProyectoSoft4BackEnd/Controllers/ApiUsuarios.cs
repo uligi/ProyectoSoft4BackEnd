@@ -62,7 +62,7 @@ namespace ProyectoSoft4BackEnd.Controllers
         {
             try
             {
-                var resultadoActualizarUsuario = await _service.ActualizarUsuario(id, usuario.Nombre, usuario.Email, usuario.contrasena, usuario.Activo, usuario.FechaRegistro, usuario.Comentarios_idComentarios);
+                var resultadoActualizarUsuario = await _service.ActualizarUsuario(id, usuario.Nombre, usuario.Email, usuario.contrasena, usuario.Activo, usuario.RestablecerContrasena, usuario.FechaRegistro);
 
                 if (resultadoActualizarUsuario != null && resultadoActualizarUsuario.Any())
                 {
@@ -75,5 +75,25 @@ namespace ProyectoSoft4BackEnd.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpDelete("EliminarUsuario/{id}")]
+        public async Task<IActionResult> EliminarUsuario(int id)
+        {
+            try
+            {
+                var resultadoEliminarUsuario = await _service.EliminarUsuario(id);
+
+                if (resultadoEliminarUsuario != null && resultadoEliminarUsuario.Any())
+                {
+                    return Ok(resultadoEliminarUsuario);
+                }
+                return BadRequest("No se pudo eliminar el usuario.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

@@ -15,7 +15,7 @@ CREATE PROCEDURE [dbo].[Crear_Comentario]
 AS
 BEGIN
     INSERT INTO Comentarios (Comentario, FechaCreacion, Activo)
-    VALUES (@Comentario, @FechaCreacion, @Activo);
+    VALUES (@Comentario, @FechaCreacion, 1);
 END;
 GO
 
@@ -36,7 +36,7 @@ CREATE PROCEDURE [dbo].[Crear_Equipo]
 AS
 BEGIN
     INSERT INTO Equipos (NombreEquipos, Activo, Fecha_Registro)
-    VALUES (@NombreEquipos, @Activo, @Fecha_Registro);
+    VALUES (@NombreEquipos, 1, @Fecha_Registro);
 END;
 GO
 
@@ -120,7 +120,7 @@ CREATE PROCEDURE [dbo].[Crear_Permiso]
 AS
 BEGIN
     INSERT INTO Permisos (Nombre_Permisos, Activo)
-    VALUES (@Nombre_Permisos, @Activo);
+    VALUES (@Nombre_Permisos, 1);
 END;
 GO
 
@@ -142,7 +142,7 @@ CREATE PROCEDURE [dbo].[Crear_Portafolio]
 AS
 BEGIN
     INSERT INTO Portafolio (NombrePortafolio, Activo, Descripcion, FechaCreacion)
-    VALUES (@NombrePortafolio, @Activo, @Descripcion, @FechaCreacion);
+    VALUES (@NombrePortafolio, 1, @Descripcion, @FechaCreacion);
 END;
 GO
 
@@ -168,7 +168,7 @@ CREATE PROCEDURE [dbo].[Crear_Proyecto]
 AS
 BEGIN
     INSERT INTO Proyectos (NombreProyecto, Descripcion, Activo, FechaEstimada, FechaInicio, FechaFinal, Prioridad, Portafolio_idPortafolio)
-    VALUES (@NombreProyecto, @Descripcion, @Activo, @FechaEstimada, @FechaInicio, @FechaFinal, @Prioridad, @Portafolio_idPortafolio);
+    VALUES (@NombreProyecto, @Descripcion, 1, @FechaEstimada, @FechaInicio, @FechaFinal, @Prioridad, @Portafolio_idPortafolio);
 END;
 GO
 
@@ -189,30 +189,13 @@ CREATE PROCEDURE [dbo].[Crear_Rol]
 AS
 BEGIN
     INSERT INTO Roles (Nombre_Roles, Activo)
-    VALUES (@Nombre_Roles, @Activo);
+    VALUES (@Nombre_Roles, 1);
 END;
 GO
 
 
-USE [DB_GP]
-GO
 
-/****** Object:  StoredProcedure [dbo].[Crear_Rol_Permiso]    Script Date: 11/28/2024 7:47:25 PM ******/
-SET ANSI_NULLS ON
-GO
 
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE PROCEDURE [dbo].[Crear_Rol_Permiso]
-    @Permisos_idPermisos INT,
-    @Roles_idRoles INT
-AS
-BEGIN
-    INSERT INTO RolesPermisos (Permisos_idPermisos, Roles_idRoles)
-    VALUES (@Permisos_idPermisos, @Roles_idRoles);
-END;
-GO
 
 USE [DB_GP]
 GO
@@ -260,7 +243,7 @@ CREATE PROCEDURE [dbo].[Crear_Tarea]
 AS
 BEGIN
     INSERT INTO Tareas (NombreTareas, Descripcion, Prioridad, FechaInicio, FechaFinal, Activo, Subtareas_idSubtareas, Proyectos_idProyectos, Comentarios_idComentarios)
-    VALUES (@NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @Activo, @Subtareas_idSubtareas, @Proyectos_idProyectos, @Comentarios_idComentarios);
+    VALUES (@NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, 1, @Subtareas_idSubtareas, @Proyectos_idProyectos, @Comentarios_idComentarios);
 END;
 GO
 
@@ -278,15 +261,16 @@ CREATE PROCEDURE [dbo].[Crear_Usuario]
     @Nombre VARCHAR(200),
     @Email VARCHAR(200),
     @Contrasena VARCHAR(500),
+	@RestablecerContrasena BIT,
     @Activo BIT,
-    @FechaRegistro DATETIME,
-    @Comentarios_idComentarios INT
+	@idRoles Int
 AS
 BEGIN
-    INSERT INTO Usuarios (Nombre, Email, Contrasena, Activo, FechaRegistro, Comentarios_idComentarios)
-    VALUES (@Nombre, @Email, @Contrasena, @Activo, @FechaRegistro, @Comentarios_idComentarios);
+    INSERT INTO Usuarios (Nombre, Email, Contrasena,RestablecerContrasena, Activo,idRoles, FechaRegistro)
+    VALUES (@Nombre, @Email, @Contrasena, 1, @Activo,@idRoles, GETDATE());
 END;
 GO
+
 
 
 

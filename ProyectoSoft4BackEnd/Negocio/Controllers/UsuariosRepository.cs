@@ -11,7 +11,9 @@ namespace Negocio.Controllers
     {
         Task<IEnumerable<Usuarios>> ObtenerUsuarios();
         Task<IEnumerable<MensajeUsuario>> CrearUsuario(Usuarios usuario);
-        Task<IEnumerable<MensajeUsuario>> ActualizarUsuario(int idUsuario, string nombre, string email, string contrasena, bool activo, System.DateTime fechaRegistro, int comentarioId);
+        Task<IEnumerable<MensajeUsuario>> ActualizarUsuario(int idUsuario, string nombre, string email, string contrasena, bool restablecerContrasena, bool activo, System.DateTime fechaRegistro);
+        Task<IEnumerable<MensajeUsuario>> EliminarUsuario(int idUsuario);
+
     }
 
     public class UsuariosRepository : IUsuariosRepository
@@ -44,19 +46,20 @@ namespace Negocio.Controllers
                 var nombreParam = new SqlParameter("@Nombre", usuario.Nombre);
                 var emailParam = new SqlParameter("@Email", usuario.Email);
                 var contrasenaParam = new SqlParameter("@Contrasena", usuario.contrasena);
+                var restablecerContrasenaParam = new SqlParameter("@RestablecerContrasena", usuario.RestablecerContrasena);
                 var activoParam = new SqlParameter("@Activo", usuario.Activo);
                 var fechaRegistroParam = new SqlParameter("@FechaRegistro", usuario.FechaRegistro);
-                var comentariosIdParam = new SqlParameter("@Comentarios_idComentarios", usuario.Comentarios_idComentarios);
+                
 
                 return await _context.MensajeUsuario
                     .FromSqlRaw("EXEC Crear_Usuario @Nombre, @Email, @Contrasena, @Activo, @FechaRegistro, @Comentarios_idComentarios",
-                                nombreParam, emailParam, contrasenaParam, activoParam, fechaRegistroParam, comentariosIdParam)
+                                nombreParam, emailParam, contrasenaParam, restablecerContrasenaParam, activoParam, fechaRegistroParam)
                     .ToListAsync();
             }
         }
 
         // Método para actualizar un usuario existente
-        public async Task<IEnumerable<MensajeUsuario>> ActualizarUsuario(int idUsuario, string nombre, string email, string contrasena, bool activo, System.DateTime fechaRegistro, int comentarioId)
+        public async Task<IEnumerable<MensajeUsuario>> ActualizarUsuario(int idUsuario, string nombre, string email, string contrasena, bool restablecerContrasena, bool activo, System.DateTime fechaRegistro)
         {
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(contrasena))
             {
@@ -71,15 +74,29 @@ namespace Negocio.Controllers
                 var nombreParam = new SqlParameter("@Nombre", nombre);
                 var emailParam = new SqlParameter("@Email", email);
                 var contrasenaParam = new SqlParameter("@Contrasena", contrasena);
+                var restablecerContrasenaParam = new SqlParameter("@RestablecerContrasena", restablecerContrasena);
                 var activoParam = new SqlParameter("@Activo", activo);
                 var fechaRegistroParam = new SqlParameter("@FechaRegistro", fechaRegistro);
-                var comentarioIdParam = new SqlParameter("@Comentarios_idComentarios", comentarioId);
+                
 
                 return await _context.MensajeUsuario
                     .FromSqlRaw("EXEC Modificar_Usuario @idUsuarios, @Nombre, @Email, @Contrasena, @Activo, @FechaRegistro, @Comentarios_idComentarios",
-                                idUsuarioParam, nombreParam, emailParam, contrasenaParam, activoParam, fechaRegistroParam, comentarioIdParam)
+                                idUsuarioParam, nombreParam, emailParam, contrasenaParam, restablecerContrasenaParam, activoParam, fechaRegistroParam)
                     .ToListAsync();
             }
+
+
         }
+
+        public async Task<IEnumerable<MensajeUsuario>> EliminarUsuario(int idUsuario)
+        {
+            var idUsuarioParam = new SqlParameter("@idUsuarios", idUsuario);
+
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Eliminar_Usuario @idUsuarios", idUsuarioParam)
+                .ToListAsync();
+        }
+
+
     }
 }
