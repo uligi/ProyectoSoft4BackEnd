@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Negocio.Controllers;
 using Negocio.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
 builder.Services.AddDbContext<ContextData>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Repositorios
 builder.Services.AddScoped<IProyectosRepository, ProyectosRepository>();
 builder.Services.AddScoped<ISubtareasRepository, SubtareasRepository>();
 builder.Services.AddScoped<IComentariosRepository, ComentariosRepository>();
@@ -20,15 +23,7 @@ builder.Services.AddScoped<IHistorialDeCambiosRepository, HistorialDeCambiosRepo
 builder.Services.AddScoped<IPortafolioRepository, PortafolioRepository>();
 builder.Services.AddScoped<IEquiposRepository, EquiposRepository>();
 
-
-
-
-
-
-
-
-
-
+// Configuración de CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirFullAcceso", builder =>
@@ -39,6 +34,7 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Configuración de controladores
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -50,6 +46,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Configuración de entorno y Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

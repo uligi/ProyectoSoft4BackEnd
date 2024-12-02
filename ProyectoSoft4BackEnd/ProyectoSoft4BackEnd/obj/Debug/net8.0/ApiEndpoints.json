@@ -1,0 +1,640 @@
+[
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiComentarios",
+    "Method": "ActualizarComentario",
+    "RelativePath": "api/ApiComentarios/ActualizarComentario/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "comentario",
+        "Type": "Negocio.Modelos.Comentarios",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiComentarios",
+    "Method": "ListaComentarios",
+    "RelativePath": "api/ApiComentarios/ListaComentarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "textoComentario",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiComentarios",
+    "Method": "NuevoComentario",
+    "RelativePath": "api/ApiComentarios/NuevoComentario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "comentario",
+        "Type": "Negocio.Modelos.Comentarios",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiEquipos",
+    "Method": "ActualizarEquipo",
+    "RelativePath": "api/ApiEquipos/ActualizarEquipo/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "equipo",
+        "Type": "Negocio.Modelos.Equipos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiEquipos",
+    "Method": "ListaEquipos",
+    "RelativePath": "api/ApiEquipos/ListaEquipos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiEquipos",
+    "Method": "NuevoEquipo",
+    "RelativePath": "api/ApiEquipos/NuevoEquipo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "equipo",
+        "Type": "Negocio.Modelos.Equipos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiEquiposProyectos",
+    "Method": "ActualizarEquipoProyecto",
+    "RelativePath": "api/ApiEquiposProyectos/ActualizarEquipoProyecto/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "equipoProyecto",
+        "Type": "Negocio.Modelos.Equipos_Proyectos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiEquiposProyectos",
+    "Method": "ListaEquiposProyectos",
+    "RelativePath": "api/ApiEquiposProyectos/ListaEquiposProyectos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiEquiposProyectos",
+    "Method": "NuevoEquipoProyecto",
+    "RelativePath": "api/ApiEquiposProyectos/NuevoEquipoProyecto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "equipoProyecto",
+        "Type": "Negocio.Modelos.Equipos_Proyectos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiHistorialDeCambios",
+    "Method": "ActualizarHistorialDeCambio",
+    "RelativePath": "api/ApiHistorialDeCambios/ActualizarHistorialDeCambio/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "historial",
+        "Type": "Negocio.Modelos.Historial_de_cambios",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiHistorialDeCambios",
+    "Method": "ListaHistorialDeCambios",
+    "RelativePath": "api/ApiHistorialDeCambios/ListaHistorialDeCambios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiHistorialDeCambios",
+    "Method": "NuevoHistorialDeCambio",
+    "RelativePath": "api/ApiHistorialDeCambios/NuevoHistorialDeCambio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "historial",
+        "Type": "Negocio.Modelos.Historial_de_cambios",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiMiembrosDeEquipos",
+    "Method": "ActualizarMiembroDeEquipo",
+    "RelativePath": "api/ApiMiembrosDeEquipos/ActualizarMiembroDeEquipo/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "miembro",
+        "Type": "Negocio.Modelos.Miembros_de_equipos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiMiembrosDeEquipos",
+    "Method": "ListaMiembrosDeEquipos",
+    "RelativePath": "api/ApiMiembrosDeEquipos/ListaMiembrosDeEquipos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiMiembrosDeEquipos",
+    "Method": "NuevoMiembroDeEquipo",
+    "RelativePath": "api/ApiMiembrosDeEquipos/NuevoMiembroDeEquipo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "miembro",
+        "Type": "Negocio.Modelos.Miembros_de_equipos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiPermisos",
+    "Method": "ActualizarPermiso",
+    "RelativePath": "api/ApiPermisos/ActualizarPermiso/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "permiso",
+        "Type": "Negocio.Modelos.Permisos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiPermisos",
+    "Method": "ListaPermisos",
+    "RelativePath": "api/ApiPermisos/ListaPermisos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiPermisos",
+    "Method": "NuevoPermiso",
+    "RelativePath": "api/ApiPermisos/NuevoPermiso",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "permiso",
+        "Type": "Negocio.Modelos.Permisos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NProyectoSoft4BackEndegocio.Controllers.ApiPortafolio",
+    "Method": "ActualizarPortafolio",
+    "RelativePath": "api/ApiPortafolio/ActualizarPortafolio/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "portafolio",
+        "Type": "Negocio.Modelos.Portafolio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NProyectoSoft4BackEndegocio.Controllers.ApiPortafolio",
+    "Method": "ListaPortafolios",
+    "RelativePath": "api/ApiPortafolio/ListaPortafolios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NProyectoSoft4BackEndegocio.Controllers.ApiPortafolio",
+    "Method": "NuevoPortafolio",
+    "RelativePath": "api/ApiPortafolio/NuevoPortafolio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "portafolio",
+        "Type": "Negocio.Modelos.Portafolio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiProyectos",
+    "Method": "ActualizarProyecto",
+    "RelativePath": "api/ApiProyectos/ActualizarProyecto/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "proyecto",
+        "Type": "Negocio.Modelos.Proyectos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiProyectos",
+    "Method": "ListaProyectos",
+    "RelativePath": "api/ApiProyectos/ListaProyectos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiProyectos",
+    "Method": "NuevoProyecto",
+    "RelativePath": "api/ApiProyectos/NuevoProyecto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "proyecto",
+        "Type": "Negocio.Modelos.Proyectos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiRoles",
+    "Method": "ActualizarRol",
+    "RelativePath": "api/ApiRoles/ActualizarRol/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "rol",
+        "Type": "Negocio.Modelos.Roles",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiRoles",
+    "Method": "ListaRoles",
+    "RelativePath": "api/ApiRoles/ListaRoles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiRoles",
+    "Method": "NuevoRol",
+    "RelativePath": "api/ApiRoles/NuevoRol",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rol",
+        "Type": "Negocio.Modelos.Roles",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiRolesPermisos",
+    "Method": "ActualizarRolPermiso",
+    "RelativePath": "api/ApiRolesPermisos/ActualizarRolPermiso/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "rolesPermisos",
+        "Type": "Negocio.Modelos.RolesPermisos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiRolesPermisos",
+    "Method": "ListaRolesPermisos",
+    "RelativePath": "api/ApiRolesPermisos/ListaRolesPermisos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiRolesPermisos",
+    "Method": "NuevoRolPermiso",
+    "RelativePath": "api/ApiRolesPermisos/NuevoRolPermiso",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rolesPermisos",
+        "Type": "Negocio.Modelos.RolesPermisos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiSubtareas",
+    "Method": "ActualizarSubtarea",
+    "RelativePath": "api/ApiSubtareas/ActualizarSubtarea/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "subtarea",
+        "Type": "Negocio.Modelos.Subtareas",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiSubtareas",
+    "Method": "ListaSubtareas",
+    "RelativePath": "api/ApiSubtareas/ListaSubtareas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiSubtareas",
+    "Method": "NuevaSubtarea",
+    "RelativePath": "api/ApiSubtareas/NuevaSubtarea",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subtarea",
+        "Type": "Negocio.Modelos.Subtareas",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiTareas",
+    "Method": "ActualizarTarea",
+    "RelativePath": "api/ApiTareas/ActualizarTarea/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tarea",
+        "Type": "Negocio.Modelos.Tareas",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiTareas",
+    "Method": "ListaTareas",
+    "RelativePath": "api/ApiTareas/ListaTareas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiTareas",
+    "Method": "NuevaTarea",
+    "RelativePath": "api/ApiTareas/NuevaTarea",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tarea",
+        "Type": "Negocio.Modelos.Tareas",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiUsuarios",
+    "Method": "ActualizarUsuario",
+    "RelativePath": "api/ApiUsuarios/ActualizarUsuario/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "usuario",
+        "Type": "Negocio.Modelos.Usuarios",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiUsuarios",
+    "Method": "ListaUsuarios",
+    "RelativePath": "api/ApiUsuarios/ListaUsuarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.ApiUsuarios",
+    "Method": "NuevoUsuario",
+    "RelativePath": "api/ApiUsuarios/NuevoUsuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "Negocio.Modelos.Usuarios",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProyectoSoft4BackEnd.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ProyectoSoft4BackEnd.WeatherForecast, ProyectoSoft4BackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

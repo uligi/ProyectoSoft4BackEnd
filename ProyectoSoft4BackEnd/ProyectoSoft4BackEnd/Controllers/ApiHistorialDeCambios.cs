@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Negocio.Controllers;
 using Negocio.Modelos;
-using System.Threading.Tasks;
 
-namespace ProyectoINGSOFT.Controllers
+namespace ProyectoSoft4BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,13 +16,19 @@ namespace ProyectoINGSOFT.Controllers
             _service = service;
         }
 
-        [HttpGet("ListaHistorialDeCambios")]
-        public async Task<IActionResult> ListaHistorialDeCambios()
+        // Método para crear un nuevo historial de cambios
+        [HttpPost("NuevoHistorialDeCambio")]
+        public async Task<IActionResult> NuevoHistorialDeCambio([FromBody] Historial_de_cambios historial)
         {
-            var resultadoHistorial = await _service.ObtenerHistorialDeCambios();
             try
             {
-                return Ok(resultadoHistorial);
+                var resultadoNuevoHistorial = await _service.CrearHistorialDeCambio(historial);
+
+                if (resultadoNuevoHistorial != null && resultadoNuevoHistorial.Any())
+                {
+                    return Ok(resultadoNuevoHistorial);
+                }
+                return BadRequest("No se pudo crear el historial de cambios.");
             }
             catch (Exception ex)
             {
@@ -30,13 +36,39 @@ namespace ProyectoINGSOFT.Controllers
             }
         }
 
-        [HttpPost("NuevoHistorialDeCambio")]
-        public async Task<IActionResult> NuevoHistorialDeCambio([FromBody] HistorialDeCambios historial)
+        // Método para obtener la lista de historial de cambios
+        [HttpGet("ListaHistorialDeCambios")]
+        public async Task<IActionResult> ListaHistorialDeCambios()
         {
             try
             {
-                var nuevoHistorial = await _service.CrearHistorialDeCambio(historial);
-                return Ok(nuevoHistorial);
+                var resultadoHistorial = await _service.ObtenerHistorialDeCambios();
+
+                if (resultadoHistorial != null && resultadoHistorial.Any())
+                {
+                    return Ok(resultadoHistorial);
+                }
+                return NotFound("No se encontraron registros de historial de cambios.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // Método para actualizar un historial de cambio
+        [HttpPut("ActualizarHistorialDeCambio/{id}")]
+        public async Task<IActionResult> ActualizarHistorialDeCambio(int id, [FromBody] Historial_de_cambios historial)
+        {
+            try
+            {
+                var resultadoActualizarHistorial = await _service.ActualizarHistorialDeCambio(id, historial.Descripcioncambio, historial.FechaCambio);
+
+                if (resultadoActualizarHistorial != null && resultadoActualizarHistorial.Any())
+                {
+                    return Ok(resultadoActualizarHistorial);
+                }
+                return BadRequest("No se pudo actualizar el historial de cambios.");
             }
             catch (Exception ex)
             {

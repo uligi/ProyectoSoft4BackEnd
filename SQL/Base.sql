@@ -1,4 +1,6 @@
-CREATE DATABASE DB_GP; 
+USE DB_GP;
+
+CREATE DATABASE DB_GP; --GestionProjectos
 GO
 USE DB_GP;
 GO
@@ -9,7 +11,6 @@ CREATE TABLE Equipos (
     Activo BIT,
     Fecha_Registro DATETIME
 );
-GO
 
 CREATE TABLE Portafolio (
     idPortafolio INT PRIMARY KEY,
@@ -18,7 +19,6 @@ CREATE TABLE Portafolio (
     Descripcion NVARCHAR(MAX),
     FechaCreacion DATETIME
 );
-GO
 
 CREATE TABLE Proyectos (
     idProyectos INT PRIMARY KEY,
@@ -32,7 +32,6 @@ CREATE TABLE Proyectos (
     Portafolio_idPortafolio INT,
     FOREIGN KEY (Portafolio_idPortafolio) REFERENCES Portafolio(idPortafolio)
 );
-GO
 
 CREATE TABLE Subtareas (
     idSubtareas INT PRIMARY KEY,
@@ -42,7 +41,6 @@ CREATE TABLE Subtareas (
     FechaInicio DATE,
     FechaFinal DATE
 );
-GO
 
 CREATE TABLE Comentarios (
     idComentarios INT PRIMARY KEY,
@@ -50,9 +48,6 @@ CREATE TABLE Comentarios (
     FechaCreacion DATETIME,
     Activo BIT
 );
-
-GO
-
 
 CREATE TABLE Tareas (
     idTareas INT PRIMARY KEY,
@@ -69,7 +64,6 @@ CREATE TABLE Tareas (
     FOREIGN KEY (Proyectos_idProyectos) REFERENCES Proyectos(idProyectos),
     FOREIGN KEY (Comentarios_idComentarios) REFERENCES Comentarios(idComentarios)
 );
-GO
 
 CREATE TABLE Usuarios (
     idUsuarios INT PRIMARY KEY,
@@ -81,21 +75,18 @@ CREATE TABLE Usuarios (
     Comentarios_idComentarios INT,
     FOREIGN KEY (Comentarios_idComentarios) REFERENCES Comentarios(idComentarios)
 );
-GO
 
 CREATE TABLE Permisos (
     idPermisos INT PRIMARY KEY,
     Nombre_Permisos VARCHAR(100),
     Activo BIT
 );
-GO
 
 CREATE TABLE Roles (
     idRoles INT PRIMARY KEY,
     Nombre_Roles VARCHAR(100),
     Activo BIT
 );
-GO
 
 CREATE TABLE RolesPermisos (
     idRolesPermisos INT PRIMARY KEY,
@@ -104,7 +95,6 @@ CREATE TABLE RolesPermisos (
     FOREIGN KEY (Permisos_idPermisos) REFERENCES Permisos(idPermisos),
     FOREIGN KEY (Roles_idRoles) REFERENCES Roles(idRoles)
 );
-GO
 
 CREATE TABLE Miembros_de_equipos (
     idMiembros_de_equipos INT PRIMARY KEY,
@@ -115,7 +105,6 @@ CREATE TABLE Miembros_de_equipos (
     FOREIGN KEY (Usuarios_idUsuarios) REFERENCES Usuarios(idUsuarios),
     FOREIGN KEY (RolesPermisos_idRolesPermisos) REFERENCES RolesPermisos(idRolesPermisos)
 );
-GO
 
 CREATE TABLE Equipos_Proyectos (
     Equipos_idEquipos INT,
@@ -124,7 +113,6 @@ CREATE TABLE Equipos_Proyectos (
     FOREIGN KEY (Equipos_idEquipos) REFERENCES Equipos(idEquipos),
     FOREIGN KEY (Proyectos_idProyectos) REFERENCES Proyectos(idProyectos)
 );
-GO
 
 CREATE TABLE Historial_de_cambios (
     idHistorial_de_cambios INT PRIMARY KEY,
@@ -137,4 +125,3 @@ CREATE TABLE Historial_de_cambios (
     FOREIGN KEY (Proyectos_idProyectos) REFERENCES Proyectos(idProyectos),
     FOREIGN KEY (Portafolio_idPortafolio) REFERENCES Portafolio(idPortafolio)
 );
-GO

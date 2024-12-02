@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Negocio.Controllers;
-using Negocio.Modelos;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Negocio.Controllers;  
+using Negocio.Modelos;      
 
-namespace ProyectoINGSOFT.Controllers
+namespace ProyectoSoft4BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,13 +16,19 @@ namespace ProyectoINGSOFT.Controllers
             _service = service;
         }
 
-        [HttpGet("ListaUsuarios")]
-        public async Task<IActionResult> ListaUsuarios()
+        // Método para crear un nuevo usuario
+        [HttpPost("NuevoUsuario")]
+        public async Task<IActionResult> NuevoUsuario([FromBody] Usuarios usuario)
         {
-            var resultadoUsuarios = await _service.ObtenerUsuarios();
             try
             {
-                return Ok(resultadoUsuarios);
+                var resultadoNuevoUsuario = await _service.CrearUsuario(usuario);
+
+                if (resultadoNuevoUsuario != null && resultadoNuevoUsuario.Any())
+                {
+                    return Ok(resultadoNuevoUsuario);
+                }
+                return BadRequest("No se pudo crear el usuario.");
             }
             catch (Exception ex)
             {
@@ -30,13 +36,39 @@ namespace ProyectoINGSOFT.Controllers
             }
         }
 
-        [HttpPost("NuevoUsuario")]
-        public async Task<IActionResult> NuevoUsuario([FromBody] Usuarios usuario)
+        // Método para obtener la lista de usuarios
+        [HttpGet("ListaUsuarios")]
+        public async Task<IActionResult> ListaUsuarios()
         {
             try
             {
-                var nuevoUsuario = await _service.CrearUsuario(usuario);
-                return Ok(nuevoUsuario);
+                var resultadoUsuarios = await _service.ObtenerUsuarios();
+
+                if (resultadoUsuarios != null && resultadoUsuarios.Any())
+                {
+                    return Ok(resultadoUsuarios);
+                }
+                return NotFound("No se encontraron usuarios.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // Método para actualizar un usuario
+        [HttpPut("ActualizarUsuario/{id}")]
+        public async Task<IActionResult> ActualizarUsuario(int id, [FromBody] Usuarios usuario)
+        {
+            try
+            {
+                var resultadoActualizarUsuario = await _service.ActualizarUsuario(id, usuario.Nombre, usuario.Email, usuario.contrasena, usuario.Activo, usuario.FechaRegistro, usuario.Comentarios_idComentarios);
+
+                if (resultadoActualizarUsuario != null && resultadoActualizarUsuario.Any())
+                {
+                    return Ok(resultadoActualizarUsuario);
+                }
+                return BadRequest("No se pudo actualizar el usuario.");
             }
             catch (Exception ex)
             {

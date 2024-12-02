@@ -1,0 +1,13 @@
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.csproj.AssemblyReference.cache
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.GeneratedMSBuildEditorConfig.editorconfig
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.AssemblyInfoInputs.cache
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.AssemblyInfo.cs
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.csproj.CoreCompileInputs.cache
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.sourcelink.json
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\bin\Debug\net8.0\Negocio.deps.json
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\bin\Debug\net8.0\Negocio.dll
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\bin\Debug\net8.0\Negocio.pdb
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.dll
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\refint\Negocio.dll
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.pdb
+G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\ref\Negocio.dll

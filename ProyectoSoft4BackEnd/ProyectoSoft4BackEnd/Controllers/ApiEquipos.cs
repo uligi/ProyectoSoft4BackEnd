@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Negocio.Controllers;
 using Negocio.Modelos;
-using System.Threading.Tasks;
 
-namespace ProyectoINGSOFT.Controllers
+namespace ProyectoSoft4BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,13 +16,19 @@ namespace ProyectoINGSOFT.Controllers
             _service = service;
         }
 
-        [HttpGet("ListaEquipos")]
-        public async Task<IActionResult> ListaEquipos()
+        // Método para crear un nuevo equipo
+        [HttpPost("NuevoEquipo")]
+        public async Task<IActionResult> NuevoEquipo([FromBody] Equipos equipo)
         {
-            var resultadoEquipos = await _service.ObtenerEquipos();
             try
             {
-                return Ok(resultadoEquipos);
+                var resultadoNuevoEquipo = await _service.CrearEquipo(equipo);
+
+                if (resultadoNuevoEquipo != null && resultadoNuevoEquipo.Any())
+                {
+                    return Ok(resultadoNuevoEquipo);
+                }
+                return BadRequest("No se pudo crear el equipo.");
             }
             catch (Exception ex)
             {
@@ -30,13 +36,40 @@ namespace ProyectoINGSOFT.Controllers
             }
         }
 
-        [HttpPost("NuevoEquipo")]
-        public async Task<IActionResult> NuevoEquipo([FromBody] Equipos equipo)
+        // Método para obtener la lista de equipos
+        [HttpGet("ListaEquipos")]
+        public async Task<IActionResult> ListaEquipos()
         {
             try
             {
-                var nuevoEquipo = await _service.CrearEquipo(equipo);
-                return Ok(nuevoEquipo);
+                var resultadoEquipos = await _service.ObtenerEquipos();
+
+                if (resultadoEquipos != null && resultadoEquipos.Any())
+                {
+                    return Ok(resultadoEquipos);
+                }
+                return NotFound("No se encontraron equipos.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // Método para actualizar un equipo
+        [HttpPut("ActualizarEquipo/{id}")]
+        public async Task<IActionResult> ActualizarEquipo(int id, [FromBody] Equipos equipo)
+        {
+            try
+            {
+                var resultadoActualizarEquipo = await _service.ActualizarEquipo(
+                    id, equipo.NombreEquipos, equipo.Activo);
+
+                if (resultadoActualizarEquipo != null && resultadoActualizarEquipo.Any())
+                {
+                    return Ok(resultadoActualizarEquipo);
+                }
+                return BadRequest("No se pudo actualizar el equipo.");
             }
             catch (Exception ex)
             {
