@@ -11,3 +11,16 @@ G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\Proyect
 G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\refint\Negocio.dll
 G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.pdb
 G:\Programing\Proyecto Final Imp y Mant de Software\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\ref\Negocio.dll
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\bin\Debug\net8.0\Negocio.deps.json
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\bin\Debug\net8.0\Negocio.dll
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\bin\Debug\net8.0\Negocio.pdb
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.csproj.AssemblyReference.cache
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.AssemblyInfoInputs.cache
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.AssemblyInfo.cs
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.sourcelink.json
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.dll
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\refint\Negocio.dll
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\Negocio.pdb
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Negocio\obj\Debug\net8.0\ref\Negocio.dll

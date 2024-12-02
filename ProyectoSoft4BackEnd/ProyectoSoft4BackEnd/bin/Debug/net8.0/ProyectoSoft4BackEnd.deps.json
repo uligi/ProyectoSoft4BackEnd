@@ -609,10 +609,7 @@
           "Microsoft.EntityFrameworkCore.Relational": "9.0.0"
         },
         "runtime": {
-          "Negocio.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "Negocio.dll": {}
         }
       }
     }
