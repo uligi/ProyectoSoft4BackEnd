@@ -18,10 +18,18 @@ namespace ProyectoSoft4BackEnd.Controllers
 
         // Método para crear un nuevo rol
         [HttpPost("NuevoRol")]
-        public async Task<IActionResult> NuevoRol([FromBody] Roles rol)
+        public async Task<IActionResult> NuevoRol([FromBody] RolesRequest rolRequest)
         {
             try
             {
+                // Mapear RolesRequest a Roles
+                var rol = new Roles
+                {
+                    Nombre_Roles = rolRequest.Nombre,
+                    Activo = true, // Por defecto los roles se crean como activos
+                    idPermisos = rolRequest.idPermisos
+                };
+
                 var resultadoNuevoRol = await _service.CrearRol(rol);
 
                 if (resultadoNuevoRol != null && resultadoNuevoRol.Any())
@@ -35,6 +43,7 @@ namespace ProyectoSoft4BackEnd.Controllers
                 return BadRequest(ex.Message);
             }
         }
+    
 
         // Método para obtener la lista de roles
         [HttpGet("ListaRoles")]
@@ -58,11 +67,17 @@ namespace ProyectoSoft4BackEnd.Controllers
 
         // Método para actualizar un rol
         [HttpPut("ActualizarRol/{id}")]
-        public async Task<IActionResult> ActualizarRol(int id, [FromBody] Roles rol)
+        public async Task<IActionResult> ActualizarRol(int id, [FromBody] RolesRequest rolRequest)
         {
             try
             {
-                var resultadoActualizarRol = await _service.ActualizarRol(id, rol.Nombre_Roles, rol.Activo);
+                // Mapear RolesRequest a Roles
+                var resultadoActualizarRol = await _service.ActualizarRol(
+                    id,
+                    rolRequest.Nombre,
+                    true, // Asume que siempre estará activo
+                    rolRequest.idPermisos
+                );
 
                 if (resultadoActualizarRol != null && resultadoActualizarRol.Any())
                 {
@@ -75,5 +90,26 @@ namespace ProyectoSoft4BackEnd.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
+        [HttpDelete("EliminarRol/{id}")]
+        public async Task<IActionResult> EliminarRol(int id)
+        {
+            try
+            {
+                var resultadoEliminarRol = await _service.EliminarRol(id);
+
+                if (resultadoEliminarRol != null && resultadoEliminarRol.Any())
+                {
+                    return Ok(resultadoEliminarRol);
+                }
+                return BadRequest("No se pudo eliminar el rol.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

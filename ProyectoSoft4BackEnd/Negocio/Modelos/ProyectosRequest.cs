@@ -3,29 +3,29 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Negocio.Modelos
 {
-    public class Proyectos
+    public class ProyectosRequest
     {
-        [Key]
-        public int idProyectos { get; set; }
-
         [Required]
         [StringLength(500)]
         public string NombreProyecto { get; set; } = string.Empty;
 
+        [Required]
         public string Descripcion { get; set; } = string.Empty;
 
-        public bool Activo { get; set; }
-
-        public DateTime? FechaEstimada { get; set; }
+        [Required]
+        public DateTime FechaEstimada { get; set; }
 
         public DateTime? FechaInicio { get; set; }
-
         public DateTime? FechaFinal { get; set; }
 
+        [Required]
         [StringLength(45)]
         public string Prioridad { get; set; } = string.Empty;
 
+        [Required]
         public int idPortafolio { get; set; }
+
+        [Required]
         public int Equipos_idEquipos { get; set; }
     }
 }

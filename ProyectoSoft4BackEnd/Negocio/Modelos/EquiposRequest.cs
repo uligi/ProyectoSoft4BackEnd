@@ -1,20 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Negocio.Modelos
 {
-    public class Equipos
+   
+      public class EquiposRequest
     {
-        [Key]
-        public int idEquipos { get; set; }
-
         [Required]
         [StringLength(45)]
         public string NombreEquipos { get; set; } = string.Empty;
-
-        public bool Activo { get; set; }
-
-        public DateTime Fecha_Registro { get; set; }
     }
-
 }

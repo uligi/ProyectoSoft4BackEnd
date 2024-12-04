@@ -1,79 +1,122 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Negocio.Controllers;
 using Negocio.Modelos;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace ProyectoSoft4BackEnd.Controllers
+[Route("api/[controller]")]
+[ApiController]
+public class ApiProyectos : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ApiProyectos : ControllerBase
+    private readonly IProyectosRepository _service;
+
+    public ApiProyectos(IProyectosRepository service)
     {
-        private readonly IProyectosRepository _service;
+        _service = service;
+    }
 
-        public ApiProyectos(IProyectosRepository service)
+    [HttpGet("ListaProyectos")]
+    public async Task<IActionResult> ListaProyectos()
+    {
+        try
         {
-            _service = service;
+            var resultado = await _service.ObtenerProyectos();
+            if (resultado != null && resultado.Any())
+            {
+                return Ok(resultado);
+            }
+            return NotFound("No se encontraron proyectos.");
         }
-
-        // Método para crear un nuevo proyecto
-        [HttpPost("NuevoProyecto")]
-        public async Task<IActionResult> NuevoProyecto([FromBody] Proyectos proyecto)
+        catch (System.Exception ex)
         {
-            try
-            {
-                var resultadoNuevoProyecto = await _service.CrearProyecto(proyecto);
-
-                if (resultadoNuevoProyecto != null && resultadoNuevoProyecto.Any())
-                {
-                    return Ok(resultadoNuevoProyecto);
-                }
-                return BadRequest("No se pudo crear el proyecto.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return BadRequest(ex.Message);
         }
+    }
 
-        // Método para obtener la lista de proyectos
-        [HttpGet("ListaProyectos")]
-        public async Task<IActionResult> ListaProyectos()
+    [HttpPost("NuevoProyecto")]
+    public async Task<IActionResult> NuevoProyecto([FromBody] ProyectosRequest proyectoRequest)
+    {
+        try
         {
-            try
+            if (proyectoRequest == null || string.IsNullOrWhiteSpace(proyectoRequest.NombreProyecto))
             {
-                var resultadoProyectos = await _service.ObtenerProyectos();
+                return BadRequest("El proyecto es inválido o tiene campos faltantes.");
+            }
 
-                if (resultadoProyectos != null && resultadoProyectos.Any())
-                {
-                    return Ok(resultadoProyectos);
-                }
-                return NotFound("No se encontraron proyectos.");
-            }
-            catch (Exception ex)
+            var proyecto = new Proyectos
             {
-                return BadRequest(ex.Message);
-            }
+                NombreProyecto = proyectoRequest.NombreProyecto,
+                Descripcion = proyectoRequest.Descripcion,
+                FechaEstimada = proyectoRequest.FechaEstimada,
+                FechaInicio = proyectoRequest.FechaInicio,
+                FechaFinal = proyectoRequest.FechaFinal,
+                Prioridad = proyectoRequest.Prioridad,
+                idPortafolio = proyectoRequest.idPortafolio,
+                Equipos_idEquipos = proyectoRequest.Equipos_idEquipos,
+                Activo = true
+            };
+
+            var resultado = await _service.CrearProyecto(proyecto);
+            return Ok(resultado);
         }
-
-        // Método para actualizar un proyecto
-        [HttpPut("ActualizarProyecto/{id}")]
-        public async Task<IActionResult> ActualizarProyecto(int id, [FromBody] Proyectos proyecto)
+        catch (Exception ex)
         {
-            try
-            {
-                var resultadoActualizarProyecto = await _service.ActualizarProyecto(id, proyecto.NombreProyecto, proyecto.Descripcion, proyecto.Activo, proyecto.Prioridad, proyecto.FechaEstimada, proyecto.FechaInicio, proyecto.FechaFinal, proyecto.Portafolio_idPortafolio);
+            return BadRequest($"Error: {ex.Message}");
+        }
+    }
 
-                if (resultadoActualizarProyecto != null && resultadoActualizarProyecto.Any())
-                {
-                    return Ok(resultadoActualizarProyecto);
-                }
-                return BadRequest("No se pudo actualizar el proyecto.");
-            }
-            catch (Exception ex)
+
+    [HttpPut("ActualizarProyecto/{id}")]
+    public async Task<IActionResult> ActualizarProyecto(int id, [FromBody] ProyectosRequest proyectoRequest)
+    {
+        try
+        {
+            var proyecto = new Proyectos
             {
-                return BadRequest(ex.Message);
+                idProyectos = id,
+                NombreProyecto = proyectoRequest.NombreProyecto,
+                Descripcion = proyectoRequest.Descripcion,
+                FechaEstimada = proyectoRequest.FechaEstimada,
+                FechaInicio = proyectoRequest.FechaInicio,
+                FechaFinal = proyectoRequest.FechaFinal,
+                Prioridad = proyectoRequest.Prioridad,
+                idPortafolio = proyectoRequest.idPortafolio,
+                Equipos_idEquipos = proyectoRequest.Equipos_idEquipos
+            };
+
+            var resultado = await _service.ActualizarProyecto(proyecto);
+
+            if (resultado != null && resultado.Any())
+            {
+                return Ok(resultado);
             }
+
+            return NotFound("No se pudo actualizar el proyecto.");
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpDelete("EliminarProyecto/{id}")]
+    public async Task<IActionResult> EliminarProyecto(int id)
+    {
+        try
+        {
+            var resultado = await _service.EliminarProyecto(id);
+
+            if (resultado != null && resultado.Any())
+            {
+                return Ok(resultado);
+            }
+
+            return NotFound("No se pudo eliminar el proyecto.");
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest(ex.Message);
         }
     }
 }

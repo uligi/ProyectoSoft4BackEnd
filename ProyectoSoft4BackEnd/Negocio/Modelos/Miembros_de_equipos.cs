@@ -2,12 +2,14 @@
 
 namespace Negocio.Modelos
 {
-    public class Miembros_de_equipos
+    public class MiembrosDeEquipos
     {
         [Key]
         public int idMiembros_de_equipos { get; set; }
-        public int Equipos_idEquipos { get; set; }
-        public int Usuarios_idUsuarios { get; set; }
-        public int RolesPermisos_idRolesPermisos { get; set; }
+        public int idEquipos { get; set; }
+        public int idUsuarios { get; set; }
+        public string NombreUsuario { get; set; }
+        public string NombreEquipos { get; set; }
     }
+
 }

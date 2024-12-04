@@ -7,70 +7,65 @@ using System.Threading.Tasks;
 
 namespace Negocio.Controllers
 {
-    public interface IEquiposRepository
+    using global::Negocio.Controllers.Negocio.Controllers;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    namespace Negocio.Controllers
     {
-        Task<IEnumerable<Equipos>> ObtenerEquipos();
-        Task<IEnumerable<MensajeUsuario>> CrearEquipo(Equipos equipo);
-        Task<IEnumerable<MensajeUsuario>> ActualizarEquipo(int idEquipo, string nombreEquipo, bool activo);
+        public interface IEquiposRepository
+        {
+            Task<IEnumerable<Equipos>> ObtenerEquipos();
+            Task<IEnumerable<MensajeUsuario>> CrearEquipo(Equipos equipo);
+            Task<IEnumerable<MensajeUsuario>> ActualizarEquipo(int idEquipos, string nombreEquipos);
+            Task<IEnumerable<MensajeUsuario>> EliminarEquipo(int idEquipos);
+        }
     }
 
-    public class EquiposRepository : IEquiposRepository
-    {
-        private readonly ContextData _context;
 
-        public EquiposRepository(ContextData context)
+    
+        public class EquiposRepository : IEquiposRepository
         {
-            _context = context;
-        }
+            private readonly ContextData _context;
 
-        // Método para obtener todos los equipos
-        public async Task<IEnumerable<Equipos>> ObtenerEquipos()
-        {
-            return await _context.Equipos.ToListAsync();
-        }
+            public EquiposRepository(ContextData context)
+            {
+                _context = context;
+            }
 
-        // Método para crear un nuevo equipo
+            public async Task<IEnumerable<Equipos>> ObtenerEquipos()
+            {
+                return await _context.Equipos.Where(e => e.Activo).ToListAsync();
+            }
+
         public async Task<IEnumerable<MensajeUsuario>> CrearEquipo(Equipos equipo)
         {
-            if (string.IsNullOrEmpty(equipo.NombreEquipos))
+            var nombreParam = new SqlParameter("@NombreEquipos", equipo.NombreEquipos);
+            var activoParam = new SqlParameter("@Activo", equipo.Activo);
+
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Crear_Equipo @NombreEquipos, @Activo", nombreParam, activoParam)
+                .ToListAsync();
+        }
+
+
+        public async Task<IEnumerable<MensajeUsuario>> ActualizarEquipo(int idEquipos, string nombreEquipos)
             {
-                return new List<MensajeUsuario>
-                {
-                    new MensajeUsuario { Codigo = -3, Mensaje = "No se puede ingresar nombres vacíos o nulos" }
-                };
-            }
-            else
-            {
-                var nombreEquipoParam = new SqlParameter("@NombreEquipos", equipo.NombreEquipos);
-                var activoParam = new SqlParameter("@Activo", equipo.Activo);
-                var fechaRegistroParam = new SqlParameter("@Fecha_Registro", equipo.Fecha_Registro);
+                var idParam = new SqlParameter("@idEquipos", idEquipos);
+                var nombreParam = new SqlParameter("@NombreEquipos", nombreEquipos);
 
                 return await _context.MensajeUsuario
-                    .FromSqlRaw("EXEC Crear_Equipo @NombreEquipos, @Activo, @Fecha_Registro", nombreEquipoParam, activoParam, fechaRegistroParam)
+                    .FromSqlRaw("EXEC Actualizar_Equipo @idEquipos, @NombreEquipos", idParam, nombreParam)
+                    .ToListAsync();
+            }
+
+            public async Task<IEnumerable<MensajeUsuario>> EliminarEquipo(int idEquipos)
+            {
+                var idParam = new SqlParameter("@idEquipos", idEquipos);
+
+                return await _context.MensajeUsuario
+                    .FromSqlRaw("EXEC Eliminar_Equipo @idEquipos", idParam)
                     .ToListAsync();
             }
         }
-
-        // Método para actualizar un equipo existente
-        public async Task<IEnumerable<MensajeUsuario>> ActualizarEquipo(int idEquipo, string nombreEquipo, bool activo)
-        {
-            if (string.IsNullOrEmpty(nombreEquipo))
-            {
-                return new List<MensajeUsuario>
-                {
-                    new MensajeUsuario { Codigo = -3, Mensaje = "No se puede ingresar nombres vacíos o nulos" }
-                };
-            }
-            else
-            {
-                var idEquipoParam = new SqlParameter("@idEquipos", idEquipo);
-                var nombreEquipoParam = new SqlParameter("@NombreEquipos", nombreEquipo);
-                var activoParam = new SqlParameter("@Activo", activo);
-
-                return await _context.MensajeUsuario
-                    .FromSqlRaw("EXEC Modificar_Equipo @idEquipos, @NombreEquipos, @Activo", idEquipoParam, nombreEquipoParam, activoParam)
-                    .ToListAsync();
-            }
-        }
-    }
 }

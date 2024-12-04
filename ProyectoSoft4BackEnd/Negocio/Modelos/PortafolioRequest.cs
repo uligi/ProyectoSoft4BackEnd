@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Negocio.Modelos
 {
-    public class Portafolio
+    public class PortafolioRequest
     {
-        [Key]
-        public int idPortafolio { get; set; }
+        [Required]
         public string NombrePortafolio { get; set; } = string.Empty;
+
+        [Required]
         public string Descripcion { get; set; } = string.Empty;
-        public bool Activo { get; set; } = true;
-        public DateTime FechaCreacion { get; set; }
     }
 }

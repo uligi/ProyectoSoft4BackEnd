@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Negocio.Controllers;
+using Negocio.Controllers.Negocio.Controllers;
 using Negocio.Data;
+using Negocio.Modelos;
+using Negocio.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,12 +19,14 @@ builder.Services.AddScoped<ITareasRepository, TareasRepository>();
 builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
 builder.Services.AddScoped<IPermisosRepository, PermisosRepository>();
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
-builder.Services.AddScoped<IRolesPermisosRepository, RolesPermisosRepository>();
-builder.Services.AddScoped<IMiembrosDeEquiposRepository, MiembrosDeEquiposRepository>();
+
+builder.Services.AddScoped<IMiembrosDeEquiposRepository, MiembrosRepository>();
 
 builder.Services.AddScoped<IHistorialDeCambiosRepository, HistorialDeCambiosRepository>();
 builder.Services.AddScoped<IPortafolioRepository, PortafolioRepository>();
 builder.Services.AddScoped<IEquiposRepository, EquiposRepository>();
+builder.Services.AddScoped<IRecursosRepository, RecursosRepository>();
+
 
 // Configuración de CORS
 builder.Services.AddCors(options =>

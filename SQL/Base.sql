@@ -6,11 +6,12 @@ USE DB_GP;
 GO
 
 CREATE TABLE Equipos (
-    idEquipos INT PRIMARY KEY,
+    idEquipos INT PRIMARY KEY IDENTITY(1,1),
     NombreEquipos VARCHAR(45),
     Activo BIT,
     Fecha_Registro DATETIME
 );
+go
 
 CREATE TABLE Portafolio (
     idPortafolio INT PRIMARY KEY IDENTITY(1,1),
@@ -19,6 +20,7 @@ CREATE TABLE Portafolio (
     Descripcion NVARCHAR(MAX),
     FechaCreacion DATETIME
 );
+go
 
 CREATE TABLE Proyectos (
     idProyectos INT PRIMARY KEY IDENTITY(1,1),
@@ -29,41 +31,12 @@ CREATE TABLE Proyectos (
     FechaInicio DATE,
     FechaFinal DATE,
     Prioridad VARCHAR(45),
-    Portafolio_idPortafolio INT,
-    FOREIGN KEY (Portafolio_idPortafolio) REFERENCES Portafolio(idPortafolio)
+    idPortafolio INT,
+    Equipos_idEquipos INT NOT NULL,
+    FOREIGN KEY (idPortafolio) REFERENCES Portafolio(idPortafolio),
+    FOREIGN KEY (Equipos_idEquipos) REFERENCES Equipos(idEquipos)
 );
-
-CREATE TABLE Subtareas (
-    idSubtareas INT PRIMARY KEY IDENTITY(1,1),
-    NombreSubtareas VARCHAR(45),
-    Descripcion NVARCHAR(MAX),
-    Prioridad VARCHAR(45),
-    FechaInicio DATE,
-    FechaFinal DATE
-);
-
-CREATE TABLE Comentarios (
-    idComentarios INT PRIMARY KEY IDENTITY(1,1),
-    Comentario NVARCHAR(MAX),
-    FechaCreacion DATETIME,
-    Activo BIT
-);
-
-CREATE TABLE Tareas (
-    idTareas INT PRIMARY KEY IDENTITY(1,1),
-    NombreTareas VARCHAR(45),
-    Descripcion NVARCHAR(MAX),
-    Prioridad VARCHAR(45),
-    FechaInicio DATE,
-    FechaFinal DATE,
-    Activo BIT,
-    Subtareas_idSubtareas INT,
-    Proyectos_idProyectos INT,
-    Comentarios_idComentarios INT,
-    FOREIGN KEY (Subtareas_idSubtareas) REFERENCES Subtareas(idSubtareas),
-    FOREIGN KEY (Proyectos_idProyectos) REFERENCES Proyectos(idProyectos),
-    FOREIGN KEY (Comentarios_idComentarios) REFERENCES Comentarios(idComentarios)
-);
+go
 
 
 
@@ -72,6 +45,7 @@ CREATE TABLE Permisos (
     Nombre_Permisos VARCHAR(100),
     Activo BIT
 );
+go
 
 CREATE TABLE Roles (
     idRoles INT PRIMARY KEY IDENTITY(1,1),
@@ -80,7 +54,7 @@ CREATE TABLE Roles (
 	idPermisos int
 	 FOREIGN KEY (idPermisos) REFERENCES Permisos(idPermisos)
 );
-
+go
 
 
 CREATE TABLE Usuarios (
@@ -93,31 +67,78 @@ CREATE TABLE Usuarios (
     FechaRegistro DATETIME,
 	idRoles Int
 	FOREIGN KEY (idRoles) REFERENCES Roles(idRoles)
-   
-
 );
+go
+
 CREATE TABLE Miembros_de_equipos (
     idMiembros_de_equipos INT PRIMARY KEY IDENTITY(1,1),
-    Equipos_idEquipos INT,
-    Usuarios_idUsuarios INT,
-    RolesPermisos_idRolesPermisos INT,
-    FOREIGN KEY (Equipos_idEquipos) REFERENCES Equipos(idEquipos),
-    FOREIGN KEY (Usuarios_idUsuarios) REFERENCES Usuarios(idUsuarios),
-    FOREIGN KEY (RolesPermisos_idRolesPermisos) REFERENCES RolesPermisos(idRolesPermisos)
+    idEquipos INT,
+    idUsuarios INT,
+    
+    FOREIGN KEY (idEquipos) REFERENCES Equipos(idEquipos),
+    FOREIGN KEY (idUsuarios) REFERENCES Usuarios(idUsuarios),
+    
 );
+go
 
 
+
+
+CREATE TABLE Tareas (
+    idTareas INT PRIMARY KEY IDENTITY(1,1),
+    NombreTareas VARCHAR(45) NOT NULL,
+    Descripcion NVARCHAR(MAX),
+    Prioridad VARCHAR(45),
+    FechaInicio DATE,
+    FechaFinal DATE,
+    Activo BIT,
+    idProyectos INT NOT NULL,
+    idUsuarios INT NULL,
+    FOREIGN KEY (idProyectos) REFERENCES Proyectos(idProyectos),
+    FOREIGN KEY (idUsuarios) REFERENCES Usuarios(idUsuarios)
+);
+go
+
+CREATE TABLE Subtareas (
+    idSubtareas INT PRIMARY KEY IDENTITY(1,1),
+    NombreSubtareas VARCHAR(45) NOT NULL,
+    Descripcion NVARCHAR(MAX),
+    Prioridad VARCHAR(45),
+    FechaInicio DATE,
+    FechaFinal DATE,
+    idTareas INT NOT NULL,
+    FOREIGN KEY (idTareas) REFERENCES Tareas(idTareas)
+);
+go
+
+CREATE TABLE Comentarios (
+    idComentarios INT PRIMARY KEY IDENTITY(1,1),
+    Comentario NVARCHAR(MAX),
+    FechaCreacion DATETIME,
+    Activo BIT,
+    Tareas_idTareas INT NULL,
+    idSubtareas INT NULL,
+    idProyectos INT NULL,
+    FOREIGN KEY (Tareas_idTareas) REFERENCES Tareas(idTareas),
+    FOREIGN KEY (idSubtareas) REFERENCES Subtareas(idSubtareas),
+    FOREIGN KEY (idProyectos) REFERENCES Proyectos(idProyectos)
+);
+go
 
 CREATE TABLE Historial_de_cambios (
     idHistorial_de_cambios INT PRIMARY KEY IDENTITY(1,1),
-    Tareas_idTareas INT,
-    Proyectos_idProyectos INT,
-    Portafolio_idPortafolio INT,
+    idTareas INT null,
+    Portafolio_idPortafolio INT,	
     Descripcioncambio NVARCHAR(MAX),
     FechaCambio DATETIME,
-    FOREIGN KEY (Tareas_idTareas) REFERENCES Tareas(idTareas),
-    FOREIGN KEY (Proyectos_idProyectos) REFERENCES Proyectos(idProyectos),
-    FOREIGN KEY (Portafolio_idPortafolio) REFERENCES Portafolio(idPortafolio)
+	idProyectos int null,
+	idPortafolio int null,
+	idUsuarios int null,
+	idSubtareas int null
+    FOREIGN KEY (idTareas) REFERENCES Tareas(idTareas),
+    FOREIGN KEY (idProyectos) REFERENCES Proyectos(idProyectos),
+    FOREIGN KEY (idPortafolio) REFERENCES Portafolio(idPortafolio),
+	FOREIGN KEY (idUsuarios) REFERENCES Usuarios(idUsuarios),
+	FOREIGN KEY (idSubtareas) REFERENCES Subtareas(idSubtareas)
 );
-
-
+go

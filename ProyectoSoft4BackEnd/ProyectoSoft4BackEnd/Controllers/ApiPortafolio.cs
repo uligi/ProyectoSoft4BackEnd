@@ -1,79 +1,104 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Negocio.Controllers;
 using Negocio.Modelos;
 
-namespace NProyectoSoft4BackEndegocio.Controllers
+[Route("api/[controller]")]
+[ApiController]
+public class ApiPortafolio : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ApiPortafolio : ControllerBase
+    private readonly IPortafolioRepository _service;
+
+    public ApiPortafolio(IPortafolioRepository service)
     {
-        private readonly IPortafolioRepository _service;
+        _service = service;
+    }
 
-        public ApiPortafolio(IPortafolioRepository service)
+    [HttpGet("ListaPortafolios")]
+    public async Task<IActionResult> ListaPortafolios()
+    {
+        try
         {
-            _service = service;
+            var resultado = await _service.ObtenerPortafolios();
+            if (resultado != null && resultado.Any())
+            {
+                return Ok(resultado);
+            }
+            return NotFound("No se encontraron portafolios.");
         }
-
-        // Método para crear un nuevo portafolio
-        [HttpPost("NuevoPortafolio")]
-        public async Task<IActionResult> NuevoPortafolio([FromBody] Portafolio portafolio)
+        catch (Exception ex)
         {
-            try
-            {
-                var resultadoNuevoPortafolio = await _service.CrearPortafolio(portafolio);
-
-                if (resultadoNuevoPortafolio != null && resultadoNuevoPortafolio.Any())
-                {
-                    return Ok(resultadoNuevoPortafolio);
-                }
-                return BadRequest("No se pudo crear el portafolio.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        // Método para obtener la lista de portafolios
-        [HttpGet("ListaPortafolios")]
-        public async Task<IActionResult> ListaPortafolios()
-        {
-            try
-            {
-                var resultadoPortafolios = await _service.ObtenerPortafolios();
-
-                if (resultadoPortafolios != null && resultadoPortafolios.Any())
-                {
-                    return Ok(resultadoPortafolios);
-                }
-                return NotFound("No se encontraron portafolios.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        // Método para actualizar un portafolio
-        [HttpPut("ActualizarPortafolio/{id}")]
-        public async Task<IActionResult> ActualizarPortafolio(int id, [FromBody] Portafolio portafolio)
-        {
-            try
-            {
-                var resultadoActualizarPortafolio = await _service.ActualizarPortafolio(id, portafolio.NombrePortafolio, portafolio.Activo, portafolio.Descripcion);
-
-                if (resultadoActualizarPortafolio != null && resultadoActualizarPortafolio.Any())
-                {
-                    return Ok(resultadoActualizarPortafolio);
-                }
-                return BadRequest("No se pudo actualizar el portafolio.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return BadRequest(ex.Message);
         }
     }
+
+    [HttpPost("NuevoPortafolio")]
+    public async Task<IActionResult> NuevoPortafolio([FromBody] PortafolioRequest portafolioRequest)
+    {
+        try
+        {
+            var portafolio = new Portafolio
+            {
+                NombrePortafolio = portafolioRequest.NombrePortafolio,
+                Descripcion = portafolioRequest.Descripcion,
+                Activo = true,
+                FechaCreacion = DateTime.Now
+            };
+
+            var resultado = await _service.CrearPortafolio(portafolio);
+            return Ok(resultado);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPut("ActualizarPortafolio/{id}")]
+    public async Task<IActionResult> ActualizarPortafolio(int id, [FromBody] PortafolioRequest portafolioRequest)
+    {
+        try
+        {
+            var portafolio = new Portafolio
+            {
+                idPortafolio = id,
+                NombrePortafolio = portafolioRequest.NombrePortafolio,
+                Descripcion = portafolioRequest.Descripcion
+            };
+
+            var resultado = await _service.ActualizarPortafolio(portafolio);
+
+            if (resultado != null && resultado.Any())
+            {
+                return Ok(resultado);
+            }
+
+            return NotFound("No se pudo actualizar el portafolio.");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+
+    [HttpDelete("EliminarPortafolio/{id}")]
+    public async Task<IActionResult> EliminarPortafolio(int id)
+    {
+        try
+        {
+            var resultado = await _service.EliminarPortafolio(id);
+
+            if (resultado != null && resultado.Any())
+            {
+                return Ok(resultado);
+            }
+
+            return NotFound("No se pudo eliminar el portafolio.");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
 }

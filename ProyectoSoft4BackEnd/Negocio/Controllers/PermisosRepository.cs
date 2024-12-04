@@ -12,6 +12,8 @@ namespace Negocio.Controllers
         Task<IEnumerable<Permisos>> ObtenerPermisos();
         Task<IEnumerable<MensajeUsuario>> CrearPermiso(Permisos permiso);
         Task<IEnumerable<MensajeUsuario>> ActualizarPermiso(int idPermiso, string nombrePermiso, bool activo);
+        Task<IEnumerable<MensajeUsuario>> EliminarPermiso(int idPermiso);
+
     }
 
     public class PermisosRepository : IPermisosRepository
@@ -71,5 +73,14 @@ namespace Negocio.Controllers
                     .ToListAsync();
             }
         }
+        public async Task<IEnumerable<MensajeUsuario>> EliminarPermiso(int idPermiso)
+        {
+            var idPermisoParam = new SqlParameter("@idPermisos", idPermiso);
+
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Eliminar_Permiso @idPermisos", idPermisoParam)
+                .ToListAsync();
+        }
+
     }
 }

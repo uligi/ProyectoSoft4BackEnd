@@ -1,80 +1,80 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Negocio.Controllers;
+using Negocio.Controllers.Negocio.Controllers;
 using Negocio.Modelos;
+using System.Threading.Tasks;
 
-namespace ProyectoSoft4BackEnd.Controllers
+[Route("api/[controller]")]
+[ApiController]
+public class ApiEquipos : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ApiEquipos : ControllerBase
+    private readonly IEquiposRepository _service;
+
+    public ApiEquipos(IEquiposRepository service)
     {
-        private readonly IEquiposRepository _service;
+        _service = service;
+    }
 
-        public ApiEquipos(IEquiposRepository service)
+    [HttpGet("ListaEquipos")]
+    public async Task<IActionResult> ListaEquipos()
+    {
+        try
         {
-            _service = service;
+            var resultado = await _service.ObtenerEquipos();
+            return Ok(resultado);
         }
-
-        // Método para crear un nuevo equipo
-        [HttpPost("NuevoEquipo")]
-        public async Task<IActionResult> NuevoEquipo([FromBody] Equipos equipo)
+        catch (Exception ex)
         {
-            try
-            {
-                var resultadoNuevoEquipo = await _service.CrearEquipo(equipo);
-
-                if (resultadoNuevoEquipo != null && resultadoNuevoEquipo.Any())
-                {
-                    return Ok(resultadoNuevoEquipo);
-                }
-                return BadRequest("No se pudo crear el equipo.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return BadRequest(ex.Message);
         }
+    }
 
-        // Método para obtener la lista de equipos
-        [HttpGet("ListaEquipos")]
-        public async Task<IActionResult> ListaEquipos()
+    [HttpPost("NuevoEquipo")]
+    public async Task<IActionResult> NuevoEquipo([FromBody] EquiposRequest request)
+    {
+        try
         {
-            try
+            var equipo = new Equipos
             {
-                var resultadoEquipos = await _service.ObtenerEquipos();
+                NombreEquipos = request.NombreEquipos,
+                Activo = true,
+                Fecha_Registro = DateTime.Now
+            };
 
-                if (resultadoEquipos != null && resultadoEquipos.Any())
-                {
-                    return Ok(resultadoEquipos);
-                }
-                return NotFound("No se encontraron equipos.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var resultado = await _service.CrearEquipo(equipo);
+            return Ok(resultado);
         }
-
-        // Método para actualizar un equipo
-        [HttpPut("ActualizarEquipo/{id}")]
-        public async Task<IActionResult> ActualizarEquipo(int id, [FromBody] Equipos equipo)
+        catch (Exception ex)
         {
-            try
-            {
-                var resultadoActualizarEquipo = await _service.ActualizarEquipo(
-                    id, equipo.NombreEquipos, equipo.Activo);
+            return BadRequest(ex.Message);
+        }
+    }
 
-                if (resultadoActualizarEquipo != null && resultadoActualizarEquipo.Any())
-                {
-                    return Ok(resultadoActualizarEquipo);
-                }
-                return BadRequest("No se pudo actualizar el equipo.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+    [HttpPut("ActualizarEquipo/{id}")]
+    public async Task<IActionResult> ActualizarEquipo(int id, [FromBody] EquiposRequest request)
+    {
+        try
+        {
+            var resultado = await _service.ActualizarEquipo(id, request.NombreEquipos);
+            return Ok(resultado);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpDelete("EliminarEquipo/{id}")]
+    public async Task<IActionResult> EliminarEquipo(int id)
+    {
+        try
+        {
+            var resultado = await _service.EliminarEquipo(id);
+            return Ok(resultado);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
         }
     }
 }

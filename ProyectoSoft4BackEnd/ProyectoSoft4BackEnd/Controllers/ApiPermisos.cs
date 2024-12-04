@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Negocio.Controllers;
 using Negocio.Modelos;
 
@@ -16,17 +15,17 @@ namespace ProyectoSoft4BackEnd.Controllers
             _service = service;
         }
 
-        // Método para crear un nuevo permiso
+        // Crear permiso
         [HttpPost("NuevoPermiso")]
         public async Task<IActionResult> NuevoPermiso([FromBody] Permisos permiso)
         {
             try
             {
-                var resultadoNuevoPermiso = await _service.CrearPermiso(permiso);
+                var resultado = await _service.CrearPermiso(permiso);
 
-                if (resultadoNuevoPermiso != null && resultadoNuevoPermiso.Any())
+                if (resultado != null && resultado.Any())
                 {
-                    return Ok(resultadoNuevoPermiso);
+                    return Ok(resultado);
                 }
                 return BadRequest("No se pudo crear el permiso.");
             }
@@ -36,17 +35,17 @@ namespace ProyectoSoft4BackEnd.Controllers
             }
         }
 
-        // Método para obtener la lista de permisos
+        // Listar permisos
         [HttpGet("ListaPermisos")]
         public async Task<IActionResult> ListaPermisos()
         {
             try
             {
-                var resultadoPermisos = await _service.ObtenerPermisos();
+                var resultado = await _service.ObtenerPermisos();
 
-                if (resultadoPermisos != null && resultadoPermisos.Any())
+                if (resultado != null && resultado.Any())
                 {
-                    return Ok(resultadoPermisos);
+                    return Ok(resultado);
                 }
                 return NotFound("No se encontraron permisos.");
             }
@@ -56,19 +55,39 @@ namespace ProyectoSoft4BackEnd.Controllers
             }
         }
 
-        // Método para actualizar un permiso
+        // Actualizar permiso
         [HttpPut("ActualizarPermiso/{id}")]
         public async Task<IActionResult> ActualizarPermiso(int id, [FromBody] Permisos permiso)
         {
             try
             {
-                var resultadoActualizarPermiso = await _service.ActualizarPermiso(id, permiso.Nombre_Permisos, permiso.Activo);
+                var resultado = await _service.ActualizarPermiso(id, permiso.Nombre_Permisos, permiso.Activo);
 
-                if (resultadoActualizarPermiso != null && resultadoActualizarPermiso.Any())
+                if (resultado != null && resultado.Any())
                 {
-                    return Ok(resultadoActualizarPermiso);
+                    return Ok(resultado);
                 }
                 return BadRequest("No se pudo actualizar el permiso.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // Eliminar permiso
+        [HttpDelete("EliminarPermiso/{id}")]
+        public async Task<IActionResult> EliminarPermiso(int id)
+        {
+            try
+            {
+                var resultado = await _service.EliminarPermiso(id);
+
+                if (resultado != null && resultado.Any())
+                {
+                    return Ok(resultado);
+                }
+                return BadRequest("No se pudo eliminar el permiso.");
             }
             catch (Exception ex)
             {

@@ -8,5 +8,11 @@ namespace Negocio.Modelos
         public int idRoles { get; set; }
         public string Nombre_Roles { get; set; } = string.Empty;
         public bool Activo { get; set; }
+        public int? idPermisos { get; set; }
+
+        // Relación con Permisos
+        public Permisos Permiso { get; set; }
     }
+
+
 }
