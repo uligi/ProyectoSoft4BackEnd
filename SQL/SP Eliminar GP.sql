@@ -73,14 +73,25 @@ GO
 
 
 CREATE PROCEDURE Eliminar_Tarea
+
     @idTareas INT
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    DELETE FROM Tareas WHERE idTareas = @idTareas;
+    -- Validar si el proyecto existe
+    IF NOT EXISTS (SELECT 1 FROM Tareas WHERE idTareas = @idTareas)
+    BEGIN
+        SELECT -1 AS Codigo, 'El proyecto no existe' AS Mensaje;
+        RETURN;
+    END;
 
-    SELECT @idTareas AS idTareas, 'Tarea eliminada' AS Mensaje;
+    -- Realizar borrado lógico
+    UPDATE Tareas
+    SET Activo = 0
+    WHERE idTareas = @idTareas;
+
+    SELECT 1 AS Codigo, 'Proyecto eliminado lógicamente' AS Mensaje;
 END;
 GO
 
@@ -99,22 +110,26 @@ BEGIN
     SELECT 
         @idSubtareas AS idSubtareas,
         1 AS Codigo,
-        'Subtarea desactivada exitosamente.' AS Mensaje;
+        'Subtarea Eliminada exitosamente.' AS Mensaje;
 END;
 GO
 
 
 
--- Eliminar un Comentario
 CREATE PROCEDURE Eliminar_Comentario
     @idComentarios INT
 AS
 BEGIN
+    SET NOCOUNT ON;
+
     UPDATE Comentarios
     SET Activo = 0
     WHERE idComentarios = @idComentarios;
+
+    SELECT @idComentarios AS idComentarios, 'Comentario eliminado lógicamente' AS Mensaje;
 END;
 GO
+
 
 
 

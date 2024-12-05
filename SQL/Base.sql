@@ -123,7 +123,7 @@ CREATE TABLE Comentarios (
     Tareas_idTareas INT NULL,
     idSubtareas INT NULL,
     idProyectos INT NULL,
-    FOREIGN KEY (Tareas_idTareas) REFERENCES Tareas(idTareas),
+    FOREIGN KEY (Tareas_idTareas) REFERENCES Tareas(Tareas_idTareas),
     FOREIGN KEY (idSubtareas) REFERENCES Subtareas(idSubtareas),
     FOREIGN KEY (idProyectos) REFERENCES Proyectos(idProyectos)
 );

@@ -31,7 +31,8 @@ public class ApiTareas : ControllerBase
                 FechaFinal = t.FechaFinal,
                 Activo = t.Activo,
                 NombreProyecto = t.NombreProyecto,
-                NombreUsuario = t.NombreUsuario
+                NombreUsuario = t.NombreUsuario,
+                Estado = t.Estado,
             });
 
             return Ok(tareasResponse);
@@ -56,7 +57,8 @@ public class ApiTareas : ControllerBase
                 FechaFinal = tareaRequest.FechaFinal,
                 idProyectos = tareaRequest.idProyectos,
                 idUsuarios = tareaRequest.idUsuarios,
-                
+                Estado = tareaRequest.Estado,
+
             };
 
             var resultado = await _service.CrearTarea(tarea);
@@ -75,6 +77,11 @@ public class ApiTareas : ControllerBase
     {
         try
         {
+            if (string.IsNullOrWhiteSpace(tarea.Estado))
+            {
+                return BadRequest("El campo Estado es requerido.");
+            }
+
             tarea.idTareas = id;
             var resultado = await _service.ActualizarTarea(tarea);
             return Ok(resultado);
@@ -84,6 +91,7 @@ public class ApiTareas : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
 
     [HttpDelete("EliminarTarea/{id}")]
     public async Task<IActionResult> EliminarTarea(int id)

@@ -8,19 +8,23 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Crear_Comentario]
+CREATE PROCEDURE Agregar_Comentario
     @Comentario NVARCHAR(MAX),
     @FechaCreacion DATETIME,
-    @Activo BIT = 1,
     @Tareas_idTareas INT = NULL,
     @idSubtareas INT = NULL,
     @idProyectos INT = NULL
 AS
 BEGIN
+    SET NOCOUNT ON;
+
     INSERT INTO Comentarios (Comentario, FechaCreacion, Activo, Tareas_idTareas, idSubtareas, idProyectos)
-    VALUES (@Comentario, @FechaCreacion, @Activo, @Tareas_idTareas, @idSubtareas, @idProyectos);
+    VALUES (@Comentario, @FechaCreacion, 1, @Tareas_idTareas, @idSubtareas, @idProyectos);
+
+    SELECT SCOPE_IDENTITY() AS idComentarios;
 END;
 GO
+
 
 CREATE PROCEDURE [dbo].[Crear_Equipo]
     @NombreEquipos VARCHAR(45),
@@ -80,7 +84,8 @@ CREATE PROCEDURE [dbo].[Crear_Proyecto]
     @FechaFinal DATE,
     @Prioridad VARCHAR(45),
     @idPortafolio INT,
-    @Equipos_idEquipos INT
+    @Equipos_idEquipos INT,
+	@Estado VARCHAR(45)
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -100,8 +105,8 @@ BEGIN
     END;
 
     -- Insertar el proyecto
-    INSERT INTO Proyectos (NombreProyecto, Descripcion, Activo, FechaEstimada, FechaInicio, FechaFinal, Prioridad, idPortafolio, Equipos_idEquipos)
-    VALUES (@NombreProyecto, @Descripcion, 1, @FechaEstimada, @FechaInicio, @FechaFinal, @Prioridad, @idPortafolio, @Equipos_idEquipos);
+    INSERT INTO Proyectos (NombreProyecto, Descripcion, Activo, FechaEstimada, FechaInicio, FechaFinal, Prioridad, idPortafolio, Equipos_idEquipos,Estado)
+    VALUES (@NombreProyecto, @Descripcion, 1, @FechaEstimada, @FechaInicio, @FechaFinal, @Prioridad, @idPortafolio, @Equipos_idEquipos,@Estado);
 
     SELECT 1 AS Codigo, 'Proyecto creado exitosamente' AS Mensaje;
 END;
@@ -115,7 +120,8 @@ CREATE PROCEDURE Crear_Subtarea
     @Prioridad VARCHAR(45),
     @FechaInicio DATE,
     @FechaFinal DATE,
-    @idTareas INT
+    @idTareas INT,
+	@Estado VARCHAR(45)
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -126,7 +132,8 @@ BEGIN
         Prioridad, 
         FechaInicio, 
         FechaFinal, 
-        idTareas
+        idTareas,
+		Estado
     )
     VALUES (
         @NombreSubtareas, 
@@ -134,7 +141,8 @@ BEGIN
         @Prioridad, 
         @FechaInicio, 
         @FechaFinal, 
-        @idTareas
+        @idTareas,
+		@Estado
     );
 
     SELECT 
@@ -152,13 +160,14 @@ CREATE PROCEDURE Crear_Tarea
     @FechaInicio DATE,
     @FechaFinal DATE,
     @idProyectos INT,
-    @idUsuarios INT = NULL
+    @idUsuarios INT = NULL,
+	@Estado VARCHAR(45)
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO Tareas (NombreTareas, Descripcion, Prioridad, FechaInicio, FechaFinal, Activo, idProyectos, idUsuarios)
-    VALUES (@NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, 1, @idProyectos, @idUsuarios);
+    INSERT INTO Tareas (NombreTareas, Descripcion, Prioridad, FechaInicio, FechaFinal, Activo, idProyectos, idUsuarios,Estado)
+    VALUES (@NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, 1, @idProyectos, @idUsuarios,@Estado);
 
     SELECT SCOPE_IDENTITY() AS idTareas,1 AS Codigo, 'Usuario creado exitosamente.' AS Mensaje;;
 END;
@@ -220,6 +229,7 @@ GO
 
 
 
+
 CREATE PROCEDURE [dbo].[Crear_Rol]
     @Nombre_Roles VARCHAR(100),
     @Activo BIT = 1,
@@ -270,6 +280,21 @@ GO
 
 
 
+CREATE PROCEDURE Crear_Permiso
+    @Nombre_Permisos VARCHAR(100),
+    @Activo BIT
+	
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Permisos( Nombre_Permisos, Activo)
+    VALUES ( @Nombre_Permisos, 1);
+
+    SELECT SCOPE_IDENTITY() AS idPermisos,1 AS Codigo, 'Permiso creado exitosamente' AS Mensaje;
+	 
+END;
+GO
 
 
 

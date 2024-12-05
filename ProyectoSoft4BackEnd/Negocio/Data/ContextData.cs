@@ -10,7 +10,7 @@ namespace Negocio.Data
     {
         public ContextData(DbContextOptions<ContextData> options) : base(options) { }
 
-        public DbSet<Comentarios> Comentarios { get; set; }
+        public DbSet<ComentariosResponse> Comentarios { get; set; }
         public DbSet<Equipos> Equipos { get; set; }
         
         public DbSet<Historial_de_cambios> Historial_de_cambios { get; set; }
@@ -37,7 +37,12 @@ namespace Negocio.Data
                 .WithMany()
                 .HasForeignKey(u => u.idRoles);
 
-           
+            modelBuilder.Entity<ComentariosResponse>()
+                 .HasKey(c => c.idComentarios); // Especifica la clave primaria
+
+            base.OnModelCreating(modelBuilder);
+
+
         }
 
     }

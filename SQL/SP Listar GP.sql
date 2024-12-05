@@ -13,6 +13,7 @@ SELECT
     p.FechaInicio,
     p.FechaFinal,
     p.Prioridad,
+	p.Estado,
     pf.NombrePortafolio,
     e.NombreEquipos,
     p.Activo
@@ -40,11 +41,13 @@ BEGIN
         t.Activo,
         t.idProyectos,
         t.idUsuarios,
+		t.Estado,
         p.NombreProyecto,
         u.Nombre AS NombreUsuario
     FROM Tareas t
     LEFT JOIN Proyectos p ON t.idProyectos = p.idProyectos
-    LEFT JOIN Usuarios u ON t.idUsuarios = u.idUsuarios;
+    LEFT JOIN Usuarios u ON t.idUsuarios = u.idUsuarios
+	WHERE t.Activo = 1; -- Solo tareas activas;
 END;
 GO
 
@@ -63,36 +66,37 @@ BEGIN
         ST.FechaInicio,
         ST.FechaFinal,
         ST.idTareas,
+		st.Estado,
+		t.Activo,
         T.NombreTareas AS NombreTarea
     FROM Subtareas ST
-    INNER JOIN Tareas T ON ST.idTareas = T.idTareas;
+    INNER JOIN Tareas T ON ST.idTareas = T.idTareas
+	WHERE t.Activo = 1; -- Solo tareas activas;
 END;
 GO
 
 
 -- Stored Procedure para la tabla Comentarios con JOIN a Tareas, Subtareas y Proyectos
-CREATE PROCEDURE [dbo].[sp_Listar_Comentarios]
+CREATE PROCEDURE Listar_Comentarios
 AS
 BEGIN
+    SET NOCOUNT ON;
+
     SELECT 
         c.idComentarios,
         c.Comentario,
-        c.FechaCreacion,
+		c.FechaCreacion,
         c.Activo,
-        c.Tareas_idTareas,
-        t.NombreTareas AS NombreTareas,
-        c.idSubtareas,
-        st.NombreSubtareas AS NombreSubtareas,
-        c.idProyectos,
+        t.NombreTareas AS NombreTarea,
+        s.NombreSubtareas AS NombreSubtarea,
         p.NombreProyecto AS NombreProyecto
     FROM Comentarios c
     LEFT JOIN Tareas t ON c.Tareas_idTareas = t.idTareas
-    LEFT JOIN Subtareas st ON c.idSubtareas = st.idSubtareas
-    LEFT JOIN Proyectos p ON c.idProyectos = p.idProyectos;
+    LEFT JOIN Subtareas s ON c.idSubtareas = s.idSubtareas
+    LEFT JOIN Proyectos p ON c.idProyectos = p.idProyectos
+    WHERE c.Activo = 1;
 END;
-
 GO
-
 -- Stored Procedure para la tabla Miembros_de_equipos con JOIN a Equipos, Usuarios y Roles
 CREATE PROCEDURE Listar_Todos_Los_Miembros
 AS
@@ -105,9 +109,11 @@ BEGIN
         me.idUsuarios, 
         u.Nombre AS NombreUsuario, 
         e.NombreEquipos
+
     FROM Miembros_de_equipos me
     INNER JOIN Usuarios u ON me.idUsuarios = u.idUsuarios
     INNER JOIN Equipos e ON me.idEquipos = e.idEquipos;
+
 END;
 GO
 

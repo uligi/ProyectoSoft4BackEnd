@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.Modelos
 {
-    internal class SubtareasRequest
+    public class SubtareasRequest
     {
         [Required]
         public int idSubtareas { get; set; }
@@ -18,5 +18,6 @@ namespace Negocio.Modelos
         public DateTime? FechaFinal { get; set; }
         [Required]
         public int idTareas { get; set; }
+        public string Estado { get; set; }
     }
 }

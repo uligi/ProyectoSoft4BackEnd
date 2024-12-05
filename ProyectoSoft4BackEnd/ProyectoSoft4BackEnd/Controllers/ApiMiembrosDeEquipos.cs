@@ -48,7 +48,22 @@ public class ApiMiembros : ControllerBase
         }
     }
 
-    [HttpDelete("EliminarMiembro/{idMiembro}")]
+        [HttpPut("ActualizarMiembro/{idMiembro}")]
+        public async Task<IActionResult> ActualizarMiembro(int idMiembro, [FromBody] MiembroEquipoRequest request)
+        {
+            try
+            {
+                var resultado = await _service.ModificarMiembroEquipo(idMiembro, request.idEquipos, request.idUsuarios);
+                return Ok(resultado);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpDelete("EliminarMiembro/{idMiembro}")]
     public async Task<IActionResult> EliminarMiembro(int idMiembro)
     {
         try

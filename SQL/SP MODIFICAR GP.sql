@@ -1,7 +1,7 @@
 use DB_GP
 GO
 
-CREATE PROCEDURE [dbo].[Modificar_Comentario]
+CREATE PROCEDURE Actualizar_Comentario
     @idComentarios INT,
     @Comentario NVARCHAR(MAX),
     @Activo BIT
@@ -9,20 +9,15 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    IF NOT EXISTS (SELECT 1 FROM Comentarios WHERE idComentarios = @idComentarios)
-    BEGIN
-        SELECT -1 AS Codigo, 'Comentario no encontrado' AS Mensaje;
-        RETURN;
-    END;
-
     UPDATE Comentarios
     SET Comentario = @Comentario,
         Activo = @Activo
     WHERE idComentarios = @idComentarios;
 
-    SELECT 1 AS Codigo, 'Comentario modificado exitosamente' AS Mensaje;
+    SELECT @idComentarios AS idComentarios, 'Comentario actualizado' AS Mensaje;
 END;
 GO
+
 
 CREATE PROCEDURE [dbo].[Actualizar_Equipo]
     @idEquipos INT,
@@ -48,7 +43,7 @@ END;
 GO
 
 
-CREATE PROCEDURE [dbo].[Modificar_Miembro_Equipo]
+CREATE PROCEDURE Modificar_Miembro_Equipo
     @idMiembros_de_equipos INT,
     @idEquipos INT,
     @idUsuarios INT
@@ -56,12 +51,28 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- Verificar si el miembro existe
     IF NOT EXISTS (SELECT 1 FROM Miembros_de_equipos WHERE idMiembros_de_equipos = @idMiembros_de_equipos)
     BEGIN
-        SELECT -1 AS Codigo, 'Miembro no encontrado' AS Mensaje;
+        SELECT -1 AS Codigo, 'El miembro no existe' AS Mensaje;
         RETURN;
     END;
 
+    -- Verificar si el equipo existe
+    IF NOT EXISTS (SELECT 1 FROM Equipos WHERE idEquipos = @idEquipos)
+    BEGIN
+        SELECT -2 AS Codigo, 'El equipo no existe' AS Mensaje;
+        RETURN;
+    END;
+
+    -- Verificar si el usuario existe
+    IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE idUsuarios = @idUsuarios)
+    BEGIN
+        SELECT -3 AS Codigo, 'El usuario no existe' AS Mensaje;
+        RETURN;
+    END;
+
+    -- Actualizar el miembro del equipo
     UPDATE Miembros_de_equipos
     SET idEquipos = @idEquipos,
         idUsuarios = @idUsuarios
@@ -70,6 +81,7 @@ BEGIN
     SELECT 1 AS Codigo, 'Miembro del equipo modificado exitosamente' AS Mensaje;
 END;
 GO
+
 
 CREATE PROCEDURE [dbo].[Actualizar_Portafolio]
     @idPortafolio INT,
@@ -105,7 +117,8 @@ CREATE PROCEDURE [dbo].[Actualizar_Proyecto]
     @FechaFinal DATE,
     @Prioridad VARCHAR(45),
     @idPortafolio INT,
-    @Equipos_idEquipos INT
+    @Equipos_idEquipos INT,
+	@Estado VARCHAR(45)
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -140,7 +153,8 @@ BEGIN
         FechaFinal = @FechaFinal,
         Prioridad = @Prioridad,
         idPortafolio = @idPortafolio,
-        Equipos_idEquipos = @Equipos_idEquipos
+        Equipos_idEquipos = @Equipos_idEquipos,
+		Estado = @Estado
     WHERE idProyectos = @idProyectos;
 
     SELECT 1 AS Codigo, 'Proyecto actualizado exitosamente' AS Mensaje;
@@ -156,7 +170,8 @@ CREATE PROCEDURE Actualizar_Tarea
     @FechaInicio DATE,
     @FechaFinal DATE,
     @idProyectos INT,
-    @idUsuarios INT = NULL
+    @idUsuarios INT = NULL,
+	@Estado VARCHAR(45)
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -169,7 +184,8 @@ BEGIN
         FechaFinal = @FechaFinal,
         Activo = 1,
         idProyectos = @idProyectos,
-        idUsuarios = @idUsuarios
+        idUsuarios = @idUsuarios,
+		Estado = @Estado
     WHERE idTareas = @idTareas;
 
     SELECT 
@@ -182,6 +198,7 @@ BEGIN
         Activo,
         idProyectos,
         idUsuarios,
+		Estado,
         1 AS Codigo,
         'Tarea modificada exitosamente' AS Mensaje
     FROM Tareas
@@ -285,7 +302,8 @@ CREATE PROCEDURE Actualizar_Subtarea
     @Prioridad VARCHAR(45),
     @FechaInicio DATE,
     @FechaFinal DATE,
-    @idTareas INT
+    @idTareas INT,
+	@Estado VARCHAR(45)
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -297,7 +315,8 @@ BEGIN
         Prioridad = @Prioridad,
         FechaInicio = @FechaInicio,
         FechaFinal = @FechaFinal,
-        idTareas = @idTareas
+        idTareas = @idTareas,
+		Estado = @Estado
     WHERE idSubtareas = @idSubtareas;
 
     SELECT 

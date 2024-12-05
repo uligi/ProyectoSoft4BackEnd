@@ -40,11 +40,12 @@ namespace Negocio.Controllers
                 new SqlParameter("@FechaFinal", proyecto.FechaFinal ?? (object)DBNull.Value),
                 new SqlParameter("@Prioridad", proyecto.Prioridad),
                 new SqlParameter("@idPortafolio", proyecto.idPortafolio),
-                new SqlParameter("@Equipos_idEquipos", proyecto.Equipos_idEquipos)
+                new SqlParameter("@Equipos_idEquipos", proyecto.Equipos_idEquipos),
+                 new SqlParameter("@Estado", proyecto.Estado)
             };
 
             return await _context.MensajeUsuario
-                .FromSqlRaw("EXEC Crear_Proyecto @NombreProyecto, @Descripcion, @FechaEstimada, @FechaInicio, @FechaFinal, @Prioridad, @idPortafolio, @Equipos_idEquipos", parameters)
+                .FromSqlRaw("EXEC Crear_Proyecto @NombreProyecto, @Descripcion, @FechaEstimada, @FechaInicio, @FechaFinal, @Prioridad, @idPortafolio, @Equipos_idEquipos ,@Estado", parameters)
                 .ToListAsync();
         }
 
@@ -60,11 +61,12 @@ namespace Negocio.Controllers
                 new SqlParameter("@FechaFinal", proyecto.FechaFinal ?? (object)DBNull.Value),
                 new SqlParameter("@Prioridad", proyecto.Prioridad),
                 new SqlParameter("@idPortafolio", proyecto.idPortafolio),
-                new SqlParameter("@Equipos_idEquipos", proyecto.Equipos_idEquipos)
+                new SqlParameter("@Equipos_idEquipos", proyecto.Equipos_idEquipos),
+                 new SqlParameter("@Estado", proyecto.Estado)
             };
 
             return await _context.MensajeUsuario
-                .FromSqlRaw("EXEC Actualizar_Proyecto @idProyectos, @NombreProyecto, @Descripcion, @FechaEstimada, @FechaInicio, @FechaFinal, @Prioridad, @idPortafolio, @Equipos_idEquipos", parameters)
+                .FromSqlRaw("EXEC Actualizar_Proyecto @idProyectos, @NombreProyecto, @Descripcion, @FechaEstimada, @FechaInicio, @FechaFinal, @Prioridad, @idPortafolio, @Equipos_idEquipos, @Estado", parameters)
                 .ToListAsync();
         }
 

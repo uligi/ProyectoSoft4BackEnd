@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Negocio.Data;
 using Negocio.Modelos;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Negocio.Controllers
@@ -40,11 +41,12 @@ namespace Negocio.Controllers
                 new SqlParameter("@Prioridad", subtarea.Prioridad ?? (object)DBNull.Value),
                 new SqlParameter("@FechaInicio", subtarea.FechaInicio ?? (object)DBNull.Value),
                 new SqlParameter("@FechaFinal", subtarea.FechaFinal ?? (object)DBNull.Value),
-                new SqlParameter("@idTareas", subtarea.idTareas)
+                new SqlParameter("@idTareas", subtarea.idTareas),
+                new SqlParameter("@Estado", subtarea.Estado)
             };
 
             return await _context.MensajeUsuario
-                .FromSqlRaw("EXEC Crear_Subtarea @NombreSubtareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idTareas", parameters)
+                .FromSqlRaw("EXEC Crear_Subtarea @NombreSubtareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idTareas,@Estado", parameters)
                 .ToListAsync();
         }
 
@@ -58,11 +60,12 @@ namespace Negocio.Controllers
                 new SqlParameter("@Prioridad", subtarea.Prioridad ?? (object)DBNull.Value),
                 new SqlParameter("@FechaInicio", subtarea.FechaInicio ?? (object)DBNull.Value),
                 new SqlParameter("@FechaFinal", subtarea.FechaFinal ?? (object)DBNull.Value),
-                new SqlParameter("@idTareas", subtarea.idTareas)
+                new SqlParameter("@idTareas", subtarea.idTareas),
+                new SqlParameter("@Estado", subtarea.Estado)
             };
 
             return await _context.MensajeUsuario
-                .FromSqlRaw("EXEC Actualizar_Subtarea @idSubtareas, @NombreSubtareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idTareas", parameters)
+                .FromSqlRaw("EXEC Actualizar_Subtarea @idSubtareas, @NombreSubtareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idTareas,@Estado", parameters)
                 .ToListAsync();
         }
 

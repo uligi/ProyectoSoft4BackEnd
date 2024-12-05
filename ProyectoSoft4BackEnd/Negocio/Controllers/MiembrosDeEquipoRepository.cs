@@ -11,6 +11,8 @@ namespace Negocio.Controllers
     {
         Task<IEnumerable<MiembrosDeEquipos>> ListarTodosLosMiembros();
         Task<IEnumerable<MensajeUsuario>> CrearMiembroEquipo(int idEquipos, int idUsuarios);
+        Task<IEnumerable<MensajeUsuario>> ModificarMiembroEquipo(int idMiembrosDeEquipos, int idEquipos, int idUsuarios);
+
         Task<IEnumerable<MensajeUsuario>> EliminarMiembroEquipo(int idMiembrosDeEquipos);
     }
 
@@ -40,6 +42,22 @@ namespace Negocio.Controllers
                 .FromSqlRaw("EXEC Crear_Miembro_Equipo @idEquipos, @idUsuarios", idEquiposParam, idUsuariosParam)
                 .ToListAsync();
         }
+
+
+        public async Task<IEnumerable<MensajeUsuario>> ModificarMiembroEquipo(int idMiembrosDeEquipos, int idEquipos, int idUsuarios)
+        {
+            var parameters = new[]
+            {
+        new SqlParameter("@idMiembros_de_equipos", idMiembrosDeEquipos),
+        new SqlParameter("@idEquipos", idEquipos),
+        new SqlParameter("@idUsuarios", idUsuarios)
+    };
+
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Modificar_Miembro_Equipo @idMiembros_de_equipos, @idEquipos, @idUsuarios", parameters)
+                .ToListAsync();
+        }
+
 
         public async Task<IEnumerable<MensajeUsuario>> EliminarMiembroEquipo(int idMiembrosDeEquipos)
         {

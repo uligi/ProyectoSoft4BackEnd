@@ -1,79 +1,77 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Negocio.Controllers;
 using Negocio.Modelos;
+using System.Threading.Tasks;
 
-namespace ProyectoSoft4BackEnd.Controllers
+[Route("api/[controller]")]
+[ApiController]
+public class ApiComentarios : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ApiComentarios : ControllerBase
+    private readonly IComentariosRepository _service;
+
+    public ApiComentarios(IComentariosRepository service)
     {
-        private readonly IComentariosRepository _service;
+        _service = service;
+    }
 
-        public ApiComentarios(IComentariosRepository service)
+    [HttpGet("ListarComentarios")]
+    public async Task<IActionResult> ListarComentarios()
+    {
+        try
         {
-            _service = service;
+            var comentarios = await _service.ListarComentarios();
+            return Ok(comentarios);
         }
-
-        // Método para crear un nuevo comentario
-        [HttpPost("NuevoComentario")]
-        public async Task<IActionResult> NuevoComentario([FromBody] Comentarios comentario)
+        catch (System.Exception ex)
         {
-            try
-            {
-                var resultadoNuevoComentario = await _service.CrearComentario(comentario);
-
-                if (resultadoNuevoComentario != null && resultadoNuevoComentario.Any())
-                {
-                    return Ok(resultadoNuevoComentario);
-                }
-                return BadRequest("No se pudo crear el comentario.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return BadRequest(ex.Message);
         }
+    }
 
-        // Método para obtener la lista de comentarios
-        [HttpGet("ListaComentarios")]
-        public async Task<IActionResult> ListaComentarios([FromQuery] string textoComentario)
+    [HttpPost("AgregarComentario")]
+    public async Task<IActionResult> AgregarComentario([FromBody] ComentariosRequest comentario)
+    {
+        try
         {
-            try
-            {
-                var resultadoComentarios = await _service.ObtenerComentarios(textoComentario);
+            Console.WriteLine($"Comentario recibido: {System.Text.Json.JsonSerializer.Serialize(comentario)}");
 
-                if (resultadoComentarios != null && resultadoComentarios.Any())
-                {
-                    return Ok(resultadoComentarios);
-                }
-                return NotFound("No se encontraron comentarios.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var id = await _service.AgregarComentario(comentario);
+            return Ok(new { idComentarios = id });
         }
-
-        // Método para actualizar un comentario
-        [HttpPut("ActualizarComentario/{id}")]
-        public async Task<IActionResult> ActualizarComentario(int id, [FromBody] Comentarios comentario)
+        catch (Exception ex)
         {
-            try
-            {
-                var resultadoActualizarComentario = await _service.ActualizarComentario(id, comentario.Comentario, comentario.Activo);
+            Console.WriteLine($"Error: {ex.Message}");
+            return BadRequest(ex.Message);
+        }
+    }
 
-                if (resultadoActualizarComentario != null && resultadoActualizarComentario.Any())
-                {
-                    return Ok(resultadoActualizarComentario);
-                }
-                return BadRequest("No se pudo actualizar el comentario.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+    [HttpPut("ActualizarComentario/{id}")]
+    public async Task<IActionResult> ActualizarComentario(int id, [FromBody] ComentariosRequest comentario)
+    {
+        try
+        {
+            comentario.idComentarios = id;
+            var result = await _service.ActualizarComentario(comentario);
+            return Ok(result);
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpDelete("EliminarComentario/{id}")]
+    public async Task<IActionResult> EliminarComentario(int id)
+    {
+        try
+        {
+            var result = await _service.EliminarComentario(id);
+            return Ok(result);
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest(ex.Message);
         }
     }
 }

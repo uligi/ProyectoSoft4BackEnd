@@ -17,6 +17,7 @@ namespace Negocio.Modelos
         public bool Activo { get; set; }
         public string NombreProyecto { get; set; }
         public string NombreUsuario { get; set; }
+        public string Estado { get; set; }
     }
 
 

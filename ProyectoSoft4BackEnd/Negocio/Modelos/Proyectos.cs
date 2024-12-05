@@ -27,5 +27,6 @@ namespace Negocio.Modelos
 
         public int idPortafolio { get; set; }
         public int Equipos_idEquipos { get; set; }
+        public string Estado { get; set; }
     }
 }

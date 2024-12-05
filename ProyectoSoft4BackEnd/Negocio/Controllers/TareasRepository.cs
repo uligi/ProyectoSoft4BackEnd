@@ -41,11 +41,12 @@ namespace Negocio.Controllers
             new SqlParameter("@FechaInicio", tarea.FechaInicio ?? (object)DBNull.Value),
             new SqlParameter("@FechaFinal", tarea.FechaFinal ?? (object)DBNull.Value),
             new SqlParameter("@idProyectos", tarea.idProyectos),
-            new SqlParameter("@idUsuarios", tarea.idUsuarios ?? (object)DBNull.Value)
+            new SqlParameter("@idUsuarios", tarea.idUsuarios ?? (object)DBNull.Value),
+             new SqlParameter("@Estado", tarea.Estado)
         };
 
             return await _context.MensajeUsuario
-                .FromSqlRaw("EXEC Crear_Tarea @NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idProyectos, @idUsuarios", parameters)
+                .FromSqlRaw("EXEC Crear_Tarea @NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idProyectos, @idUsuarios, @Estado", parameters)
                 .ToListAsync();
         }
 
@@ -60,11 +61,12 @@ namespace Negocio.Controllers
             new SqlParameter("@FechaInicio", tarea.FechaInicio ?? (object)DBNull.Value),
             new SqlParameter("@FechaFinal", tarea.FechaFinal ?? (object)DBNull.Value),
             new SqlParameter("@idProyectos", tarea.idProyectos),
-            new SqlParameter("@idUsuarios", tarea.idUsuarios ?? (object)DBNull.Value)
+            new SqlParameter("@idUsuarios", tarea.idUsuarios ?? (object)DBNull.Value),
+            new SqlParameter("@Estado", tarea.Estado) 
         };
 
             return await _context.MensajeUsuario
-                .FromSqlRaw("EXEC Actualizar_Tarea @idTareas, @NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idProyectos, @idUsuarios", parameters)
+                .FromSqlRaw("EXEC Actualizar_Tarea @idTareas, @NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idProyectos, @idUsuarios, @Estado", parameters)
                 .ToListAsync();
         }
 

@@ -3,76 +3,94 @@ using Microsoft.EntityFrameworkCore;
 using Negocio.Data;
 using Negocio.Modelos;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Negocio.Controllers
 {
     public interface IComentariosRepository
     {
-        Task<IEnumerable<Comentarios>> ObtenerComentarios(string textoComentario);
-        Task<IEnumerable<MensajeUsuario>> CrearComentario(Comentarios comentario);
-        Task<IEnumerable<MensajeUsuario>> ActualizarComentario(int idComentario, string textoComentario, bool activo);
+        Task<IEnumerable<ComentariosResponse>> ListarComentarios();
+        Task<int> AgregarComentario(ComentariosRequest comentario);
+        Task<string> ActualizarComentario(ComentariosRequest comentario);
+        Task<string> EliminarComentario(int idComentarios);
     }
 
     public class ComentariosRepository : IComentariosRepository
     {
-        private readonly ContextData _context; // Corregido el nombre del contexto
+        private readonly ContextData _context;
 
         public ComentariosRepository(ContextData context)
         {
             _context = context;
         }
 
-        // Método para obtener comentarios filtrados
-        public async Task<IEnumerable<Comentarios>> ObtenerComentarios(string textoComentario)
+   public async Task<IEnumerable<ComentariosResponse>> ListarComentarios()
+{
+    var comentarios = await _context.Comentarios
+        .FromSqlRaw("EXEC Listar_Comentarios")
+        .ToListAsync();
+
+    return comentarios.Select(c => new ComentariosResponse
+    {
+        idComentarios = c.idComentarios,
+        Comentario = c.Comentario,
+        FechaCreacion = c.FechaCreacion,
+        Activo = c.Activo,
+        Tareas_idTareas = c.Tareas_idTareas,
+        idSubtareas = c.idSubtareas,
+        idProyectos = c.idProyectos
+    });
+}
+
+
+        public async Task<int> AgregarComentario(ComentariosRequest comentario)
         {
-            return await _context.Comentarios
-                .Where(c => !string.IsNullOrEmpty(textoComentario) ? c.Comentario.Contains(textoComentario) : true)
+            var parameters = new[]
+            {
+                new SqlParameter("@Comentario", comentario.Comentario),
+                new SqlParameter("@FechaCreacion", comentario.FechaCreacion),
+                
+                new SqlParameter("@Tareas_idTareas", comentario.Tareas_idTareas ?? (object)DBNull.Value),
+                new SqlParameter("@idSubtareas", comentario.idSubtareas ?? (object)DBNull.Value),
+                new SqlParameter("@idProyectos", comentario.idProyectos ?? (object)DBNull.Value)
+            };
+
+            var result = await _context.Comentarios
+                .FromSqlRaw("EXEC Agregar_Comentario @Comentario, @FechaCreacion, @Tareas_idTareas, @idSubtareas, @idProyectos", parameters)
                 .ToListAsync();
+
+            // Suponiendo que el procedimiento devuelve el ID del comentario agregado
+            return result.FirstOrDefault()?.idComentarios ?? 0;
         }
 
-        // Método para crear un nuevo comentario
-        public async Task<IEnumerable<MensajeUsuario>> CrearComentario(Comentarios comentario)
+        public async Task<string> ActualizarComentario(ComentariosRequest comentario)
         {
-            if (string.IsNullOrEmpty(comentario.Comentario))
+            var parameters = new[]
             {
-                return new List<MensajeUsuario>
-                {
-                    new MensajeUsuario { Codigo = -3, Mensaje = "No se puede ingresar comentarios vacíos o nulos" }
-                };
-            }
-            else
-            {
-                var comentarioParam = new SqlParameter("@Comentario", comentario.Comentario);
-                var fechaCreacionParam = new SqlParameter("@FechaCreacion", comentario.FechaCreacion);
-                var activoParam = new SqlParameter("@Activo", comentario.Activo);
+                new SqlParameter("@idComentarios", comentario.idComentarios),
+                new SqlParameter("@Comentario", comentario.Comentario),
+                
+            };
 
-                return await _context.MensajeUsuario
-                    .FromSqlRaw("EXEC Crear_Comentario @Comentario, @FechaCreacion, @Activo", comentarioParam, fechaCreacionParam, activoParam)
-                    .ToListAsync();
-            }
+            var result = await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Actualizar_Comentario @idComentarios, @Comentario", parameters)
+                .FirstOrDefaultAsync();
+
+            // Acceder al mensaje dentro del objeto
+            return result?.Mensaje ?? "Error al actualizar el comentario.";
         }
 
-        // Método para actualizar un comentario existente
-        public async Task<IEnumerable<MensajeUsuario>> ActualizarComentario(int idComentario, string textoComentario, bool activo)
+        public async Task<string> EliminarComentario(int idComentarios)
         {
-            if (string.IsNullOrEmpty(textoComentario))
-            {
-                return new List<MensajeUsuario>
-                {
-                    new MensajeUsuario { Codigo = -3, Mensaje = "No se puede ingresar comentarios vacíos o nulos" }
-                };
-            }
-            else
-            {
-                var idComentarioParam = new SqlParameter("@idComentarios", idComentario);
-                var comentarioParam = new SqlParameter("@Comentario", textoComentario);
-                var activoParam = new SqlParameter("@Activo", activo);
+            var parameter = new SqlParameter("@idComentarios", idComentarios);
 
-                return await _context.MensajeUsuario
-                    .FromSqlRaw("EXEC Modificar_Comentario @idComentarios, @Comentario, @Activo", idComentarioParam, comentarioParam, activoParam)
-                    .ToListAsync();
-            }
+            var result = await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Eliminar_Comentario @idComentarios", parameter)
+                .FirstOrDefaultAsync();
+
+            // Acceder al mensaje dentro del objeto
+            return result?.Mensaje ?? "Error al eliminar el comentario.";
         }
     }
 }

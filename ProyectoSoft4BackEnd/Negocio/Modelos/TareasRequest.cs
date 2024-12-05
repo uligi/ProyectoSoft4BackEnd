@@ -18,6 +18,7 @@ namespace Negocio.Modelos
         public DateTime? FechaFinal { get; set; }
         public int idProyectos { get; set; }
         public int? idUsuarios { get; set; }
+        public string Estado { get; set; }
     }
 
 }

@@ -54,6 +54,7 @@ public class ApiProyectos : ControllerBase
                 Prioridad = proyectoRequest.Prioridad,
                 idPortafolio = proyectoRequest.idPortafolio,
                 Equipos_idEquipos = proyectoRequest.Equipos_idEquipos,
+                Estado = proyectoRequest.Estado ?? "Activo", // Valor por defecto
                 Activo = true
             };
 
@@ -65,6 +66,7 @@ public class ApiProyectos : ControllerBase
             return BadRequest($"Error: {ex.Message}");
         }
     }
+
 
 
     [HttpPut("ActualizarProyecto/{id}")]
@@ -82,7 +84,8 @@ public class ApiProyectos : ControllerBase
                 FechaFinal = proyectoRequest.FechaFinal,
                 Prioridad = proyectoRequest.Prioridad,
                 idPortafolio = proyectoRequest.idPortafolio,
-                Equipos_idEquipos = proyectoRequest.Equipos_idEquipos
+                Equipos_idEquipos = proyectoRequest.Equipos_idEquipos,
+                Estado = proyectoRequest.Estado ?? "Activo", // Valor por defecto
             };
 
             var resultado = await _service.ActualizarProyecto(proyecto);
@@ -99,6 +102,7 @@ public class ApiProyectos : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
 
     [HttpDelete("EliminarProyecto/{id}")]
     public async Task<IActionResult> EliminarProyecto(int id)
