@@ -76,21 +76,33 @@ CREATE PROCEDURE Eliminar_Tarea
     @idTareas INT
 AS
 BEGIN
-    UPDATE Tareas
-    SET Activo = 0
-    WHERE idTareas = @idTareas;
+    SET NOCOUNT ON;
+
+    DELETE FROM Tareas WHERE idTareas = @idTareas;
+
+    SELECT @idTareas AS idTareas, 'Tarea eliminada' AS Mensaje;
 END;
 GO
 
+
 -- Eliminar una Subtarea
-CREATE PROCEDURE Eliminar_Subtarea
+Create PROCEDURE Eliminar_Subtarea
     @idSubtareas INT
 AS
 BEGIN
-    DELETE FROM Subtareas
+    SET NOCOUNT ON;
+
+    UPDATE Subtareas
+    SET Activo = 0
     WHERE idSubtareas = @idSubtareas;
+
+    SELECT 
+        @idSubtareas AS idSubtareas,
+        1 AS Codigo,
+        'Subtarea desactivada exitosamente.' AS Mensaje;
 END;
 GO
+
 
 
 -- Eliminar un Comentario

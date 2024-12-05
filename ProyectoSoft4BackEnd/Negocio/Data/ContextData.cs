@@ -21,7 +21,7 @@ namespace Negocio.Data
         public DbSet<Roles> Roles { get; set; }
         
         public DbSet<Subtareas> Subtareas { get; set; }
-        public DbSet<Tareas> Tareas { get; set; }
+        public DbSet<TareasResponse> Tareas { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<MensajeUsuario> MensajeUsuario { get; set; }
 

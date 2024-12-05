@@ -148,25 +148,18 @@ END;
 GO
 
 
-CREATE PROCEDURE [dbo].[Modificar_Tarea]
+CREATE PROCEDURE Actualizar_Tarea
     @idTareas INT,
     @NombreTareas VARCHAR(45),
     @Descripcion NVARCHAR(MAX),
     @Prioridad VARCHAR(45),
     @FechaInicio DATE,
     @FechaFinal DATE,
-    @Activo BIT,
     @idProyectos INT,
-    @idUsuarios INT
+    @idUsuarios INT = NULL
 AS
 BEGIN
     SET NOCOUNT ON;
-
-    IF NOT EXISTS (SELECT 1 FROM Tareas WHERE idTareas = @idTareas)
-    BEGIN
-        SELECT -1 AS Codigo, 'Tarea no encontrada' AS Mensaje;
-        RETURN;
-    END;
 
     UPDATE Tareas
     SET NombreTareas = @NombreTareas,
@@ -174,14 +167,29 @@ BEGIN
         Prioridad = @Prioridad,
         FechaInicio = @FechaInicio,
         FechaFinal = @FechaFinal,
-        Activo = @Activo,
+        Activo = 1,
         idProyectos = @idProyectos,
         idUsuarios = @idUsuarios
     WHERE idTareas = @idTareas;
 
-    SELECT 1 AS Codigo, 'Tarea modificada exitosamente' AS Mensaje;
+    SELECT 
+        idTareas,
+        NombreTareas,
+        Descripcion,
+        Prioridad,
+        FechaInicio,
+        FechaFinal,
+        Activo,
+        idProyectos,
+        idUsuarios,
+        1 AS Codigo,
+        'Tarea modificada exitosamente' AS Mensaje
+    FROM Tareas
+    WHERE idTareas = @idTareas;
 END;
 GO
+
+
 
 Create PROCEDURE [dbo].[Modificar_Usuario]
     @idUsuarios INT,
@@ -268,4 +276,33 @@ BEGIN
     -- Respuesta
     SELECT 1 AS Codigo, 'Rol modificado exitosamente' AS Mensaje;
 END;
+GO
+
+CREATE PROCEDURE Actualizar_Subtarea
+    @idSubtareas INT,
+    @NombreSubtareas VARCHAR(45),
+    @Descripcion NVARCHAR(MAX),
+    @Prioridad VARCHAR(45),
+    @FechaInicio DATE,
+    @FechaFinal DATE,
+    @idTareas INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Subtareas
+    SET 
+        NombreSubtareas = @NombreSubtareas,
+        Descripcion = @Descripcion,
+        Prioridad = @Prioridad,
+        FechaInicio = @FechaInicio,
+        FechaFinal = @FechaFinal,
+        idTareas = @idTareas
+    WHERE idSubtareas = @idSubtareas;
+
+    SELECT 
+        @idSubtareas AS idSubtareas,
+        1 AS Codigo,
+        'Subtarea actualizada exitosamente.' AS Mensaje;
+		END;
 GO

@@ -109,7 +109,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[Crear_Subtarea]
+CREATE PROCEDURE Crear_Subtarea
     @NombreSubtareas VARCHAR(45),
     @Descripcion NVARCHAR(MAX),
     @Prioridad VARCHAR(45),
@@ -118,26 +118,52 @@ CREATE PROCEDURE [dbo].[Crear_Subtarea]
     @idTareas INT
 AS
 BEGIN
-    INSERT INTO Subtareas (NombreSubtareas, Descripcion, Prioridad, FechaInicio, FechaFinal, idTareas)
-    VALUES (@NombreSubtareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idTareas);
+    SET NOCOUNT ON;
+
+    INSERT INTO Subtareas (
+        NombreSubtareas, 
+        Descripcion, 
+        Prioridad, 
+        FechaInicio, 
+        FechaFinal, 
+        idTareas
+    )
+    VALUES (
+        @NombreSubtareas, 
+        @Descripcion, 
+        @Prioridad, 
+        @FechaInicio, 
+        @FechaFinal, 
+        @idTareas
+    );
+
+    SELECT 
+        SCOPE_IDENTITY() AS idSubtareas,
+        1 AS Codigo,
+        'Subtarea creada exitosamente.' AS Mensaje;
 END;
 GO
 
-CREATE PROCEDURE [dbo].[Crear_Tarea]
+
+CREATE PROCEDURE Crear_Tarea
     @NombreTareas VARCHAR(45),
     @Descripcion NVARCHAR(MAX),
     @Prioridad VARCHAR(45),
     @FechaInicio DATE,
     @FechaFinal DATE,
-    @Activo BIT = 1,
     @idProyectos INT,
     @idUsuarios INT = NULL
 AS
 BEGIN
+    SET NOCOUNT ON;
+
     INSERT INTO Tareas (NombreTareas, Descripcion, Prioridad, FechaInicio, FechaFinal, Activo, idProyectos, idUsuarios)
-    VALUES (@NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @Activo, @idProyectos, @idUsuarios);
+    VALUES (@NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, 1, @idProyectos, @idUsuarios);
+
+    SELECT SCOPE_IDENTITY() AS idTareas,1 AS Codigo, 'Usuario creado exitosamente.' AS Mensaje;;
 END;
 GO
+
 
 Create PROCEDURE [dbo].[Crear_Usuario]
     @Nombre VARCHAR(200),

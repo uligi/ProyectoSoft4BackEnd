@@ -9,9 +9,10 @@ namespace Negocio.Controllers
 {
     public interface ITareasRepository
     {
-        Task<IEnumerable<Tareas>> ObtenerTareas();
-        Task<IEnumerable<MensajeUsuario>> CrearTarea(Tareas tarea);
-        Task<IEnumerable<MensajeUsuario>> ActualizarTarea(int idTarea, string nombreTarea, string descripcion, string prioridad, System.DateTime fechaInicio, System.DateTime fechaFinal, bool activo, int subtareaId, int proyectoId, int comentarioId);
+        Task<IEnumerable<TareasResponse>> ListarTareas();
+        Task<IEnumerable<MensajeUsuario>> CrearTarea(TareasRequest tarea);
+        Task<IEnumerable<MensajeUsuario>> ActualizarTarea(TareasRequest tarea);
+        Task<IEnumerable<MensajeUsuario>> EliminarTarea(int idTareas);
     }
 
     public class TareasRepository : ITareasRepository
@@ -23,69 +24,57 @@ namespace Negocio.Controllers
             _context = context;
         }
 
-        // Método para obtener todas las tareas
-        public async Task<IEnumerable<Tareas>> ObtenerTareas()
+        public async Task<IEnumerable<TareasResponse>> ListarTareas()
         {
-            return await _context.Tareas.ToListAsync();
+            return await _context.Tareas
+                .FromSqlRaw("EXEC Listar_Tareas")
+                .ToListAsync();
         }
 
-        // Método para crear una nueva tarea
-        public async Task<IEnumerable<MensajeUsuario>> CrearTarea(Tareas tarea)
+        public async Task<IEnumerable<MensajeUsuario>> CrearTarea(TareasRequest tarea)
         {
-            if (string.IsNullOrEmpty(tarea.NombreTareas))
+            var parameters = new[]
             {
-                return new List<MensajeUsuario>
-                {
-                    new MensajeUsuario { Codigo = -3, Mensaje = "El nombre de la tarea no puede estar vacío o nulo" }
-                };
-            }
-            else
-            {
-                var nombreTareaParam = new SqlParameter("@NombreTareas", tarea.NombreTareas);
-                var descripcionParam = new SqlParameter("@Descripcion", tarea.Descripcion);
-                var prioridadParam = new SqlParameter("@Prioridad", tarea.Prioridad);
-                var fechaInicioParam = new SqlParameter("@FechaInicio", tarea.FechaInicio);
-                var fechaFinalParam = new SqlParameter("@FechaFinal", tarea.FechaFinal);
-                var activoParam = new SqlParameter("@Activo", tarea.Activo);
-                var subtareasIdParam = new SqlParameter("@Subtareas_idSubtareas", tarea.Subtareas_idSubtareas);
-                var proyectosIdParam = new SqlParameter("@Proyectos_idProyectos", tarea.Proyectos_idProyectos);
-                var comentariosIdParam = new SqlParameter("@Comentarios_idComentarios", tarea.Comentarios_idComentarios);
+            new SqlParameter("@NombreTareas", tarea.NombreTareas),
+            new SqlParameter("@Descripcion", tarea.Descripcion ?? (object)DBNull.Value),
+            new SqlParameter("@Prioridad", tarea.Prioridad ?? (object)DBNull.Value),
+            new SqlParameter("@FechaInicio", tarea.FechaInicio ?? (object)DBNull.Value),
+            new SqlParameter("@FechaFinal", tarea.FechaFinal ?? (object)DBNull.Value),
+            new SqlParameter("@idProyectos", tarea.idProyectos),
+            new SqlParameter("@idUsuarios", tarea.idUsuarios ?? (object)DBNull.Value)
+        };
 
-                return await _context.MensajeUsuario
-                    .FromSqlRaw("EXEC Crear_Tarea @NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @Activo, @Subtareas_idSubtareas, @Proyectos_idProyectos, @Comentarios_idComentarios",
-                                nombreTareaParam, descripcionParam, prioridadParam, fechaInicioParam, fechaFinalParam, activoParam, subtareasIdParam, proyectosIdParam, comentariosIdParam)
-                    .ToListAsync();
-            }
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Crear_Tarea @NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idProyectos, @idUsuarios", parameters)
+                .ToListAsync();
         }
 
-        // Método para actualizar una tarea existente
-        public async Task<IEnumerable<MensajeUsuario>> ActualizarTarea(int idTarea, string nombreTarea, string descripcion, string prioridad, System.DateTime fechaInicio, System.DateTime fechaFinal, bool activo, int subtareaId, int proyectoId, int comentarioId)
+        public async Task<IEnumerable<MensajeUsuario>> ActualizarTarea(TareasRequest tarea)
         {
-            if (string.IsNullOrEmpty(nombreTarea))
+            var parameters = new[]
             {
-                return new List<MensajeUsuario>
-                {
-                    new MensajeUsuario { Codigo = -3, Mensaje = "El nombre de la tarea no puede estar vacío o nulo" }
-                };
-            }
-            else
-            {
-                var idTareaParam = new SqlParameter("@idTareas", idTarea);
-                var nombreTareaParam = new SqlParameter("@NombreTareas", nombreTarea);
-                var descripcionParam = new SqlParameter("@Descripcion", descripcion);
-                var prioridadParam = new SqlParameter("@Prioridad", prioridad);
-                var fechaInicioParam = new SqlParameter("@FechaInicio", fechaInicio);
-                var fechaFinalParam = new SqlParameter("@FechaFinal", fechaFinal);
-                var activoParam = new SqlParameter("@Activo", activo);
-                var subtareaIdParam = new SqlParameter("@Subtareas_idSubtareas", subtareaId);
-                var proyectoIdParam = new SqlParameter("@Proyectos_idProyectos", proyectoId);
-                var comentarioIdParam = new SqlParameter("@Comentarios_idComentarios", comentarioId);
+            new SqlParameter("@idTareas", tarea.idTareas),
+            new SqlParameter("@NombreTareas", tarea.NombreTareas),
+            new SqlParameter("@Descripcion", tarea.Descripcion ?? (object)DBNull.Value),
+            new SqlParameter("@Prioridad", tarea.Prioridad ?? (object)DBNull.Value),
+            new SqlParameter("@FechaInicio", tarea.FechaInicio ?? (object)DBNull.Value),
+            new SqlParameter("@FechaFinal", tarea.FechaFinal ?? (object)DBNull.Value),
+            new SqlParameter("@idProyectos", tarea.idProyectos),
+            new SqlParameter("@idUsuarios", tarea.idUsuarios ?? (object)DBNull.Value)
+        };
 
-                return await _context.MensajeUsuario
-                    .FromSqlRaw("EXEC Modificar_Tarea @idTareas, @NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @Activo, @Subtareas_idSubtareas, @Proyectos_idProyectos, @Comentarios_idComentarios",
-                                idTareaParam, nombreTareaParam, descripcionParam, prioridadParam, fechaInicioParam, fechaFinalParam, activoParam, subtareaIdParam, proyectoIdParam, comentarioIdParam)
-                    .ToListAsync();
-            }
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Actualizar_Tarea @idTareas, @NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idProyectos, @idUsuarios", parameters)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<MensajeUsuario>> EliminarTarea(int idTareas)
+        {
+            var idParam = new SqlParameter("@idTareas", idTareas);
+
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Eliminar_Tarea @idTareas", idParam)
+                .ToListAsync();
         }
     }
 }

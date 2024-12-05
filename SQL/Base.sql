@@ -31,6 +31,7 @@ CREATE TABLE Proyectos (
     FechaInicio DATE,
     FechaFinal DATE,
     Prioridad VARCHAR(45),
+	Estado VARCHAR(45),
     idPortafolio INT,
     Equipos_idEquipos INT NOT NULL,
     FOREIGN KEY (idPortafolio) REFERENCES Portafolio(idPortafolio),
@@ -91,6 +92,7 @@ CREATE TABLE Tareas (
     Prioridad VARCHAR(45),
     FechaInicio DATE,
     FechaFinal DATE,
+	Estado VARCHAR(45),
     Activo BIT,
     idProyectos INT NOT NULL,
     idUsuarios INT NULL,
@@ -106,7 +108,9 @@ CREATE TABLE Subtareas (
     Prioridad VARCHAR(45),
     FechaInicio DATE,
     FechaFinal DATE,
-    idTareas INT NOT NULL,
+    idTareas INT NOT NULL,--
+	Activo Bit,
+	Estado VARCHAR(45),
     FOREIGN KEY (idTareas) REFERENCES Tareas(idTareas)
 );
 go

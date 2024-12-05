@@ -1,79 +1,72 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Negocio.Controllers;  
-using Negocio.Modelos;      
+﻿using Microsoft.AspNetCore.Mvc;
+using Negocio.Controllers;
+using Negocio.Modelos;
+using System.Threading.Tasks;
 
-namespace ProyectoSoft4BackEnd.Controllers
+[Route("api/[controller]")]
+[ApiController]
+public class ApiSubtareas : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ApiSubtareas : ControllerBase
+    private readonly ISubtareasRepository _service;
+
+    public ApiSubtareas(ISubtareasRepository service)
     {
-        private readonly ISubtareasRepository _service;
+        _service = service;
+    }
 
-        public ApiSubtareas(ISubtareasRepository service)
+    [HttpGet("ListarSubtareas")]
+    public async Task<IActionResult> ListarSubtareas()
+    {
+        try
         {
-            _service = service;
+            var subtareas = await _service.ListarSubtareas();
+            return Ok(subtareas);
         }
-
-        // Método para crear una nueva subtarea
-        [HttpPost("NuevaSubtarea")]
-        public async Task<IActionResult> NuevaSubtarea([FromBody] Subtareas subtarea)
+        catch (System.Exception ex)
         {
-            try
-            {
-                var resultadoNuevaSubtarea = await _service.CrearSubtarea(subtarea);
-
-                if (resultadoNuevaSubtarea != null && resultadoNuevaSubtarea.Any())
-                {
-                    return Ok(resultadoNuevaSubtarea);
-                }
-                return BadRequest("No se pudo crear la subtarea.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return BadRequest(ex.Message);
         }
+    }
 
-        // Método para obtener la lista de subtareas
-        [HttpGet("ListaSubtareas")]
-        public async Task<IActionResult> ListaSubtareas()
+    [HttpPost("NuevaSubtarea")]
+    public async Task<IActionResult> NuevaSubtarea([FromBody] SubtareasRequest subtareaRequest)
+    {
+        try
         {
-            try
-            {
-                var resultadoSubtareas = await _service.ObtenerSubtareas();
-
-                if (resultadoSubtareas != null && resultadoSubtareas.Any())
-                {
-                    return Ok(resultadoSubtareas);
-                }
-                return NotFound("No se encontraron subtareas.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var resultado = await _service.CrearSubtarea(subtareaRequest);
+            return Ok(resultado);
         }
-
-        // Método para actualizar una subtarea
-        [HttpPut("ActualizarSubtarea/{id}")]
-        public async Task<IActionResult> ActualizarSubtarea(int id, [FromBody] Subtareas subtarea)
+        catch (System.Exception ex)
         {
-            try
-            {
-                var resultadoActualizarSubtarea = await _service.ActualizarSubtarea(id, subtarea.NombreSubtareas, subtarea.Descripcion, subtarea.Prioridad, subtarea.FechaInicio, subtarea.FechaFinal);
+            return BadRequest(ex.Message);
+        }
+    }
 
-                if (resultadoActualizarSubtarea != null && resultadoActualizarSubtarea.Any())
-                {
-                    return Ok(resultadoActualizarSubtarea);
-                }
-                return BadRequest("No se pudo actualizar la subtarea.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+    [HttpPut("ActualizarSubtarea/{id}")]
+    public async Task<IActionResult> ActualizarSubtarea(int id, [FromBody] SubtareasRequest subtareaRequest)
+    {
+        try
+        {
+            var resultado = await _service.ActualizarSubtarea(id, subtareaRequest);
+            return Ok(resultado);
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpDelete("EliminarSubtarea/{id}")]
+    public async Task<IActionResult> EliminarSubtarea(int id)
+    {
+        try
+        {
+            var resultado = await _service.EliminarSubtarea(id);
+            return Ok(resultado);
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest(ex.Message);
         }
     }
 }

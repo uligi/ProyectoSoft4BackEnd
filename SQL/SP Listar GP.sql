@@ -25,9 +25,11 @@ END;
 GO
 
 -- Stored Procedure para la tabla Tareas con JOIN a Proyectos y Usuarios
-CREATE PROCEDURE [dbo].[sp_Listar_Tareas]
+CREATE PROCEDURE Listar_Tareas
 AS
 BEGIN
+    SET NOCOUNT ON;
+
     SELECT 
         t.idTareas,
         t.NombreTareas,
@@ -37,8 +39,8 @@ BEGIN
         t.FechaFinal,
         t.Activo,
         t.idProyectos,
-        p.NombreProyecto AS NombreProyecto,
         t.idUsuarios,
+        p.NombreProyecto,
         u.Nombre AS NombreUsuario
     FROM Tareas t
     LEFT JOIN Proyectos p ON t.idProyectos = p.idProyectos
@@ -46,24 +48,27 @@ BEGIN
 END;
 GO
 
+
 -- Stored Procedure para la tabla Subtareas con JOIN a Tareas
-CREATE PROCEDURE [dbo].[sp_Listar_Subtareas]
+CREATE PROCEDURE Listar_Subtareas
 AS
 BEGIN
-    SELECT 
-        st.idSubtareas,
-        st.NombreSubtareas,
-        st.Descripcion,
-        st.Prioridad,
-        st.FechaInicio,
-        st.FechaFinal,
-        st.idTareas,
-        t.NombreTareas AS NombreTareas
-    FROM Subtareas st
-    LEFT JOIN Tareas t ON st.idTareas = t.idTareas;
-END;
+    SET NOCOUNT ON;
 
+    SELECT 
+        ST.idSubtareas,
+        ST.NombreSubtareas,
+        ST.Descripcion,
+        ST.Prioridad,
+        ST.FechaInicio,
+        ST.FechaFinal,
+        ST.idTareas,
+        T.NombreTareas AS NombreTarea
+    FROM Subtareas ST
+    INNER JOIN Tareas T ON ST.idTareas = T.idTareas;
+END;
 GO
+
 
 -- Stored Procedure para la tabla Comentarios con JOIN a Tareas, Subtareas y Proyectos
 CREATE PROCEDURE [dbo].[sp_Listar_Comentarios]
@@ -89,27 +94,24 @@ END;
 GO
 
 -- Stored Procedure para la tabla Miembros_de_equipos con JOIN a Equipos, Usuarios y Roles
-CREATE PROCEDURE Listar_Miembros_Equipo
-    @idEquipos INT
+CREATE PROCEDURE Listar_Todos_Los_Miembros
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Verificar si el equipo existe
-    IF NOT EXISTS (SELECT 1 FROM Equipos WHERE idEquipos = @idEquipos)
-    BEGIN
-        SELECT -1 AS Codigo, 'El equipo no existe' AS Mensaje;
-        RETURN;
-    END;
-
-    -- Obtener los miembros del equipo
-    SELECT me.idMiembros_de_equipos, me.idEquipos, me.idUsuarios, u.Nombre, e.NombreEquipos
+    SELECT 
+        me.idMiembros_de_equipos, 
+        me.idEquipos, 
+        me.idUsuarios, 
+        u.Nombre AS NombreUsuario, 
+        e.NombreEquipos
     FROM Miembros_de_equipos me
     INNER JOIN Usuarios u ON me.idUsuarios = u.idUsuarios
-    INNER JOIN Equipos e ON me.idEquipos = e.idEquipos
-    WHERE me.idEquipos = @idEquipos;
+    INNER JOIN Equipos e ON me.idEquipos = e.idEquipos;
 END;
 GO
+
+
 
 
 -- Stored Procedure para la tabla Historial_de_cambios con JOIN a Tareas, Proyectos y Portafolio
@@ -160,7 +162,7 @@ GO
 
 
 
-Alter PROCEDURE [dbo].[sp_Listar_Usuarios]
+create PROCEDURE [dbo].[sp_Listar_Usuarios]
 AS
 BEGIN
     SELECT 

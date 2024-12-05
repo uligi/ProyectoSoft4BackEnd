@@ -3,8 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\tareasrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\tareasrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\tareasresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\tareasresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apitareas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apitareas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\data\\contextdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\data\\contextdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\controllers\\tareasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\controllers\\tareasrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\mensajeusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\mensajeusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apiproyectos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apiproyectos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apiusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apiusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apimiembrosdeequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apimiembrosdeequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\controllers\\miembrosdeequiporepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\controllers\\miembrosdeequiporepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apihistorialdecambios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apihistorialdecambios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\miembros_de_equipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\miembros_de_equipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\miembroequiporequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\miembroequiporequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apiequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apiequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\controllers\\proyectosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,16 +83,8 @@
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\controllers\\equiposrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apiequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apiequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\equiposrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\equiposrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\equipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,10 +115,6 @@
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\controllers\\rolesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\rolesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\rolesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -83,10 +131,6 @@
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\usuariorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apiusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apiusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -95,28 +139,12 @@
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\controllers\\recursosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\data\\contextdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\data\\contextdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\permisos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\permisos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apimiembrosdeequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apimiembrosdeequipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\controllers\\miembrosdeequiporepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\controllers\\miembrosdeequiporepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\asignacionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\asignacionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\miembros_de_equipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\miembros_de_equipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apipermisos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -159,71 +187,240 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TareasRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\TareasRequest.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\TareasRequest.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\TareasRequest.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\TareasRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T02:26:21.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApiTareas.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiTareas.cs",
+              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiTareas.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiTareas.cs",
+              "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\ApiTareas.cs",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAhwEkAAABVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T01:30:14.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TareasResponse.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\TareasResponse.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\TareasResponse.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\TareasResponse.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\TareasResponse.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T01:29:24.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApiMiembrosDeEquipos.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiMiembrosDeEquipos.cs",
+              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiMiembrosDeEquipos.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiMiembrosDeEquipos.cs",
+              "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\ApiMiembrosDeEquipos.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAYwEIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T18:18:14.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MiembrosDeEquipoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\MiembrosDeEquipoRepository.cs",
+              "RelativeDocumentMoniker": "Negocio\\Controllers\\MiembrosDeEquipoRepository.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\MiembrosDeEquipoRepository.cs",
+              "RelativeToolTip": "Negocio\\Controllers\\MiembrosDeEquipoRepository.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAuwDUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T18:15:50.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ContextData.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Data\\ContextData.cs",
+              "RelativeDocumentMoniker": "Negocio\\Data\\ContextData.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Data\\ContextData.cs",
+              "RelativeToolTip": "Negocio\\Data\\ContextData.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAA0wBcAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T16:44:24.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Program.cs",
+              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Program.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Program.cs",
+              "RelativeToolTip": "ProyectoSoft4BackEnd\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAhwBYAAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T17:14:02.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ApiEquipos.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiEquipos.cs",
+              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiEquipos.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiEquipos.cs",
+              "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\ApiEquipos.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAYwFAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T15:40:10.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ApiProyectos.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiProyectos.cs",
               "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiProyectos.cs",
               "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiProyectos.cs",
               "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\ApiProyectos.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAzwEMAAAAAAAAA",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAkwGQAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-04T16:15:51.684Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProyectosRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\ProyectosRepository.cs",
-              "RelativeDocumentMoniker": "Negocio\\Controllers\\ProyectosRepository.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\ProyectosRepository.cs",
-              "RelativeToolTip": "Negocio\\Controllers\\ProyectosRepository.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAADgvyUAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T16:15:18.833Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProyectosRequest.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ProyectosRequest.cs",
-              "RelativeDocumentMoniker": "Negocio\\Modelos\\ProyectosRequest.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ProyectosRequest.cs",
-              "RelativeToolTip": "Negocio\\Modelos\\ProyectosRequest.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAowB8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T16:15:06.877Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Proyectos.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Proyectos.cs",
-              "RelativeDocumentMoniker": "Negocio\\Modelos\\Proyectos.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Proyectos.cs",
-              "RelativeToolTip": "Negocio\\Modelos\\Proyectos.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAQwBYAAAAxAAAA",
+              "Title": "Roles.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Roles.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\Roles.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Roles.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\Roles.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T16:14:47.672Z",
+              "WhenOpened": "2024-12-02T16:38:09.948Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PortafolioRequest.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\PortafolioRequest.cs",
-              "RelativeDocumentMoniker": "Negocio\\Modelos\\PortafolioRequest.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\PortafolioRequest.cs",
-              "RelativeToolTip": "Negocio\\Modelos\\PortafolioRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "TareasRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\TareasRepository.cs",
+              "RelativeDocumentMoniker": "Negocio\\Controllers\\TareasRepository.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\TareasRepository.cs",
+              "RelativeToolTip": "Negocio\\Controllers\\TareasRepository.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAuwDcAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T15:09:32.998Z",
+              "WhenOpened": "2024-12-05T01:29:41.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MensajeUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\MensajeUsuario.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\MensajeUsuario.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\MensajeUsuario.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\MensajeUsuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T17:07:56.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApiUsuarios.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiUsuarios.cs",
+              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiUsuarios.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiUsuarios.cs",
+              "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\ApiUsuarios.cs",
+              "ViewState": "AQIAAHYAAAAAAAAAAAAqwJoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T15:54:15.987Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
+              "Title": "Miembros_de_equipos.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Miembros_de_equipos.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\Miembros_de_equipos.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Miembros_de_equipos.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\Miembros_de_equipos.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T18:09:07.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MiembroEquipoRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\MiembroEquipoRequest.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\MiembroEquipoRequest.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\MiembroEquipoRequest.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\MiembroEquipoRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T17:29:51.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ApiHistorialDeCambios.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiHistorialDeCambios.cs",
+              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiHistorialDeCambios.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiHistorialDeCambios.cs",
+              "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\ApiHistorialDeCambios.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T17:32:29.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "UsuarioRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\UsuarioRequest.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\UsuarioRequest.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\UsuarioRequest.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\UsuarioRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T13:42:53.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "RolesRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\RolesRequest.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\RolesRequest.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\RolesRequest.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\RolesRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T14:26:13.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
               "Title": "Portafolio.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Portafolio.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\Portafolio.cs",
@@ -237,84 +434,58 @@
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "RolesRequest.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\RolesRequest.cs",
-              "RelativeDocumentMoniker": "Negocio\\Modelos\\RolesRequest.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\RolesRequest.cs",
-              "RelativeToolTip": "Negocio\\Modelos\\RolesRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAABAAAA",
+              "Title": "ProyectosRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\ProyectosRepository.cs",
+              "RelativeDocumentMoniker": "Negocio\\Controllers\\ProyectosRepository.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\ProyectosRepository.cs",
+              "RelativeToolTip": "Negocio\\Controllers\\ProyectosRepository.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAADgvzAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:26:13.405Z",
+              "WhenOpened": "2024-12-04T16:15:18.833Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "UsuarioRequest.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\UsuarioRequest.cs",
-              "RelativeDocumentMoniker": "Negocio\\Modelos\\UsuarioRequest.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\UsuarioRequest.cs",
-              "RelativeToolTip": "Negocio\\Modelos\\UsuarioRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAADAAAA",
+              "DocumentIndex": 24,
+              "Title": "PortafolioRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\PortafolioRequest.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\PortafolioRequest.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\PortafolioRequest.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\PortafolioRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T13:42:53.818Z",
+              "WhenOpened": "2024-12-04T15:09:32.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Proyectos.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Proyectos.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\Proyectos.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Proyectos.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\Proyectos.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwBYAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T16:14:47.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ProyectosRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ProyectosRequest.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\ProyectosRequest.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ProyectosRequest.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\ProyectosRequest.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAowB8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T16:15:06.877Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 20,
-              "Title": "ApiUsuarios.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiUsuarios.cs",
-              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiUsuarios.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiUsuarios.cs",
-              "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\ApiUsuarios.cs",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAwwG0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T15:54:15.987Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "ApiMiembrosDeEquipos.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiMiembrosDeEquipos.cs",
-              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiMiembrosDeEquipos.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiMiembrosDeEquipos.cs",
-              "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\ApiMiembrosDeEquipos.cs",
-              "ViewState": "AQIAAC4AAAAAAAAAAAASwEAAAABAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T18:18:14.493Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Program.cs",
-              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Program.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Program.cs",
-              "RelativeToolTip": "ProyectoSoft4BackEnd\\Program.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAhwBkAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T17:14:02.863Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApiEquipos.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiEquipos.cs",
-              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiEquipos.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiEquipos.cs",
-              "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\ApiEquipos.cs",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAYwFAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T15:40:10.708Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "EquiposRequest.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\EquiposRequest.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\EquiposRequest.cs",
@@ -327,7 +498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 19,
               "Title": "EquiposRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\EquiposRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\EquiposRepository.cs",
@@ -340,7 +511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 22,
               "Title": "ApiPortafolio.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiPortafolio.cs",
               "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiPortafolio.cs",
@@ -353,7 +524,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 36,
               "Title": "ApiPermisos.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiPermisos.cs",
               "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiPermisos.cs",
@@ -366,7 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 30,
               "Title": "SubtareasRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\SubtareasRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\SubtareasRepository.cs",
@@ -379,7 +550,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 21,
               "Title": "Equipos.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Equipos.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\Equipos.cs",
@@ -392,7 +563,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 23,
               "Title": "PortafolioRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\PortafolioRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\PortafolioRepository.cs",
@@ -405,20 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Roles.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Roles.cs",
-              "RelativeDocumentMoniker": "Negocio\\Modelos\\Roles.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Roles.cs",
-              "RelativeToolTip": "Negocio\\Modelos\\Roles.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T16:38:09.948Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 29,
               "Title": "UsuariosRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\UsuariosRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\UsuariosRepository.cs",
@@ -431,7 +589,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 27,
               "Title": "RolesRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\RolesRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\RolesRepository.cs",
@@ -444,7 +602,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 26,
               "Title": "ApiRoles.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiRoles.cs",
               "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiRoles.cs",
@@ -457,20 +615,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "ContextData.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Data\\ContextData.cs",
-              "RelativeDocumentMoniker": "Negocio\\Data\\ContextData.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Data\\ContextData.cs",
-              "RelativeToolTip": "Negocio\\Data\\ContextData.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAkwDQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T16:44:24.609Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 32,
               "Title": "Usuarios.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Usuarios.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\Usuarios.cs",
@@ -483,7 +628,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 34,
               "Title": "Permisos.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Permisos.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\Permisos.cs",
@@ -496,7 +641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 33,
               "Title": "RecursosRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\RecursosRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\RecursosRepository.cs",
@@ -509,33 +654,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "MiembrosDeEquipoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\MiembrosDeEquipoRepository.cs",
-              "RelativeDocumentMoniker": "Negocio\\Controllers\\MiembrosDeEquipoRepository.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\MiembrosDeEquipoRepository.cs",
-              "RelativeToolTip": "Negocio\\Controllers\\MiembrosDeEquipoRepository.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAWwA0AAABwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T18:15:50.225Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Miembros_de_equipos.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Miembros_de_equipos.cs",
-              "RelativeDocumentMoniker": "Negocio\\Modelos\\Miembros_de_equipos.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Miembros_de_equipos.cs",
-              "RelativeToolTip": "Negocio\\Modelos\\Miembros_de_equipos.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T18:09:07.082Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 38,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\appsettings.json",
               "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\appsettings.json",
@@ -548,7 +667,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 35,
               "Title": "AsignacionRequest.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\AsignacionRequest.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\AsignacionRequest.cs",
@@ -561,7 +680,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 39,
               "Title": "Equipos_Proyectos.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Equipos_Proyectos.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\Equipos_Proyectos.cs",
@@ -574,7 +693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 37,
               "Title": "PermisosRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\PermisosRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\PermisosRepository.cs",

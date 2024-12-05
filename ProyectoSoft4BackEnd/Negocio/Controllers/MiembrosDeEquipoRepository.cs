@@ -9,7 +9,7 @@ namespace Negocio.Controllers
 {
     public interface IMiembrosDeEquiposRepository
     {
-        Task<IEnumerable<MiembrosDeEquipos>> ListarMiembrosEquipo(int idEquipos);
+        Task<IEnumerable<MiembrosDeEquipos>> ListarTodosLosMiembros();
         Task<IEnumerable<MensajeUsuario>> CrearMiembroEquipo(int idEquipos, int idUsuarios);
         Task<IEnumerable<MensajeUsuario>> EliminarMiembroEquipo(int idMiembrosDeEquipos);
     }
@@ -23,14 +23,13 @@ namespace Negocio.Controllers
             _context = context;
         }
 
-        public async Task<IEnumerable<MiembrosDeEquipos>> ListarMiembrosEquipo(int idEquipos)
+        public async Task<IEnumerable<MiembrosDeEquipos>> ListarTodosLosMiembros()
         {
-            var idEquiposParam = new SqlParameter("@idEquipos", idEquipos);
-
             return await _context.MiembrosDeEquipos
-                .FromSqlRaw("EXEC Listar_Miembros_Equipo @idEquipos", idEquiposParam)
+                .FromSqlRaw("EXEC Listar_Todos_Los_Miembros")
                 .ToListAsync();
         }
+
 
         public async Task<IEnumerable<MensajeUsuario>> CrearMiembroEquipo(int idEquipos, int idUsuarios)
         {

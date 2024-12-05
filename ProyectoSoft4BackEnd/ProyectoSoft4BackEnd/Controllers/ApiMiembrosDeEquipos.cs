@@ -19,21 +19,22 @@ public class ApiMiembros : ControllerBase
         _service = service;
     }
 
-    [HttpGet("ListarMiembros/{idEquipos}")]
-    public async Task<IActionResult> ListarMiembros(int idEquipos)
-    {
-        try
+        [HttpGet("ListarTodosLosMiembros")]
+        public async Task<IActionResult> ListarTodosLosMiembros()
         {
-            var resultado = await _service.ListarMiembrosEquipo(idEquipos);
-            return Ok(resultado);
+            try
+            {
+                var resultado = await _service.ListarTodosLosMiembros();
+                return Ok(resultado);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-        catch (System.Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
-    }
 
-    [HttpPost("NuevoMiembro")]
+
+        [HttpPost("NuevoMiembro")]
     public async Task<IActionResult> NuevoMiembro([FromBody] MiembroEquipoRequest request)
     {
         try

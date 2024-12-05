@@ -9,9 +9,10 @@ namespace Negocio.Controllers
 {
     public interface ISubtareasRepository
     {
-        Task<IEnumerable<Subtareas>> ObtenerSubtareas();
-        Task<IEnumerable<MensajeUsuario>> CrearSubtarea(Subtareas subtarea);
-        Task<IEnumerable<MensajeUsuario>> ActualizarSubtarea(int idSubtarea, string nombreSubtarea, string descripcion, string prioridad, System.DateTime fechaInicio, System.DateTime fechaFinal);
+        Task<IEnumerable<Subtareas>> ListarSubtareas();
+        Task<IEnumerable<MensajeUsuario>> CrearSubtarea(SubtareasRequest subtarea);
+        Task<IEnumerable<MensajeUsuario>> ActualizarSubtarea(int id, SubtareasRequest subtarea);
+        Task<IEnumerable<MensajeUsuario>> EliminarSubtarea(int idSubtareas);
     }
 
     public class SubtareasRepository : ISubtareasRepository
@@ -23,61 +24,55 @@ namespace Negocio.Controllers
             _context = context;
         }
 
-        // Método para obtener todas las subtareas
-        public async Task<IEnumerable<Subtareas>> ObtenerSubtareas()
+        public async Task<IEnumerable<Subtareas>> ListarSubtareas()
         {
-            return await _context.Subtareas.ToListAsync();
+            return await _context.Subtareas
+                .FromSqlRaw("EXEC Listar_Subtareas")
+                .ToListAsync();
         }
 
-        // Método para crear una nueva subtarea
-        public async Task<IEnumerable<MensajeUsuario>> CrearSubtarea(Subtareas subtarea)
+        public async Task<IEnumerable<MensajeUsuario>> CrearSubtarea(SubtareasRequest subtarea)
         {
-            if (string.IsNullOrEmpty(subtarea.NombreSubtareas))
+            var parameters = new[]
             {
-                return new List<MensajeUsuario>
-                {
-                    new MensajeUsuario { Codigo = -3, Mensaje = "El nombre de la subtarea no puede estar vacío o nulo" }
-                };
-            }
-            else
-            {
-                var nombreSubtareaParam = new SqlParameter("@NombreSubtareas", subtarea.NombreSubtareas);
-                var descripcionParam = new SqlParameter("@Descripcion", subtarea.Descripcion);
-                var prioridadParam = new SqlParameter("@Prioridad", subtarea.Prioridad);
-                var fechaInicioParam = new SqlParameter("@FechaInicio", subtarea.FechaInicio);
-                var fechaFinalParam = new SqlParameter("@FechaFinal", subtarea.FechaFinal);
+                new SqlParameter("@NombreSubtareas", subtarea.NombreSubtareas),
+                new SqlParameter("@Descripcion", subtarea.Descripcion ?? (object)DBNull.Value),
+                new SqlParameter("@Prioridad", subtarea.Prioridad ?? (object)DBNull.Value),
+                new SqlParameter("@FechaInicio", subtarea.FechaInicio ?? (object)DBNull.Value),
+                new SqlParameter("@FechaFinal", subtarea.FechaFinal ?? (object)DBNull.Value),
+                new SqlParameter("@idTareas", subtarea.idTareas)
+            };
 
-                return await _context.MensajeUsuario
-                    .FromSqlRaw("EXEC Crear_Subtarea @NombreSubtareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal",
-                                nombreSubtareaParam, descripcionParam, prioridadParam, fechaInicioParam, fechaFinalParam)
-                    .ToListAsync();
-            }
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Crear_Subtarea @NombreSubtareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idTareas", parameters)
+                .ToListAsync();
         }
 
-        // Método para actualizar una subtarea existente
-        public async Task<IEnumerable<MensajeUsuario>> ActualizarSubtarea(int idSubtarea, string nombreSubtarea, string descripcion, string prioridad, System.DateTime fechaInicio, System.DateTime fechaFinal)
+        public async Task<IEnumerable<MensajeUsuario>> ActualizarSubtarea(int id, SubtareasRequest subtarea)
         {
-            if (string.IsNullOrEmpty(nombreSubtarea))
+            var parameters = new[]
             {
-                return new List<MensajeUsuario>
-                {
-                    new MensajeUsuario { Codigo = -3, Mensaje = "El nombre de la subtarea no puede estar vacío o nulo" }
-                };
-            }
-            else
-            {
-                var idSubtareaParam = new SqlParameter("@idSubtareas", idSubtarea);
-                var nombreSubtareaParam = new SqlParameter("@NombreSubtareas", nombreSubtarea);
-                var descripcionParam = new SqlParameter("@Descripcion", descripcion);
-                var prioridadParam = new SqlParameter("@Prioridad", prioridad);
-                var fechaInicioParam = new SqlParameter("@FechaInicio", fechaInicio);
-                var fechaFinalParam = new SqlParameter("@FechaFinal", fechaFinal);
+                new SqlParameter("@idSubtareas", id),
+                new SqlParameter("@NombreSubtareas", subtarea.NombreSubtareas),
+                new SqlParameter("@Descripcion", subtarea.Descripcion ?? (object)DBNull.Value),
+                new SqlParameter("@Prioridad", subtarea.Prioridad ?? (object)DBNull.Value),
+                new SqlParameter("@FechaInicio", subtarea.FechaInicio ?? (object)DBNull.Value),
+                new SqlParameter("@FechaFinal", subtarea.FechaFinal ?? (object)DBNull.Value),
+                new SqlParameter("@idTareas", subtarea.idTareas)
+            };
 
-                return await _context.MensajeUsuario
-                    .FromSqlRaw("EXEC Modificar_Subtarea @idSubtareas, @NombreSubtareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal",
-                                idSubtareaParam, nombreSubtareaParam, descripcionParam, prioridadParam, fechaInicioParam, fechaFinalParam)
-                    .ToListAsync();
-            }
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Actualizar_Subtarea @idSubtareas, @NombreSubtareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, @idTareas", parameters)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<MensajeUsuario>> EliminarSubtarea(int idSubtareas)
+        {
+            var idParam = new SqlParameter("@idSubtareas", idSubtareas);
+
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Eliminar_Subtarea @idSubtareas", idParam)
+                .ToListAsync();
         }
     }
 }
