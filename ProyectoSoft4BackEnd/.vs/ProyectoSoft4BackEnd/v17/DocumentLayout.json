@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\comentariostareasresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\comentariostareasresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -51,10 +59,6 @@
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\negocio.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\modelos\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\modelos\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\negocio\\controllers\\comentariosproyectosrepository .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CFAB081-799C-461C-B5F2-55B0ABFEF5F6}|Negocio\\Negocio.csproj|solutionrelative:negocio\\controllers\\comentariosproyectosrepository .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -82,20 +86,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ComentariosTareasResponse.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosTareasResponse.cs",
-              "RelativeDocumentMoniker": "Negocio\\Modelos\\ComentariosTareasResponse.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosTareasResponse.cs",
-              "RelativeToolTip": "Negocio\\Modelos\\ComentariosTareasResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
+              "DocumentIndex": 2,
+              "Title": "Roles.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Roles.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\Roles.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Roles.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\Roles.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-07T01:57:26.214Z",
+              "WhenOpened": "2024-12-07T02:03:03.954Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ComentariosProyectosRequest.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosProyectosRequest.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\ComentariosProyectosRequest.cs",
@@ -108,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "ComentariosProyectosResponse.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosProyectosResponse.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\ComentariosProyectosResponse.cs",
@@ -121,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "ComentariosSubtareasRequest.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosSubtareasRequest.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\ComentariosSubtareasRequest.cs",
@@ -134,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ComentariosSubtareasResponse.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosSubtareasResponse.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\ComentariosSubtareasResponse.cs",
@@ -147,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "AsignacionRequest.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\AsignacionRequest.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\AsignacionRequest.cs",
@@ -166,40 +170,14 @@
               "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\AuthController.cs",
               "RelativeToolTip": "ProyectoSoft4BackEnd\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAE8AAAAuAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAowBoAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-06T21:51:06.568Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ComentariosTareasRequest.cs",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosTareasRequest.cs",
-              "RelativeDocumentMoniker": "Negocio\\Modelos\\ComentariosTareasRequest.cs",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosTareasRequest.cs",
-              "RelativeToolTip": "Negocio\\Modelos\\ComentariosTareasRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-07T01:57:17.789Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Negocio",
-              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Negocio.csproj",
-              "RelativeDocumentMoniker": "Negocio\\Negocio.csproj",
-              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Negocio.csproj",
-              "RelativeToolTip": "Negocio\\Negocio.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-07T01:37:32.549Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 1,
               "Title": "Usuarios.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\Usuarios.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\Usuarios.cs",
@@ -212,7 +190,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
+              "Title": "ComentariosTareasResponse.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosTareasResponse.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\ComentariosTareasResponse.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosTareasResponse.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\ComentariosTareasResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T01:57:26.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ComentariosTareasRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosTareasRequest.cs",
+              "RelativeDocumentMoniker": "Negocio\\Modelos\\ComentariosTareasRequest.cs",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ComentariosTareasRequest.cs",
+              "RelativeToolTip": "Negocio\\Modelos\\ComentariosTareasRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T01:57:17.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Negocio",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Negocio.csproj",
+              "RelativeDocumentMoniker": "Negocio\\Negocio.csproj",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Negocio.csproj",
+              "RelativeToolTip": "Negocio\\Negocio.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-07T01:37:32.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ComentariosTareasRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\ComentariosTareasRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\ComentariosTareasRepository.cs",
@@ -225,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ComentariosSubtareasRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\ComentariosSubtareasRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\ComentariosSubtareasRepository.cs",
@@ -238,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "ComentariosProyectosRepository .cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\ComentariosProyectosRepository .cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\ComentariosProyectosRepository .cs",
@@ -251,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Program.cs",
               "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Program.cs",
