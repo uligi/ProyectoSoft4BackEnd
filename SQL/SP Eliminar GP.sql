@@ -210,3 +210,31 @@ BEGIN
 END;
 GO
 
+CREATE PROCEDURE Eliminar_Comentario_Proyectos
+    @idComentario INT
+AS
+BEGIN
+    DELETE FROM Comentarios_Proyectos
+    WHERE idComentario = @idComentario;
+
+    SELECT 'Comentario eliminado correctamente.' AS Mensaje;
+END
+GO
+
+CREATE PROCEDURE Eliminar_Comentario_Tarea
+    @idComentario INT
+AS
+BEGIN
+    DELETE FROM Comentarios_Tareas
+    WHERE idComentario = @idComentario
+END
+GO
+
+CREATE PROCEDURE Eliminar_Comentario_Subtarea
+    @idComentario INT
+AS
+BEGIN
+    DELETE FROM Comentarios_Subtareas
+    WHERE idComentario = @idComentario
+END
+GO

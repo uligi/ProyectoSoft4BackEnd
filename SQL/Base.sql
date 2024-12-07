@@ -115,19 +115,39 @@ CREATE TABLE Subtareas (
 );
 go
 
-CREATE TABLE Comentarios (
-    idComentarios INT PRIMARY KEY IDENTITY(1,1),
-    Comentario NVARCHAR(MAX),
-    FechaCreacion DATETIME,
-    Activo BIT,
-    Tareas_idTareas INT NULL,
-    idSubtareas INT NULL,
-    idProyectos INT NULL,
-    FOREIGN KEY (Tareas_idTareas) REFERENCES Tareas(Tareas_idTareas),
-    FOREIGN KEY (idSubtareas) REFERENCES Subtareas(idSubtareas),
-    FOREIGN KEY (idProyectos) REFERENCES Proyectos(idProyectos)
+CREATE TABLE Comentarios_Proyectos (
+    idComentario INT PRIMARY KEY IDENTITY(1,1),
+    Comentario NVARCHAR(MAX) NOT NULL,
+    FechaCreacion DATETIME NOT NULL,
+    Activo BIT NOT NULL,
+    idProyecto INT NOT NULL,
+    idUsuario INT NOT NULL,
+    FOREIGN KEY (idProyecto) REFERENCES Proyectos(idProyectos),
+    FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuarios)
 );
-go
+
+CREATE TABLE Comentarios_Tareas (
+    idComentario INT PRIMARY KEY IDENTITY(1,1),
+    Comentario NVARCHAR(MAX) NOT NULL,
+    FechaCreacion DATETIME NOT NULL,
+    Activo BIT NOT NULL,
+    idTarea INT NOT NULL,
+    idUsuario INT NOT NULL,
+    FOREIGN KEY (idTarea) REFERENCES Tareas(idTareas),
+    FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuarios)
+);
+
+CREATE TABLE Comentarios_Subtareas (
+    idComentario INT PRIMARY KEY IDENTITY(1,1),
+    Comentario NVARCHAR(MAX) NOT NULL,
+    FechaCreacion DATETIME NOT NULL,
+    Activo BIT NOT NULL,
+    idSubtarea INT NOT NULL,
+    idUsuario INT NOT NULL,
+    FOREIGN KEY (idSubtarea) REFERENCES Subtareas(idSubtareas),
+    FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuarios)
+);
+
 
 CREATE TABLE Historial_de_cambios (
     idHistorial_de_cambios INT PRIMARY KEY IDENTITY(1,1),

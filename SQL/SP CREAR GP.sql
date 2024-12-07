@@ -48,9 +48,6 @@ BEGIN
 END;
 GO
 
-
-
-
 CREATE PROCEDURE [dbo].[Crear_HistorialCambio]
     @idTareas INT = NULL,
     @idProyectos INT = NULL,
@@ -66,15 +63,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE [dbo].[Crear_Miembro_Equipo]
-    @idEquipos INT,
-    @idUsuarios INT
-AS
-BEGIN
-    INSERT INTO Miembros_de_equipos (idEquipos, idUsuarios)
-    VALUES (@idEquipos, @idUsuarios);
-END;
-GO
+
 
 CREATE PROCEDURE [dbo].[Crear_Proyecto]
     @NombreProyecto VARCHAR(500),
@@ -191,7 +180,7 @@ END;
 GO
 
 
-CREATE PROCEDURE Crear_Miembro_Equipo
+Create PROCEDURE Crear_Miembro_Equipo
     @idEquipos INT,
     @idUsuarios INT
 AS
@@ -296,9 +285,49 @@ BEGIN
 END;
 GO
 
+CREATE PROCEDURE Agregar_Comentario_Proyectos
+    @Comentario NVARCHAR(MAX),
+    @FechaCreacion DATETIME,
+    @Activo BIT,
+    @idProyecto INT,
+    @idUsuario INT
+AS
+BEGIN
+    INSERT INTO Comentarios_Proyectos (Comentario, FechaCreacion, Activo, idProyecto, idUsuario)
+    VALUES (@Comentario, @FechaCreacion, @Activo, @idProyecto, @idUsuario);
 
+    SELECT SCOPE_IDENTITY() AS idComentario;
+END
+GO
 
+CREATE PROCEDURE Agregar_Comentario_Tarea
+    @Comentario NVARCHAR(MAX),
+    @FechaCreacion DATETIME,
+    @Activo BIT,
+    @idTarea INT,
+    @idUsuario INT
+AS
+BEGIN
+    INSERT INTO Comentarios_Tareas (Comentario, FechaCreacion, Activo, idTarea, idUsuario)
+    VALUES (@Comentario, @FechaCreacion, @Activo, @idTarea, @idUsuario)
 
+    SELECT SCOPE_IDENTITY() AS idComentario
+END
+GO
 
+CREATE PROCEDURE Agregar_Comentario_Subtarea
+    @Comentario NVARCHAR(MAX),
+    @FechaCreacion DATETIME,
+    @Activo BIT,
+    @idSubtarea INT,
+    @idUsuario INT
+AS
+BEGIN
+    INSERT INTO Comentarios_Subtareas (Comentario, FechaCreacion, Activo, idSubtarea, idUsuario)
+    VALUES (@Comentario, @FechaCreacion, @Activo, @idSubtarea, @idUsuario)
+
+    SELECT SCOPE_IDENTITY() AS idComentario
+END
+GO
 
 

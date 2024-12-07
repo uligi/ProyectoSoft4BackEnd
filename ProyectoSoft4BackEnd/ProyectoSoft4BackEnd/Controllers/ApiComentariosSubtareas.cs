@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ApiComentarios : ControllerBase
+public class ApiComentariosSubtareas : ControllerBase
 {
-    private readonly IComentariosRepository _service;
+    private readonly IComentariosSubtareasRepository _service;
 
-    public ApiComentarios(IComentariosRepository service)
+    public ApiComentariosSubtareas(IComentariosSubtareasRepository service)
     {
         _service = service;
     }
@@ -29,29 +29,25 @@ public class ApiComentarios : ControllerBase
     }
 
     [HttpPost("AgregarComentario")]
-    public async Task<IActionResult> AgregarComentario([FromBody] ComentariosRequest comentario)
+    public async Task<IActionResult> AgregarComentario([FromBody] ComentariosSubtareasRequest comentario)
     {
         try
         {
-            Console.WriteLine($"Comentario recibido: {System.Text.Json.JsonSerializer.Serialize(comentario)}");
-
             var id = await _service.AgregarComentario(comentario);
-            return Ok(new { idComentarios = id });
+            return Ok(new { idComentario = id });
         }
-        catch (Exception ex)
+        catch (System.Exception ex)
         {
-            Console.WriteLine($"Error: {ex.Message}");
             return BadRequest(ex.Message);
         }
     }
 
-
     [HttpPut("ActualizarComentario/{id}")]
-    public async Task<IActionResult> ActualizarComentario(int id, [FromBody] ComentariosRequest comentario)
+    public async Task<IActionResult> ActualizarComentario(int id, [FromBody] ComentariosSubtareasRequest comentario)
     {
         try
         {
-            comentario.idComentarios = id;
+            comentario.idComentario = id;
             var result = await _service.ActualizarComentario(comentario);
             return Ok(result);
         }

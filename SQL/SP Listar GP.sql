@@ -75,28 +75,6 @@ BEGIN
 END;
 GO
 
-
--- Stored Procedure para la tabla Comentarios con JOIN a Tareas, Subtareas y Proyectos
-CREATE PROCEDURE Listar_Comentarios
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    SELECT 
-        c.idComentarios,
-        c.Comentario,
-		c.FechaCreacion,
-        c.Activo,
-        t.NombreTareas AS NombreTarea,
-        s.NombreSubtareas AS NombreSubtarea,
-        p.NombreProyecto AS NombreProyecto
-    FROM Comentarios c
-    LEFT JOIN Tareas t ON c.Tareas_idTareas = t.idTareas
-    LEFT JOIN Subtareas s ON c.idSubtareas = s.idSubtareas
-    LEFT JOIN Proyectos p ON c.idProyectos = p.idProyectos
-    WHERE c.Activo = 1;
-END;
-GO
 -- Stored Procedure para la tabla Miembros_de_equipos con JOIN a Equipos, Usuarios y Roles
 CREATE PROCEDURE Listar_Todos_Los_Miembros
 AS
@@ -180,7 +158,8 @@ BEGIN
         u.RestablecerContrasena,
         u.idRoles,
         r.Nombre_Roles AS NombreRol,
-        p.Nombre_Permisos AS PermisoRelacionado
+        p.Nombre_Permisos AS PermisoRelacionado,
+		u.contrasena
     FROM Usuarios u
     LEFT JOIN Roles r ON u.idRoles = r.idRoles
     LEFT JOIN Permisos p ON r.idPermisos = p.idPermisos; -- Cambiado a idPermisos
@@ -207,3 +186,47 @@ BEGIN
     WHERE Activo = 1;
 END;
 GO
+
+CREATE PROCEDURE Listar_Comentarios_Proyectos
+AS
+BEGIN
+    SELECT cp.idComentario, cp.Comentario, cp.FechaCreacion, cp.Activo, 
+           p.NombreProyecto, u.Nombre AS NombreUsuario
+    FROM Comentarios_Proyectos cp
+    INNER JOIN Proyectos p ON cp.idProyecto = p.idProyectos
+    INNER JOIN Usuarios u ON cp.idUsuario = u.idUsuarios;
+END
+GO
+
+CREATE PROCEDURE Listar_Comentarios_Tareas
+AS
+BEGIN
+    SELECT 
+        c.idComentario,
+        c.Comentario,
+        c.FechaCreacion,
+        c.Activo,
+        t.NombreTareas AS NombreTarea,
+        u.Nombre AS NombreUsuario
+    FROM Comentarios_Tareas c
+    INNER JOIN Tareas t ON c.idTarea = t.idTareas
+    INNER JOIN Usuarios u ON c.idUsuario = u.idUsuarios
+END
+GO
+
+CREATE PROCEDURE Listar_Comentarios_Subtareas
+AS
+BEGIN
+    SELECT 
+        c.idComentario,
+        c.Comentario,
+        c.FechaCreacion,
+        c.Activo,
+        s.NombreSubtareas AS NombreSubtarea,
+        u.Nombre AS NombreUsuario
+    FROM Comentarios_Subtareas c
+    INNER JOIN Subtareas s ON c.idSubtarea = s.idSubtareas
+    INNER JOIN Usuarios u ON c.idUsuario = u.idUsuarios
+END
+GO
+

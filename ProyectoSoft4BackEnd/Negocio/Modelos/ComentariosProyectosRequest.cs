@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace Negocio.Modelos
 {
-    public class ComentariosResponse
+    public class ComentariosProyectosRequest
     {
         [Key]
-        public int idComentarios { get; set; }
+        public int idComentario { get; set; }
         public string Comentario { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public bool Activo { get; set; }
-        public int? Tareas_idTareas { get; set; }
-        public int? idSubtareas { get; set; }
-        public int? idProyectos { get; set; }
+        public int idProyecto { get; set; }
+        public int idUsuario { get; set; }
     }
 }

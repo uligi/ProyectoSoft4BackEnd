@@ -180,3 +180,4 @@ C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Proyec
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\obj\Debug\net8.0\ProyectoSoft4BackEnd.pdb
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\obj\Debug\net8.0\ProyectoSoft4BackEnd.genruntimeconfig.cache
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\obj\Debug\net8.0\ref\ProyectoSoft4BackEnd.dll
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

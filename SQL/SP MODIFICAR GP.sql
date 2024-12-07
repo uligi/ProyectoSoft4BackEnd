@@ -325,3 +325,44 @@ BEGIN
         'Subtarea actualizada exitosamente.' AS Mensaje;
 		END;
 GO
+
+CREATE PROCEDURE Actualizar_Comentario_Proyectos
+    @idComentario INT,
+    @Comentario NVARCHAR(MAX),
+    @Activo BIT
+AS
+BEGIN
+    UPDATE Comentarios_Proyectos
+    SET Comentario = @Comentario,
+        Activo = @Activo
+    WHERE idComentario = @idComentario;
+
+    SELECT 'Comentario actualizado correctamente.' AS Mensaje;
+END
+GO
+
+CREATE PROCEDURE Actualizar_Comentario_Tarea
+    @idComentario INT,
+    @Comentario NVARCHAR(MAX),
+    @Activo BIT
+AS
+BEGIN
+    UPDATE Comentarios_Tareas
+    SET Comentario = @Comentario,
+        Activo = @Activo
+    WHERE idComentario = @idComentario
+END
+GO
+
+CREATE PROCEDURE Actualizar_Comentario_Subtarea
+    @idComentario INT,
+    @Comentario NVARCHAR(MAX),
+    @Activo BIT
+AS
+BEGIN
+    UPDATE Comentarios_Subtareas
+    SET Comentario = @Comentario,
+        Activo = @Activo
+    WHERE idComentario = @idComentario
+END
+GO
