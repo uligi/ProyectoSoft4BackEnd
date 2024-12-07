@@ -74,3 +74,15 @@ BEGIN
     FROM inserted i;
 END;
 GO
+
+ALTER TABLE Historial_de_cambios
+ALTER COLUMN idPortafolio INT NULL;
+
+ALTER TABLE Historial_de_cambios
+ALTER COLUMN idProyectos INT NULL;
+
+ALTER TABLE Historial_de_cambios
+ALTER COLUMN idTareas INT NULL;
+
+ALTER TABLE Historial_de_cambios
+ALTER COLUMN idSubtareas INT NULL;

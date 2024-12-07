@@ -38,6 +38,8 @@ public class AuthController : ControllerBase
             {
                 u.idUsuarios,
                 u.Nombre,
+                u.Email,
+                u.RestablecerContrasena,
                 u.idRoles,
                 u.Rol.Nombre_Roles
             })
@@ -83,4 +85,55 @@ public class AuthController : ControllerBase
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    [HttpPost("CambiarClave")]
+    public IActionResult CambiarClave([FromBody] CambiarClaveRequest request)
+    {
+        if (string.IsNullOrEmpty(request.NuevaContrasena) || string.IsNullOrEmpty(request.ConfirmarContrasena))
+        {
+            return BadRequest("Todos los campos son requeridos.");
+        }
+
+        if (request.NuevaContrasena != request.ConfirmarContrasena)
+        {
+            return BadRequest("Las contraseñas no coinciden.");
+        }
+
+        var usuario = _context.Usuarios.FirstOrDefault(u => u.idUsuarios == request.IdUsuario);
+
+        if (usuario == null)
+        {
+            return NotFound("Usuario no encontrado.");
+        }
+
+        usuario.contrasena = ConvertirSha256(request.NuevaContrasena);
+        usuario.RestablecerContrasena = false; // Desactivar la bandera después del cambio
+        _context.SaveChanges();
+
+        return Ok("Contraseña actualizada correctamente.");
+    }
+
+    [HttpGet("ObtenerPermisos")]
+    public IActionResult ObtenerPermisos(int idUsuario)
+    {
+        var usuario = _context.Usuarios
+            .Where(u => u.idUsuarios == idUsuario && u.Activo)
+            .Select(u => new
+            {
+                u.idUsuarios,
+                u.Nombre,
+                Rol = u.Rol.Nombre_Roles,
+                Permisos = u.Rol.Permiso.Nombre_Permisos
+            })
+            .FirstOrDefault();
+
+        if (usuario == null)
+        {
+            return NotFound("Usuario no encontrado o inactivo.");
+        }
+
+        return Ok(usuario);
+    }
+
+
 }
