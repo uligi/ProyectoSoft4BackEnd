@@ -288,13 +288,12 @@ GO
 CREATE PROCEDURE Agregar_Comentario_Proyectos
     @Comentario NVARCHAR(MAX),
     @FechaCreacion DATETIME,
-    @Activo BIT,
     @idProyecto INT,
     @idUsuario INT
 AS
 BEGIN
     INSERT INTO Comentarios_Proyectos (Comentario, FechaCreacion, Activo, idProyecto, idUsuario)
-    VALUES (@Comentario, @FechaCreacion, @Activo, @idProyecto, @idUsuario);
+    VALUES (@Comentario, @FechaCreacion, 1, @idProyecto, @idUsuario);
 
     SELECT SCOPE_IDENTITY() AS idComentario;
 END
@@ -303,13 +302,12 @@ GO
 CREATE PROCEDURE Agregar_Comentario_Tarea
     @Comentario NVARCHAR(MAX),
     @FechaCreacion DATETIME,
-    @Activo BIT,
     @idTarea INT,
     @idUsuario INT
 AS
 BEGIN
     INSERT INTO Comentarios_Tareas (Comentario, FechaCreacion, Activo, idTarea, idUsuario)
-    VALUES (@Comentario, @FechaCreacion, @Activo, @idTarea, @idUsuario)
+    VALUES (@Comentario, @FechaCreacion, 1, @idTarea, @idUsuario)
 
     SELECT SCOPE_IDENTITY() AS idComentario
 END
@@ -318,13 +316,12 @@ GO
 CREATE PROCEDURE Agregar_Comentario_Subtarea
     @Comentario NVARCHAR(MAX),
     @FechaCreacion DATETIME,
-    @Activo BIT,
     @idSubtarea INT,
     @idUsuario INT
 AS
 BEGIN
     INSERT INTO Comentarios_Subtareas (Comentario, FechaCreacion, Activo, idSubtarea, idUsuario)
-    VALUES (@Comentario, @FechaCreacion, @Activo, @idSubtarea, @idUsuario)
+    VALUES (@Comentario, @FechaCreacion, 1, @idSubtarea, @idUsuario)
 
     SELECT SCOPE_IDENTITY() AS idComentario
 END

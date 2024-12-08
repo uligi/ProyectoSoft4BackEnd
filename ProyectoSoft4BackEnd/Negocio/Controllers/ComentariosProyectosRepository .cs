@@ -5,6 +5,8 @@ using Negocio.Modelos;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+
 
 namespace Negocio.Controllers
 {
@@ -28,21 +30,33 @@ namespace Negocio.Controllers
 
         public async Task<IEnumerable<ComentariosProyectosResponse>> ListarComentarios()
         {
-            var comentarios = await _context.ComentariosProyectos
-                .FromSqlRaw("EXEC Listar_Comentarios_Proyectos")
-                .ToListAsync();
-
-            return comentarios.Select(c => new ComentariosProyectosResponse
+            try
             {
-                idComentario = c.idComentario,
-                Comentario = c.Comentario,
-                FechaCreacion = c.FechaCreacion,
-                Activo = c.Activo,
-                idProyecto = c.idProyecto,
-                NombreProyecto = c.NombreProyecto,
-                idUsuario = c.idUsuario,
-                NombreUsuario = c.NombreUsuario
-            });
+                var comentarios = await _context.ComentariosProyectos
+                    .FromSqlRaw("EXEC Listar_Comentarios_Proyectos")
+                    .ToListAsync();
+
+                // Log para inspección
+                Console.WriteLine($"Comentarios obtenidos: {JsonConvert.SerializeObject(comentarios)}");
+
+                return comentarios.Select(c => new ComentariosProyectosResponse
+                {
+                    idComentario = c.idComentario,
+                    Comentario = c.Comentario,
+                    FechaCreacion = c.FechaCreacion,
+                    Activo = c.Activo,
+                    idProyecto = c.idProyecto,
+                    NombreProyecto = c.NombreProyecto,
+                    idUsuario = c.idUsuario,
+                    NombreUsuario = c.NombreUsuario
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                throw;
+            }
+
         }
 
         public async Task<int> AgregarComentario(ComentariosProyectosRequest comentario)
@@ -51,13 +65,12 @@ namespace Negocio.Controllers
             {
             new SqlParameter("@Comentario", comentario.Comentario),
             new SqlParameter("@FechaCreacion", comentario.FechaCreacion),
-            new SqlParameter("@Activo", comentario.Activo),
             new SqlParameter("@idProyecto", comentario.idProyecto),
             new SqlParameter("@idUsuario", comentario.idUsuario)
         };
 
             var result = await _context.ComentariosProyectos
-                .FromSqlRaw("EXEC Agregar_Comentario_Proyectos @Comentario, @FechaCreacion, @Activo, @idProyecto, @idUsuario", parameters)
+                .FromSqlRaw("EXEC Agregar_Comentario_Proyectos @Comentario, @FechaCreacion, @idProyecto, @idUsuario", parameters)
                 .ToListAsync();
 
             return result.FirstOrDefault()?.idComentario ?? 0;
@@ -69,11 +82,11 @@ namespace Negocio.Controllers
             {
             new SqlParameter("@idComentario", comentario.idComentario),
             new SqlParameter("@Comentario", comentario.Comentario),
-            new SqlParameter("@Activo", comentario.Activo)
+          
         };
 
             var result = await _context.MensajeUsuario
-                .FromSqlRaw("EXEC Actualizar_Comentario_Proyectos @idComentario, @Comentario, @Activo", parameters)
+                .FromSqlRaw("EXEC Actualizar_Comentario_Proyectos @idComentario, @Comentario", parameters)
                 .FirstOrDefaultAsync();
 
             return result?.Mensaje ?? "Error al actualizar el comentario.";
@@ -89,5 +102,6 @@ namespace Negocio.Controllers
 
             return result?.Mensaje ?? "Error al eliminar el comentario.";
         }
+
     }
 }

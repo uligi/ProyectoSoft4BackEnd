@@ -99,6 +99,8 @@ C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Proyec
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\ProyectoSoft4BackEnd.pdb
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Dapper.dll
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
@@ -124,6 +126,7 @@ C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Proyec
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -180,4 +183,3 @@ C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\Proyec
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\obj\Debug\net8.0\ProyectoSoft4BackEnd.pdb
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\obj\Debug\net8.0\ProyectoSoft4BackEnd.genruntimeconfig.cache
 C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\obj\Debug\net8.0\ref\ProyectoSoft4BackEnd.dll
-C:\Users\ul13m\Documents\GitHub\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\ProyectoSoft4BackEnd\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

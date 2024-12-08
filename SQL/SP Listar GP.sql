@@ -187,15 +187,30 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE Listar_Comentarios_Proyectos
+Create PROCEDURE [dbo].[Listar_Comentarios_Proyectos]
 AS
 BEGIN
-    SELECT cp.idComentario, cp.Comentario, cp.FechaCreacion, cp.Activo, 
-           p.NombreProyecto, u.Nombre AS NombreUsuario
-    FROM Comentarios_Proyectos cp
-    INNER JOIN Proyectos p ON cp.idProyecto = p.idProyectos
-    INNER JOIN Usuarios u ON cp.idUsuario = u.idUsuarios;
-END
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        SELECT 
+            cp.idComentario, 
+            ISNULL(cp.Comentario, 'Sin Comentario') AS Comentario, 
+            ISNULL(cp.FechaCreacion, GETDATE()) AS FechaCreacion, 
+            ISNULL(cp.Activo, 0) AS Activo, 
+            ISNULL(p.NombreProyecto, 'Sin Proyecto') AS NombreProyecto, 
+            ISNULL(u.Nombre, 'Sin Usuario') AS NombreUsuario
+        FROM Comentarios_Proyectos cp
+        LEFT JOIN Proyectos p ON cp.idProyecto = p.idProyectos
+        LEFT JOIN Usuarios u ON cp.idUsuario = u.idUsuarios;
+    END TRY
+    BEGIN CATCH
+        SELECT 
+            ERROR_MESSAGE() AS ErrorMessage, 
+            ERROR_NUMBER() AS ErrorNumber, 
+            ERROR_STATE() AS ErrorState;
+    END CATCH
+END;
 GO
 
 CREATE PROCEDURE Listar_Comentarios_Tareas

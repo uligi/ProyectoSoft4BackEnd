@@ -328,13 +328,13 @@ GO
 
 CREATE PROCEDURE Actualizar_Comentario_Proyectos
     @idComentario INT,
-    @Comentario NVARCHAR(MAX),
-    @Activo BIT
+    @Comentario NVARCHAR(MAX)
+ 
 AS
 BEGIN
     UPDATE Comentarios_Proyectos
     SET Comentario = @Comentario,
-        Activo = @Activo
+        Activo = 1
     WHERE idComentario = @idComentario;
 
     SELECT 'Comentario actualizado correctamente.' AS Mensaje;

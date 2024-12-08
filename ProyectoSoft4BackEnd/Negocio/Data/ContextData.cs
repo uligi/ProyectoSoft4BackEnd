@@ -23,7 +23,11 @@ namespace Negocio.Data
         public DbSet<Portafolio> Portafolio { get; set; }
         public DbSet<Proyectos> Proyectos { get; set; }
         public DbSet<Roles> Roles { get; set; }
-        
+
+        public DbSet<ProyectoReporte> ProyectoReportes { get; set; }
+
+        public DbSet<TareaReporte> TareaReportes { get; set; }
+
         public DbSet<Subtareas> Subtareas { get; set; }
         public DbSet<TareasResponse> Tareas { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }

@@ -214,12 +214,14 @@ CREATE PROCEDURE Eliminar_Comentario_Proyectos
     @idComentario INT
 AS
 BEGIN
-    DELETE FROM Comentarios_Proyectos
+    UPDATE Comentarios_Proyectos
+    SET Activo = 0
     WHERE idComentario = @idComentario;
 
     SELECT 'Comentario eliminado correctamente.' AS Mensaje;
 END
 GO
+
 
 CREATE PROCEDURE Eliminar_Comentario_Tarea
     @idComentario INT

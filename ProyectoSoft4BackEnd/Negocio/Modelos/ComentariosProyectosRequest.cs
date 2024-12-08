@@ -13,7 +13,7 @@ namespace Negocio.Modelos
         public int idComentario { get; set; }
         public string Comentario { get; set; }
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
-        public bool Activo { get; set; }
+      
         public int idProyecto { get; set; }
         public int idUsuario { get; set; }
     }
