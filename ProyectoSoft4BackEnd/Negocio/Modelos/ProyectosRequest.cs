@@ -27,6 +27,6 @@ namespace Negocio.Modelos
 
         [Required]
         public int Equipos_idEquipos { get; set; }
-        public string Estado { get; set; }
+        public string Estado { get; set; } = string.Empty;
     }
 }

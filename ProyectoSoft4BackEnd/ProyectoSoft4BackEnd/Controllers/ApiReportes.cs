@@ -1,32 +1,64 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Negocio.Controllers;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProyectoSoft4BackEnd.Controllers
 {
     [ApiController]
     [Route("api/Reportes")]
-    public class ReportesController : ControllerBase
+    public class ApiReportes : ControllerBase
     {
         private readonly ReportesRepository _repository;
 
-        public ReportesController(ReportesRepository repository)
+        public ApiReportes(ReportesRepository repository)
         {
             _repository = repository;
         }
 
+        // API para obtener reportes de Proyectos
         [HttpGet("Proyectos")]
-        public async Task<IActionResult> GetProyectos([FromQuery] DateTime fechaInicio, [FromQuery] string estado)
+        public async Task<IActionResult> GetProyectos(
+            [FromQuery] int? idUsuario = null,
+            [FromQuery] int? idEquipo = null,
+            [FromQuery] int? idPortafolio = null)
         {
-            var proyectos = await _repository.GetProyectos(fechaInicio, estado);
-            return Ok(proyectos);
+            try
+            {
+                var proyectos = await _repository.GetProyectos(idUsuario, idEquipo, idPortafolio);
+                if (!proyectos.Any())
+                {
+                    return NotFound(new { mensaje = "No se encontraron proyectos." });
+                }
+                return Ok(proyectos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { mensaje = "Error interno del servidor.", detalle = ex.Message });
+            }
         }
 
+        // API para obtener reportes de Tareas
         [HttpGet("Tareas")]
-        public async Task<IActionResult> GetTareas([FromQuery] int idUsuario, [FromQuery] string prioridad)
+        public async Task<IActionResult> GetTareas(
+            [FromQuery] int? idUsuario = null,
+            [FromQuery] int? idEquipo = null,
+            [FromQuery] int? idPortafolio = null)
         {
-            var tareas = await _repository.GetTareas(idUsuario, prioridad);
-            return Ok(tareas);
+            try
+            {
+                var tareas = await _repository.GetTareas(idUsuario, idEquipo, idPortafolio);
+                if (!tareas.Any())
+                {
+                    return NotFound(new { mensaje = "No se encontraron tareas." });
+                }
+                return Ok(tareas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { mensaje = "Error interno del servidor.", detalle = ex.Message });
+            }
         }
     }
-
 }

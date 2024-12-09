@@ -14,6 +14,8 @@ using Negocio.Data;
 
 namespace Negocio.Controllers
 {
+
+  
     public class ReportesRepository
     {
         private readonly string _connectionString;
@@ -22,32 +24,48 @@ namespace Negocio.Controllers
         {
             _connectionString = connectionString;
         }
-
-        public async Task<IEnumerable<ProyectoReporte>> GetProyectos(DateTime fechaInicio, string estado)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                var parameters = new DynamicParameters();
-                parameters.Add("@FechaInicio", fechaInicio);
-                parameters.Add("@Estado", estado);
-
-                var result = await connection.QueryAsync<ProyectoReporte>("sp_GetProyectos", parameters, commandType: CommandType.StoredProcedure);
-                return result;
-            }
-        }
-
-        public async Task<IEnumerable<TareaReporte>> GetTareas(int idUsuario, string prioridad)
+        public async Task<IEnumerable<ProyectoReporte>> GetProyectos(
+             int? idUsuario = null,
+              int? idEquipo = null,
+              int? idPortafolio = null)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@IdUsuario", idUsuario);
-                parameters.Add("@Prioridad", prioridad);
+                parameters.Add("@IdEquipo", idEquipo);
+                parameters.Add("@IdPortafolio", idPortafolio);
 
-                var result = await connection.QueryAsync<TareaReporte>("sp_GetTareas", parameters, commandType: CommandType.StoredProcedure);
-                return result;
+                return await connection.QueryAsync<ProyectoReporte>(
+                    "sp_GetProyectos",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
             }
         }
+
+
+        public async Task<IEnumerable<TareaReporte>> GetTareas(
+              int? idUsuario = null,
+              int? idEquipo = null,
+              int? idPortafolio = null)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@IdUsuario", idUsuario);
+                parameters.Add("@IdEquipo", idEquipo);
+                parameters.Add("@IdPortafolio", idPortafolio);
+
+                return await connection.QueryAsync<TareaReporte>(
+                    "sp_GetTareas",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
     }
 
 }
+
+

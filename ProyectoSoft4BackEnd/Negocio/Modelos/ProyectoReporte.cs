@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Modelos
 {
@@ -11,11 +7,12 @@ namespace Negocio.Modelos
     {
         [Key]
         public int IdProyectos { get; set; }
-        public string NombreProyecto { get; set; }
-        public string Descripcion { get; set; }
-        public string Estado { get; set; }
+        public string NombreProyecto { get; set; } = string.Empty;
+        public string Descripcion { get; set; } = string.Empty;
+        public string Estado { get; set; } = string.Empty;
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFinal { get; set; }
+        public string Equipo { get; set; } = string.Empty;// Nuevo campo para el nombre del equipo
+        public string Portafolio { get; set; } = string.Empty; // Nuevo campo para el nombre del portafolio
     }
-
 }

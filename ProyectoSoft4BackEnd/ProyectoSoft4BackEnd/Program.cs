@@ -29,6 +29,13 @@ builder.Services.AddScoped<IPortafolioRepository, PortafolioRepository>();
 builder.Services.AddScoped<IEquiposRepository, EquiposRepository>();
 builder.Services.AddScoped<IRecursosRepository, RecursosRepository>();
 
+// Registro de ReportesRepository
+builder.Services.AddScoped<ReportesRepository>(provider =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    return new ReportesRepository(connectionString);
+});
+
 // Configuración de autenticación JWT
 builder.Services.AddAuthentication(options =>
 {

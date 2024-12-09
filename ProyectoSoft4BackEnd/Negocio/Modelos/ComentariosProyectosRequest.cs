@@ -11,7 +11,7 @@ namespace Negocio.Modelos
     {
         
         public int idComentario { get; set; }
-        public string Comentario { get; set; }
+        public string Comentario { get; set; } = string.Empty;
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public int idProyecto { get; set; }
         public int idUsuario { get; set; }

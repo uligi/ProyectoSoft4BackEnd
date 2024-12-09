@@ -11,13 +11,13 @@ namespace Negocio.Modelos
     {
         [Key]
         public int idComentario { get; set; }
-        public string Comentario { get; set; }
+        public string Comentario { get; set; } = string.Empty;
         public DateTime FechaCreacion { get; set; }
         public bool Activo { get; set; }
         public int idTareas { get; set; }
-        public string NombreTarea { get; set; } // Ajustar esto si es necesario
+        public string NombreTarea { get; set; } = string.Empty; // Ajustar esto si es necesario
         public int idUsuario { get; set; }
-        public string NombreUsuario { get; set; }
+        public string NombreUsuario { get; set; } = string.Empty;
     }
 
 }

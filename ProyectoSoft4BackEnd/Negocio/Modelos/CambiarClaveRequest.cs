@@ -11,8 +11,8 @@ namespace Negocio.Modelos
     {
         [Key]
         public int IdUsuario { get; set; }
-        public string NuevaContrasena { get; set; }
-        public string ConfirmarContrasena { get; set; }
+        public string NuevaContrasena { get; set; } = string.Empty;
+        public string ConfirmarContrasena { get; set; } = string.Empty;
     }
 
 }
