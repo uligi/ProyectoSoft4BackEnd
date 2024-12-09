@@ -70,5 +70,26 @@ public class ApiComentariosProyectos : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+
+
+    //****************************************Por proyecto****************************************
+
+
+    [HttpGet("ListarComentariosPorProyecto")]
+    public async Task<IActionResult> ListarComentariosPorProyecto([FromQuery] int idProyecto)
+    {
+        try
+        {
+            var comentarios = await _service.ListarComentariosPorProyecto(idProyecto);
+            return Ok(comentarios);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { mensaje = ex.Message });
+        }
+    }
+
+
 }
 

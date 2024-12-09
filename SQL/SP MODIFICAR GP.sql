@@ -329,17 +329,23 @@ GO
 CREATE PROCEDURE Actualizar_Comentario_Proyectos
     @idComentario INT,
     @Comentario NVARCHAR(MAX)
- 
 AS
 BEGIN
-    UPDATE Comentarios_Proyectos
-    SET Comentario = @Comentario,
-        Activo = 1
-    WHERE idComentario = @idComentario;
+    SET NOCOUNT ON;
 
-    SELECT 'Comentario actualizado correctamente.' AS Mensaje;
-END
-GO
+    BEGIN TRY
+        UPDATE Comentarios_Proyectos
+        SET Comentario = @Comentario,
+            Activo = 1
+        WHERE idComentario = @idComentario;
+
+        SELECT 1 AS Codigo, 'Comentario actualizado correctamente.' AS Mensaje; -- Cambia 'Success' por 'Codigo'
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Codigo, ERROR_MESSAGE() AS Mensaje; -- Cambia 'Success' por 'Codigo'
+    END CATCH
+END;
+go
 
 CREATE PROCEDURE Actualizar_Comentario_Tarea
     @idComentario INT,
@@ -347,12 +353,25 @@ CREATE PROCEDURE Actualizar_Comentario_Tarea
     @Activo BIT
 AS
 BEGIN
-    UPDATE Comentarios_Tareas
-    SET Comentario = @Comentario,
-        Activo = @Activo
-    WHERE idComentario = @idComentario
-END
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        UPDATE Comentarios_Tareas
+        SET Comentario = @Comentario,
+            Activo = 1
+        WHERE idComentario = @idComentario;
+
+        IF @@ROWCOUNT = 0
+            THROW 50000, 'El comentario no existe.', 1;
+
+        SELECT 1 AS Codigo, 'Comentario actualizado correctamente.' AS Mensaje;
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Codigo, ERROR_MESSAGE() AS Mensaje;
+    END CATCH
+END;
 GO
+
 
 CREATE PROCEDURE Actualizar_Comentario_Subtarea
     @idComentario INT,
@@ -360,9 +379,21 @@ CREATE PROCEDURE Actualizar_Comentario_Subtarea
     @Activo BIT
 AS
 BEGIN
-    UPDATE Comentarios_Subtareas
-    SET Comentario = @Comentario,
-        Activo = @Activo
-    WHERE idComentario = @idComentario
-END
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        UPDATE Comentarios_Subtareas
+        SET Comentario = @Comentario,
+            Activo = 1
+        WHERE idComentario = @idComentario;
+
+        IF @@ROWCOUNT = 0
+            THROW 50000, 'El comentario no existe.', 1;
+
+        SELECT 1 AS Codigo, 'Comentario actualizado correctamente.' AS Mensaje;
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Codigo, ERROR_MESSAGE() AS Mensaje;
+    END CATCH
+END;
 GO

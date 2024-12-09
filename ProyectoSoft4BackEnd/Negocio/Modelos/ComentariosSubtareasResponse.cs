@@ -14,7 +14,10 @@ namespace Negocio.Modelos
         public string Comentario { get; set; }
         public DateTime FechaCreacion { get; set; }
         public bool Activo { get; set; }
-        public string NombreSubtarea { get; set; }
+        public int idSubtareas { get; set; }
+        public string NombreSubtarea { get; set; } // Este nombre debe coincidir
+        public int idUsuario { get; set; }
         public string NombreUsuario { get; set; }
     }
+
 }

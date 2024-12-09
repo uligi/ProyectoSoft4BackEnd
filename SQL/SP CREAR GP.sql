@@ -320,11 +320,19 @@ CREATE PROCEDURE Agregar_Comentario_Subtarea
     @idUsuario INT
 AS
 BEGIN
-    INSERT INTO Comentarios_Subtareas (Comentario, FechaCreacion, Activo, idSubtarea, idUsuario)
-    VALUES (@Comentario, @FechaCreacion, 1, @idSubtarea, @idUsuario)
+    SET NOCOUNT ON;
 
-    SELECT SCOPE_IDENTITY() AS idComentario
-END
+    INSERT INTO Comentarios_Subtareas (Comentario, FechaCreacion, Activo, idSubtarea, idUsuario)
+    VALUES (@Comentario, @FechaCreacion, 1, @idSubtarea, @idUsuario);
+
+    SELECT SCOPE_IDENTITY() AS idComentario;
+END;
 GO
+
+
+ALTER TABLE Comentarios_Proyectos
+ADD CONSTRAINT DF_Comentarios_Proyectos_Activo DEFAULT 1 FOR Activo;
+GO
+
 
 

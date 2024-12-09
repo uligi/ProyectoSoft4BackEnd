@@ -187,7 +187,7 @@ BEGIN
 END;
 GO
 
-Create PROCEDURE [dbo].[Listar_Comentarios_Proyectos]
+ALTER PROCEDURE [dbo].[Listar_Comentarios_Proyectos]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -198,7 +198,9 @@ BEGIN
             ISNULL(cp.Comentario, 'Sin Comentario') AS Comentario, 
             ISNULL(cp.FechaCreacion, GETDATE()) AS FechaCreacion, 
             ISNULL(cp.Activo, 0) AS Activo, 
+            cp.idProyecto, -- Agregamos esta columna
             ISNULL(p.NombreProyecto, 'Sin Proyecto') AS NombreProyecto, 
+            cp.idUsuario, -- Agregamos esta columna
             ISNULL(u.Nombre, 'Sin Usuario') AS NombreUsuario
         FROM Comentarios_Proyectos cp
         LEFT JOIN Proyectos p ON cp.idProyecto = p.idProyectos
@@ -211,7 +213,7 @@ BEGIN
             ERROR_STATE() AS ErrorState;
     END CATCH
 END;
-GO
+
 
 CREATE PROCEDURE Listar_Comentarios_Tareas
 AS
@@ -226,8 +228,10 @@ BEGIN
     FROM Comentarios_Tareas c
     INNER JOIN Tareas t ON c.idTarea = t.idTareas
     INNER JOIN Usuarios u ON c.idUsuario = u.idUsuarios
-END
+    WHERE c.Activo = 1;
+END;
 GO
+
 
 CREATE PROCEDURE Listar_Comentarios_Subtareas
 AS
@@ -242,6 +246,98 @@ BEGIN
     FROM Comentarios_Subtareas c
     INNER JOIN Subtareas s ON c.idSubtarea = s.idSubtareas
     INNER JOIN Usuarios u ON c.idUsuario = u.idUsuarios
-END
+    WHERE c.Activo = 1;
+END;
 GO
 
+
+CREATE PROCEDURE Listar_Comentarios_Por_Proyecto
+    @idProyecto INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        SELECT 
+            c.idComentario,
+            c.Comentario,
+            c.FechaCreacion,
+            c.Activo,
+            c.idProyecto, -- Campo requerido por el modelo
+            u.idUsuarios AS idUsuario, -- Alias ajustado para coincidir con el modelo
+            u.Nombre AS NombreUsuario,
+            p.NombreProyecto
+        FROM Comentarios_Proyectos c
+        INNER JOIN Usuarios u ON c.idUsuario = u.idUsuarios
+        INNER JOIN Proyectos p ON c.idProyecto = p.idProyectos
+        WHERE c.idProyecto = @idProyecto AND c.Activo = 1;
+
+    END TRY
+    BEGIN CATCH
+        SELECT 
+            ERROR_NUMBER() AS CodigoError,
+            ERROR_MESSAGE() AS MensajeError;
+    END CATCH
+END;
+GO
+
+CREATE PROCEDURE Listar_Comentarios_Por_Tarea
+    @idTarea INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        SELECT 
+            c.idComentario,
+            c.Comentario,
+            c.FechaCreacion,
+            c.Activo,
+            c.idTarea AS idTareas, -- Campo requerido por el modelo
+            u.idUsuarios AS idUsuario, -- Alias ajustado para coincidir con el modelo
+            u.Nombre AS NombreUsuario,
+            p.NombreTareas AS NombreTarea
+        FROM Comentarios_Tareas c
+        INNER JOIN Usuarios u ON c.idUsuario = u.idUsuarios
+        INNER JOIN Tareas p ON c.idTarea = p.idTareas
+        WHERE c.idTarea = @idTarea AND c.Activo = 1;
+
+    END TRY
+    BEGIN CATCH
+        SELECT 
+            ERROR_NUMBER() AS CodigoError,
+            ERROR_MESSAGE() AS MensajeError;
+    END CATCH
+END;
+GO
+
+CREATE PROCEDURE Listar_Comentarios_Por_SubTarea
+    @idSubTarea INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+      SELECT 
+			c.idComentario,
+			c.Comentario,
+			c.FechaCreacion,
+			c.Activo,
+			c.idSubtarea AS idSubtareas, -- Debe coincidir con el modelo
+			u.idUsuarios AS idUsuario,   -- Alias ajustado
+			u.Nombre AS NombreUsuario,
+			p.NombreSubtareas AS NombreSubtarea -- Alias correcto
+		FROM Comentarios_SubTareas c
+		INNER JOIN Usuarios u ON c.idUsuario = u.idUsuarios
+		INNER JOIN Subtareas p ON c.idSubtarea = p.idSubtareas
+		WHERE c.idSubtarea = @idSubTarea AND c.Activo = 1;
+
+
+    END TRY
+    BEGIN CATCH
+        SELECT 
+            ERROR_NUMBER() AS CodigoError,
+            ERROR_MESSAGE() AS MensajeError;
+    END CATCH
+END;
+GO

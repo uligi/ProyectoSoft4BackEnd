@@ -27,7 +27,8 @@ namespace Negocio.Controllers
             Task<int> AgregarComentario(ComentariosSubtareasRequest comentario);
             Task<string> ActualizarComentario(ComentariosSubtareasRequest comentario);
             Task<string> EliminarComentario(int idComentario);
-        }
+        Task<IEnumerable<ComentariosSubtareasResponse>> ListarComentariosPorSubTarea(int idTarea);
+    }
        
     public class ComentariosSubtareasRepository : IComentariosSubtareasRepository
     {
@@ -40,7 +41,7 @@ namespace Negocio.Controllers
         public async Task<IEnumerable<ComentariosSubtareasResponse>> ListarComentarios()
         {
             var comentarios = await _context.ComentariosSubtareas
-                .FromSqlRaw("EXEC Listar_Comentarios_Subtareas")
+                .FromSqlRaw("EXEC Listar_Comentarios_SubTareas")
                 .ToListAsync();
 
             return comentarios.Select(c => new ComentariosSubtareasResponse
@@ -60,17 +61,18 @@ namespace Negocio.Controllers
             {
                 new SqlParameter("@Comentario", comentario.Comentario),
                 new SqlParameter("@FechaCreacion", comentario.FechaCreacion),
-                new SqlParameter("@Activo", comentario.Activo),
                 new SqlParameter("@idSubtarea", comentario.idSubtarea),
                 new SqlParameter("@idUsuario", comentario.idUsuario)
             };
 
-            var result = await _context.ComentariosSubtareas
-                .FromSqlRaw("EXEC Agregar_Comentario_Subtarea @Comentario, @FechaCreacion, @Activo, @idSubtarea, @idUsuario", parameters)
-                .ToListAsync();
+            var result = await _context.Database.ExecuteSqlRawAsync(
+                "EXEC Agregar_Comentario_Subtarea @Comentario, @FechaCreacion, @idSubtarea, @idUsuario",
+                parameters
+            );
 
-            return result.FirstOrDefault()?.idComentario ?? 0;
+            return result;
         }
+
 
         public async Task<string> ActualizarComentario(ComentariosSubtareasRequest comentario)
         {
@@ -83,20 +85,58 @@ namespace Negocio.Controllers
 
             var result = await _context.MensajeUsuario
                 .FromSqlRaw("EXEC Actualizar_Comentario_Subtarea @idComentario, @Comentario, @Activo", parameters)
-                .FirstOrDefaultAsync();
+                .ToListAsync();
 
-            return result?.Mensaje ?? "Error al actualizar el comentario.";
+            var response = result.FirstOrDefault();
+            return response?.Codigo == 1 ? response.Mensaje : "Error al actualizar el comentario.";
         }
+
 
         public async Task<string> EliminarComentario(int idComentario)
         {
             var parameter = new SqlParameter("@idComentario", idComentario);
 
-            var result = await _context.MensajeUsuario
+            var resultList = await _context.MensajeUsuario
                 .FromSqlRaw("EXEC Eliminar_Comentario_Subtarea @idComentario", parameter)
-                .FirstOrDefaultAsync();
+                .ToListAsync();
 
+            var result = resultList.FirstOrDefault();
             return result?.Mensaje ?? "Error al eliminar el comentario.";
         }
+
+
+
+        // **********************************************************Por Tarea********************************************
+
+
+        public async Task<IEnumerable<ComentariosSubtareasResponse>> ListarComentariosPorSubTarea(int idSubtarea)
+        {
+            try
+            {
+                var parameter = new SqlParameter("@idSubtarea", idSubtarea);
+
+                var comentarios = await _context.ComentariosSubtareas
+                    .FromSqlRaw("EXEC Listar_Comentarios_Por_SubTarea @idSubTarea", parameter)
+                    .ToListAsync();
+
+                return comentarios.Select(c => new ComentariosSubtareasResponse
+                {
+                    idComentario = c.idComentario,
+                    Comentario = c.Comentario,
+                    FechaCreacion = c.FechaCreacion,
+                    Activo = c.Activo,
+                    idSubtareas = c.idSubtareas,
+                    NombreSubtarea = c.NombreSubtarea, // Este campo debe existir en el resultado
+                    idUsuario = c.idUsuario,
+                    NombreUsuario = c.NombreUsuario
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al listar comentarios: {ex.Message}");
+                throw;
+            }
+        }
+
     }
 }

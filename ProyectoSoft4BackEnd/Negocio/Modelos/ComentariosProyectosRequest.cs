@@ -9,12 +9,12 @@ namespace Negocio.Modelos
 {
     public class ComentariosProyectosRequest
     {
-        [Key]
+        
         public int idComentario { get; set; }
         public string Comentario { get; set; }
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
-      
         public int idProyecto { get; set; }
         public int idUsuario { get; set; }
     }
+
 }

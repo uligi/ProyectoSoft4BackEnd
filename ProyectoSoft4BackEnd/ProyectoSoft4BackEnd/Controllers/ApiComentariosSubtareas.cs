@@ -70,4 +70,22 @@ public class ApiComentariosSubtareas : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    //****************************************Por Sub'Tarea****************************************
+
+
+    [HttpGet("ListarComentariosPorSubTarea")]
+    public async Task<IActionResult> ListarComentariosPorSubTarea([FromQuery] int idSubtarea)
+    {
+        try
+        {
+            var comentarios = await _service.ListarComentariosPorSubTarea(idSubtarea); // Cambiar idTarea a idSubtarea
+            return Ok(comentarios);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { mensaje = ex.Message });
+        }
+    }
+
 }

@@ -70,4 +70,21 @@ public class ApiComentariosTareas : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    //****************************************Por proyecto****************************************
+
+
+    [HttpGet("ListarComentariosPorTarea")]
+    public async Task<IActionResult> ListarComentariosPorTarea([FromQuery] int idTarea)
+    {
+        try
+        {
+            var comentarios = await _service.ListarComentariosPorTarea(idTarea);
+            return Ok(comentarios);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { mensaje = ex.Message });
+        }
+    }
 }

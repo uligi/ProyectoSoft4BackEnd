@@ -210,33 +210,68 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE Eliminar_Comentario_Proyectos
+Alter PROCEDURE Eliminar_Comentario_Proyectos
     @idComentario INT
 AS
 BEGIN
-    UPDATE Comentarios_Proyectos
-    SET Activo = 0
-    WHERE idComentario = @idComentario;
+    SET NOCOUNT ON;
 
-    SELECT 'Comentario eliminado correctamente.' AS Mensaje;
-END
+    BEGIN TRY
+        UPDATE Comentarios_Proyectos
+        SET Activo = 0
+        WHERE idComentario = @idComentario;
+
+        SELECT 1 AS Codigo, 'Comentario eliminado correctamente.' AS Mensaje;
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Codigo, ERROR_MESSAGE() AS Mensaje;
+    END CATCH
+END;
 GO
+
 
 
 CREATE PROCEDURE Eliminar_Comentario_Tarea
     @idComentario INT
 AS
 BEGIN
-    DELETE FROM Comentarios_Tareas
-    WHERE idComentario = @idComentario
-END
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        UPDATE Comentarios_Tareas
+        SET Activo = 0
+        WHERE idComentario = @idComentario;
+
+        IF @@ROWCOUNT = 0
+            THROW 50000, 'El comentario no existe.', 1;
+
+        SELECT 1 AS Codigo, 'Comentario eliminado correctamente.' AS Mensaje;
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Codigo, ERROR_MESSAGE() AS Mensaje;
+    END CATCH
+END;
 GO
+
 
 CREATE PROCEDURE Eliminar_Comentario_Subtarea
     @idComentario INT
 AS
 BEGIN
-    DELETE FROM Comentarios_Subtareas
-    WHERE idComentario = @idComentario
-END
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        UPDATE Comentarios_Subtareas
+        SET Activo = 0
+        WHERE idComentario = @idComentario;
+
+        IF @@ROWCOUNT = 0
+            THROW 50000, 'El comentario no existe.', 1;
+
+        SELECT 1 AS Codigo, 'Comentario eliminado correctamente.' AS Mensaje;
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Codigo, ERROR_MESSAGE() AS Mensaje;
+    END CATCH
+END;
 GO
