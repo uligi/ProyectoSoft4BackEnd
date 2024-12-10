@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|c:\\users\\ul13m\\documents\\github\\proyectosoft4backend\\proyectosoft4backend\\proyectosoft4backend\\controllers\\apireportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8C30B92F-BEC7-4B2A-B369-8696BB979513}|ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd.csproj|solutionrelative:proyectosoft4backend\\controllers\\apireportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -42,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +62,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\appsettings.json",
+              "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\appsettings.json",
+              "ToolTip": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\appsettings.json",
+              "RelativeToolTip": "ProyectoSoft4BackEnd\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-10T13:02:20.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "RolesRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\RolesRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\RolesRepository.cs",
@@ -71,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "RecursosRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\RecursosRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\RecursosRepository.cs",
@@ -84,7 +101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Program.cs",
               "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Program.cs",
@@ -97,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ContextData.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Data\\ContextData.cs",
               "RelativeDocumentMoniker": "Negocio\\Data\\ContextData.cs",
@@ -110,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "TareaReporte.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\TareaReporte.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\TareaReporte.cs",
@@ -123,7 +140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ProyectoReporte.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Modelos\\ProyectoReporte.cs",
               "RelativeDocumentMoniker": "Negocio\\Modelos\\ProyectoReporte.cs",
@@ -136,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ReportesRepository.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Negocio\\Controllers\\ReportesRepository.cs",
               "RelativeDocumentMoniker": "Negocio\\Controllers\\ReportesRepository.cs",
@@ -149,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ApiReportes.cs",
               "DocumentMoniker": "C:\\Users\\ul13m\\Documents\\GitHub\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\ProyectoSoft4BackEnd\\Controllers\\ApiReportes.cs",
               "RelativeDocumentMoniker": "ProyectoSoft4BackEnd\\Controllers\\ApiReportes.cs",

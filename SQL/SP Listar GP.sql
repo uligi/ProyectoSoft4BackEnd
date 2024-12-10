@@ -2,7 +2,7 @@ USE DB_GP;
 GO
 
 -- Stored Procedure para la tabla Proyectos con JOIN a Portafolio y Equipos
-CREATE PROCEDURE [dbo].[sp_Listar_Proyectos]
+CREATE or alter PROCEDURE [dbo].[sp_Listar_Proyectos]
 AS
 BEGIN
 SELECT 
@@ -26,7 +26,7 @@ END;
 GO
 
 -- Stored Procedure para la tabla Tareas con JOIN a Proyectos y Usuarios
-CREATE PROCEDURE Listar_Tareas
+CREATE or alter PROCEDURE Listar_Tareas
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -53,7 +53,7 @@ GO
 
 
 -- Stored Procedure para la tabla Subtareas con JOIN a Tareas
-CREATE PROCEDURE Listar_Subtareas
+CREATE or alter PROCEDURE Listar_Subtareas
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -76,7 +76,7 @@ END;
 GO
 
 -- Stored Procedure para la tabla Miembros_de_equipos con JOIN a Equipos, Usuarios y Roles
-CREATE PROCEDURE Listar_Todos_Los_Miembros
+CREATE or alter PROCEDURE Listar_Todos_Los_Miembros
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -99,7 +99,7 @@ GO
 
 
 -- Stored Procedure para la tabla Historial_de_cambios con JOIN a Tareas, Proyectos y Portafolio
-CREATE PROCEDURE [dbo].[sp_Listar_Historial_Cambios]
+CREATE or alter PROCEDURE [dbo].[sp_Listar_Historial_Cambios]
 AS
 BEGIN
     SELECT 
@@ -119,7 +119,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE [dbo].[sp_Listar_Permisos]
+CREATE or alter PROCEDURE [dbo].[sp_Listar_Permisos]
 AS
 BEGIN
     SELECT 
@@ -130,7 +130,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE [dbo].[sp_Listar_Roles]
+CREATE or alter PROCEDURE [dbo].[sp_Listar_Roles]
 AS
 BEGIN
     SELECT 
@@ -146,7 +146,7 @@ GO
 
 
 
-create PROCEDURE [dbo].[sp_Listar_Usuarios]
+CREATE or alter PROCEDURE [dbo].[sp_Listar_Usuarios]
 AS
 BEGIN
     SELECT 
@@ -167,7 +167,7 @@ END;
 GO
 
 
-CREATE PROCEDURE [dbo].[Listar_Portafolios]
+CREATE or alter PROCEDURE [dbo].[Listar_Portafolios]
 AS
 BEGIN
     SELECT idPortafolio, NombrePortafolio, Descripcion, Activo, FechaCreacion
@@ -176,7 +176,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE [dbo].[Listar_Equipos]
+CREATE or alter PROCEDURE [dbo].[Listar_Equipos]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -187,7 +187,7 @@ BEGIN
 END;
 GO
 
-ALTER PROCEDURE [dbo].[Listar_Comentarios_Proyectos]
+CREATE or alter PROCEDURE [dbo].[Listar_Comentarios_Proyectos]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -215,7 +215,7 @@ BEGIN
 END;
 
 
-CREATE PROCEDURE Listar_Comentarios_Tareas
+CREATE or alter PROCEDURE Listar_Comentarios_Tareas
 AS
 BEGIN
     SELECT 
@@ -233,7 +233,7 @@ END;
 GO
 
 
-CREATE PROCEDURE Listar_Comentarios_Subtareas
+CREATE or alter PROCEDURE Listar_Comentarios_Subtareas
 AS
 BEGIN
     SELECT 
@@ -251,7 +251,7 @@ END;
 GO
 
 
-CREATE PROCEDURE Listar_Comentarios_Por_Proyecto
+CREATE or alter PROCEDURE Listar_Comentarios_Por_Proyecto
     @idProyecto INT
 AS
 BEGIN
@@ -281,7 +281,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE Listar_Comentarios_Por_Tarea
+CREATE or alter PROCEDURE Listar_Comentarios_Por_Tarea
     @idTarea INT
 AS
 BEGIN
@@ -311,7 +311,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE Listar_Comentarios_Por_SubTarea
+CREATE or alter PROCEDURE Listar_Comentarios_Por_SubTarea
     @idSubTarea INT
 AS
 BEGIN
