@@ -210,7 +210,7 @@ BEGIN
 END;
 GO
 
-Alter PROCEDURE Eliminar_Comentario_Proyectos
+Create PROCEDURE Eliminar_Comentario_Proyectos
     @idComentario INT
 AS
 BEGIN

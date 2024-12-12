@@ -28,7 +28,7 @@ GO
 EXEC Crear_Usuario 
     @Nombre = 'Carlos Fernández', 
     @Email = 'carlos.fernandez@example.com', 
-    @Contrasena = 'a6aafc88db93b9487d27f7e9e2c1f92d7658b5cf8a1d98b2d5e14320bbdd51f8', 
+    @Contrasena = 'ac9c2c34c9f7ad52528c3422af40a66e2e24aaf2a727831255413c9470158984', 
     @idRoles = 1;
 GO
 
@@ -39,7 +39,7 @@ GO
 EXEC Crear_Usuario 
     @Nombre = 'Ana María López', 
     @Email = 'ana.lopez@example.com', 
-    @Contrasena = 'c19a4149b56185093ff6bb63604b014cdf194b8b1d8e6d9cf8853fa474b405a7', 
+    @Contrasena = 'e82827b00b2ca8620beb37f879778c082b292a52270390cff35b6fe3157f4e8b', 
     @idRoles = 2;
 GO
 
@@ -48,7 +48,7 @@ GO
 EXEC Crear_Usuario 
     @Nombre = 'Luis Alberto', 
     @Email = 'luis.alberto@example.com', 
-    @Contrasena = 'e1b61c43ff155019bda0fd32e9b896eeb8f6ecdfd4d9ffb1e8b7e689eaa6475c', 
+    @Contrasena = 'ec7908dc8241f0e4340266990dfe6001b1757084d891c6758bfaac826750009a', 
     @idRoles = 3;
 GO
 
@@ -57,7 +57,7 @@ GO
 EXEC Crear_Usuario 
     @Nombre = 'María García', 
     @Email = 'maria.garcia@example.com', 
-    @Contrasena = '879f57fbb3bc47178b123b6261c44a8b14d175c5c120c028a8e7170e7c5de6c4', 
+    @Contrasena = '626e3c805e77eeb472c42c6be607be2af7ac5c08fd7050f278e0330fe81abf57', 
     @idRoles = 3;
 GO
 
@@ -66,7 +66,7 @@ GO
 EXEC Crear_Usuario 
     @Nombre = 'Jorge Martínez', 
     @Email = 'jorge.martinez@example.com', 
-    @Contrasena = 'b2f834d9d7cc8a7cb3c430cd80b2c70e9309c9e6eebd548cdff8b7cfe9726c80', 
+    @Contrasena = 'f69ed3a744195d7d1429b167f449ed9a76f36ba6a74f997a7bfe179649de32c4', 
     @idRoles = 4;
 GO
 

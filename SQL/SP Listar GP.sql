@@ -213,7 +213,7 @@ BEGIN
             ERROR_STATE() AS ErrorState;
     END CATCH
 END;
-
+GO
 
 CREATE or alter PROCEDURE Listar_Comentarios_Tareas
 AS
