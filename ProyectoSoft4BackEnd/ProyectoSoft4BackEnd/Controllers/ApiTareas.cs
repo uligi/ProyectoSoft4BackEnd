@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Negocio.Controllers;
 using Negocio.Modelos;
 using System.Threading;
@@ -106,4 +107,54 @@ public class ApiTareas : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpGet("ListarTareasPorProyecto")]
+    public async Task<IActionResult> ListarTareasPorProyecto(int idProyectos)
+    {
+        try
+        {
+            var tareas = await _service.ListarTareasPorProyecto(idProyectos);
+            return Ok(tareas);
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest($"Error: {ex.Message}");
+        }
+    }
+
+    [HttpGet("ObtenerTareaPorID")]
+    public async Task<IActionResult> ObtenerTareaPorID(int idTarea)
+    {
+        try
+        {
+            var tarea = await _service.ObtenerTareaPorID(idTarea);
+            if (tarea == null)
+            {
+                return NotFound($"No se encontró la tarea con ID: {idTarea}");
+            }
+            return Ok(tarea);
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest($"Error: {ex.Message}");
+        }
+    }
+
+
+    [HttpGet("ObtenerSubtareasPorTareaID")]
+    public async Task<IActionResult> ObtenerSubtareasPorTareaID(int idTarea)
+    {
+        try
+        {
+            var subtareas = await _service.ObtenerSubtareasPorTareaID(idTarea);
+            return Ok(subtareas);
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest($"Error: {ex.Message}");
+        }
+    }
+
+
+
 }

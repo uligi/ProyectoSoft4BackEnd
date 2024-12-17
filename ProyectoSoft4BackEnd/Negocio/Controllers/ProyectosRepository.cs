@@ -13,6 +13,7 @@ namespace Negocio.Controllers
         Task<IEnumerable<MensajeUsuario>> CrearProyecto(Proyectos proyecto);
         Task<IEnumerable<MensajeUsuario>> ActualizarProyecto(Proyectos proyecto);
         Task<IEnumerable<MensajeUsuario>> EliminarProyecto(int idProyectos);
+        Task<IEnumerable<Proyectos>> ObtenerProyectosPorUsuario(int idUsuario);
     }
 
     public class ProyectosRepository : IProyectosRepository
@@ -28,6 +29,16 @@ namespace Negocio.Controllers
         {
             return await _context.Proyectos.ToListAsync();
         }
+
+        public async Task<IEnumerable<Proyectos>> ObtenerProyectosPorUsuario(int idUsuario)
+        {
+            var idParam = new SqlParameter("@idUsuario", idUsuario);
+
+            return await _context.Proyectos
+                .FromSqlRaw("EXEC ListarProyectosPorUsuario @idUsuario", idParam)
+                .ToListAsync();
+        }
+
 
         public async Task<IEnumerable<MensajeUsuario>> CrearProyecto(Proyectos proyecto)
         {

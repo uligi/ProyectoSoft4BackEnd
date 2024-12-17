@@ -341,3 +341,109 @@ BEGIN
     END CATCH
 END;
 GO
+
+CREATE or alter PROCEDURE [dbo].[ListarProyectosPorUsuario]
+    @idUsuario INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT DISTINCT
+        p.idProyectos,
+        p.NombreProyecto,
+        p.Descripcion,
+        p.FechaEstimada,
+        p.FechaInicio,
+        p.FechaFinal,
+        p.Prioridad,
+		e.idEquipos,
+		p.idPortafolio,
+        p.Estado,
+		p.Activo,
+		p.Equipos_idEquipos,
+        pf.NombrePortafolio,
+        e.NombreEquipos
+    FROM Proyectos p
+    INNER JOIN Equipos e ON p.Equipos_idEquipos = e.idEquipos
+    INNER JOIN Miembros_de_equipos me ON e.idEquipos = me.idEquipos
+    INNER JOIN Portafolio pf ON p.idPortafolio = pf.idPortafolio
+    WHERE me.idUsuarios = @idUsuario
+        AND p.Activo = 1;
+
+    -- Gerentes podrían tener lógica adicional si los roles necesitan más datos
+END;
+GO
+
+CREATE OR ALTER PROCEDURE Listar_Tareas_Por_Proyecto
+    @idProyectos INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        t.idTareas,
+        t.NombreTareas,
+        t.Descripcion,
+        t.Prioridad,
+        t.FechaInicio,
+        t.FechaFinal,
+        t.Estado,
+        t.Activo,
+        t.idProyectos,
+        p.NombreProyecto, -- Añadir esta columna
+        u.Nombre AS NombreUsuario
+    FROM Tareas t
+    LEFT JOIN Proyectos p ON t.idProyectos = p.idProyectos
+    LEFT JOIN Usuarios u ON t.idUsuarios = u.idUsuarios
+    WHERE t.idProyectos = @idProyectos
+      AND t.Activo = 1; -- Solo tareas activas
+END;
+GO
+
+CREATE OR ALTER PROCEDURE sp_ObtenerTareaPorID
+    @idTarea INT
+AS
+BEGIN
+    SELECT 
+        T.idTareas,
+        T.NombreTareas,
+        T.Descripcion,
+        T.Prioridad,
+        T.FechaInicio,
+        T.FechaFinal,
+        T.Estado,
+        T.Activo,
+        U.Nombre AS NombreUsuario, -- Corregir el alias aquí
+        P.NombreProyecto
+    FROM Tareas T
+    LEFT JOIN Usuarios U ON T.idUsuarios = U.idUsuarios
+    LEFT JOIN Proyectos P ON T.idProyectos = P.idProyectos
+    WHERE T.idTareas = @idTarea;
+END;
+GO
+
+
+
+CREATE OR ALTER PROCEDURE sp_ObtenerSubtareasPorIDTarea
+    @idTarea INT
+AS
+BEGIN
+    SELECT 
+        ST.idSubtareas,
+        ST.NombreSubtareas,
+        ST.Descripcion,
+        ST.Prioridad,
+        ST.FechaInicio,
+        ST.FechaFinal,
+        ST.Estado,
+        ST.Activo,
+        ST.idTareas,
+        T.NombreTareas AS NombreTarea -- Se añade el nombre de la tarea asociada
+    FROM Subtareas ST
+    INNER JOIN Tareas T ON ST.idTareas = T.idTareas
+    WHERE ST.idTareas = @idTarea;
+END;
+GO
+
+
+

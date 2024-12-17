@@ -13,6 +13,12 @@ namespace Negocio.Controllers
         Task<IEnumerable<MensajeUsuario>> CrearTarea(TareasRequest tarea);
         Task<IEnumerable<MensajeUsuario>> ActualizarTarea(TareasRequest tarea);
         Task<IEnumerable<MensajeUsuario>> EliminarTarea(int idTareas);
+        Task<IEnumerable<TareasResponse>> ListarTareasPorProyecto(int idProyectos);
+
+        // Métodos nuevos
+        Task<TareasResponse> ObtenerTareaPorID(int idTarea);
+        Task<IEnumerable<Subtareas>> ObtenerSubtareasPorTareaID(int idTarea);
+
     }
 
     public class TareasRepository : ITareasRepository
@@ -30,7 +36,38 @@ namespace Negocio.Controllers
                 .FromSqlRaw("EXEC Listar_Tareas")
                 .ToListAsync();
         }
+        public async Task<IEnumerable<TareasResponse>> ListarTareasPorProyecto(int idProyectos)
+        {
+            var idParam = new SqlParameter("@idProyectos", idProyectos);
 
+            return await _context.Tareas
+                .FromSqlRaw("EXEC Listar_Tareas_Por_Proyecto @idProyectos", idParam)
+                .ToListAsync();
+        }
+
+        // Nuevo método: Obtener Tarea por ID
+        public async Task<TareasResponse> ObtenerTareaPorID(int idTarea)
+        {
+            var idParam = new SqlParameter("@idTarea", idTarea);
+
+            var result = await _context.Tareas
+                .FromSqlRaw("EXEC sp_ObtenerTareaPorID @idTarea", idParam)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return result.FirstOrDefault();
+        }
+
+
+        // Nuevo método: Obtener Subtareas por Tarea ID
+        public async Task<IEnumerable<Subtareas>> ObtenerSubtareasPorTareaID(int idTarea)
+        {
+            var idParam = new SqlParameter("@idTarea", idTarea);
+
+            return await _context.Subtareas
+                .FromSqlRaw("EXEC sp_ObtenerSubtareasPorIDTarea @idTarea", idParam)
+                .ToListAsync();
+        }
         public async Task<IEnumerable<MensajeUsuario>> CrearTarea(TareasRequest tarea)
         {
             var parameters = new[]

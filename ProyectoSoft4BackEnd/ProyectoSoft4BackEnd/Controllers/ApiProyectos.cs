@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Negocio.Controllers;
 using Negocio.Modelos;
 using System.Collections.Generic;
@@ -123,4 +124,23 @@ public class ApiProyectos : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpGet("ListaProyectosPorUsuario")]
+    public async Task<IActionResult> ListaProyectosPorUsuario(int idUsuario)
+    {
+        try
+        {
+            var proyectos = await _service.ObtenerProyectosPorUsuario(idUsuario);
+            if (proyectos == null || !proyectos.Any())
+                return NotFound("No se encontraron proyectos para este usuario.");
+
+            return Ok(proyectos);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Error: {ex.Message}");
+        }
+    }
+
+
 }

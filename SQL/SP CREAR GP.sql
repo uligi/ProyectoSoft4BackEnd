@@ -103,12 +103,13 @@ GO
 
 
 
-CREATE PROCEDURE Crear_Subtarea
+CREATE or alter PROCEDURE Crear_Subtarea
     @NombreSubtareas VARCHAR(45),
     @Descripcion NVARCHAR(MAX),
     @Prioridad VARCHAR(45),
     @FechaInicio DATE,
     @FechaFinal DATE,
+	
     @idTareas INT,
 	@Estado VARCHAR(45)
 AS
@@ -122,6 +123,7 @@ BEGIN
         FechaInicio, 
         FechaFinal, 
         idTareas,
+		Activo,
 		Estado
     )
     VALUES (
@@ -131,6 +133,7 @@ BEGIN
         @FechaInicio, 
         @FechaFinal, 
         @idTareas,
+		1,
 		@Estado
     );
 
@@ -142,7 +145,7 @@ END;
 GO
 
 
-CREATE PROCEDURE Crear_Tarea
+CREATE or Alter PROCEDURE Crear_Tarea
     @NombreTareas VARCHAR(45),
     @Descripcion NVARCHAR(MAX),
     @Prioridad VARCHAR(45),
@@ -150,12 +153,13 @@ CREATE PROCEDURE Crear_Tarea
     @FechaFinal DATE,
     @idProyectos INT,
     @idUsuarios INT = NULL,
+	
 	@Estado VARCHAR(45)
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO Tareas (NombreTareas, Descripcion, Prioridad, FechaInicio, FechaFinal, Activo, idProyectos, idUsuarios,Estado)
+    INSERT INTO Tareas (NombreTareas, Descripcion, Prioridad, FechaInicio, FechaFinal, Activo, idProyectos, idUsuarios, Estado)
     VALUES (@NombreTareas, @Descripcion, @Prioridad, @FechaInicio, @FechaFinal, 1, @idProyectos, @idUsuarios,@Estado);
 
     SELECT SCOPE_IDENTITY() AS idTareas,1 AS Codigo, 'Usuario creado exitosamente.' AS Mensaje;;
