@@ -259,8 +259,7 @@ EXEC Crear_Subtarea
     @Prioridad = 'Alta', 
     @FechaInicio = '2024-01-17', 
     @FechaFinal = '2024-01-31', 
-    @idTareas = 1,
-	@Activo = 1,-- Diseñar arquitectura del sistema de transporte
+    @idTareas = 1,-- Diseñar arquitectura del sistema de transporte
     @Estado = 'En Progreso';
 GO
 
@@ -271,7 +270,7 @@ EXEC Crear_Subtarea
     @FechaInicio = '2024-02-05', 
     @FechaFinal = '2024-02-20', 
     @idTareas = 2,
-	@Activo = 1,-- Configurar servidores de banda ancha
+	
     @Estado = 'Pendiente';
 GO
 
@@ -282,7 +281,7 @@ EXEC Crear_Subtarea
     @FechaInicio = '2024-07-03', 
     @FechaFinal = '2024-07-15', 
     @idTareas = 3,
-	@Activo = 1,-- Crear material educativo digital
+	
     @Estado = 'Planificación';
 GO
 
@@ -293,7 +292,7 @@ EXEC Crear_Subtarea
     @FechaInicio = '2024-03-05', 
     @FechaFinal = '2024-03-20', 
     @idTareas = 4,
-	@Activo = 1,-- Instalar paneles solares
+	
     @Estado = 'Pendiente';
 GO
 
@@ -304,7 +303,7 @@ EXEC Crear_Subtarea
     @FechaInicio = '2024-05-10', 
     @FechaFinal = '2024-05-25', 
     @idTareas = 5,
-	@Activo = 1,-- Auditar infraestructura de seguridad digital
+	
     @Estado = 'Planificación';
 GO
 
