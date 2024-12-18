@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.SqlServer.Server;
 using Negocio.Data;
 using Negocio.Modelos;
 using System.Collections.Generic;
@@ -10,8 +11,9 @@ namespace Negocio.Controllers
     public interface IMiembrosDeEquiposRepository
     {
         Task<IEnumerable<MiembrosDeEquipos>> ListarTodosLosMiembros();
-        Task<IEnumerable<MensajeUsuario>> CrearMiembroEquipo(int idEquipos, int idUsuarios);
-        Task<IEnumerable<MensajeUsuario>> ModificarMiembroEquipo(int idMiembrosDeEquipos, int idEquipos, int idUsuarios);
+        Task<IEnumerable<MensajeUsuario>> CrearMiembroEquipo(int idEquipos, int idUsuarios, bool forzar = false);
+
+        Task<IEnumerable<MensajeUsuario>> ModificarMiembroEquipo(int idMiembrosDeEquipos, int idEquipos, int idUsuarios, bool forzar = false);
 
         Task<IEnumerable<MensajeUsuario>> EliminarMiembroEquipo(int idMiembrosDeEquipos);
     }
@@ -33,28 +35,32 @@ namespace Negocio.Controllers
         }
 
 
-        public async Task<IEnumerable<MensajeUsuario>> CrearMiembroEquipo(int idEquipos, int idUsuarios)
+        public async Task<IEnumerable<MensajeUsuario>> CrearMiembroEquipo(int idEquipos, int idUsuarios, bool forzar = false)
         {
             var idEquiposParam = new SqlParameter("@idEquipos", idEquipos);
             var idUsuariosParam = new SqlParameter("@idUsuarios", idUsuarios);
+            var forzarParam = new SqlParameter("@forzar", forzar);
 
             return await _context.MensajeUsuario
-                .FromSqlRaw("EXEC Crear_Miembro_Equipo @idEquipos, @idUsuarios", idEquiposParam, idUsuariosParam)
+                .FromSqlRaw("EXEC Crear_Miembro_Equipo @idEquipos, @idUsuarios, @forzar", idEquiposParam, idUsuariosParam, forzarParam)
                 .ToListAsync();
         }
 
 
-        public async Task<IEnumerable<MensajeUsuario>> ModificarMiembroEquipo(int idMiembrosDeEquipos, int idEquipos, int idUsuarios)
+
+        public async Task<IEnumerable<MensajeUsuario>> ModificarMiembroEquipo(int idMiembrosDeEquipos, int idEquipos, int idUsuarios, bool forzar = false)
         {
             var parameters = new[]
             {
         new SqlParameter("@idMiembros_de_equipos", idMiembrosDeEquipos),
         new SqlParameter("@idEquipos", idEquipos),
-        new SqlParameter("@idUsuarios", idUsuarios)
+        new SqlParameter("@idUsuarios", idUsuarios),
+        new SqlParameter("@forzar", forzar)
+
     };
 
             return await _context.MensajeUsuario
-                .FromSqlRaw("EXEC Modificar_Miembro_Equipo @idMiembros_de_equipos, @idEquipos, @idUsuarios", parameters)
+                .FromSqlRaw("EXEC Modificar_Miembro_Equipo @idMiembros_de_equipos, @idEquipos, @idUsuarios, @forzar", parameters)
                 .ToListAsync();
         }
 

@@ -1,7 +1,7 @@
 use DB_GP
 GO
 
-CREATE PROCEDURE Actualizar_Comentario
+CREATE or alter PROCEDURE Actualizar_Comentario
     @idComentarios INT,
     @Comentario NVARCHAR(MAX),
     @Activo BIT
@@ -19,7 +19,7 @@ END;
 GO
 
 
-CREATE PROCEDURE [dbo].[Actualizar_Equipo]
+CREATE or alter PROCEDURE [dbo].[Actualizar_Equipo]
     @idEquipos INT,
     @NombreEquipos VARCHAR(45)
 AS
@@ -43,10 +43,11 @@ END;
 GO
 
 
-CREATE PROCEDURE Modificar_Miembro_Equipo
+CREATE OR ALTER PROCEDURE Modificar_Miembro_Equipo
     @idMiembros_de_equipos INT,
     @idEquipos INT,
-    @idUsuarios INT
+    @idUsuarios INT,
+    @forzar BIT = 0 -- Parámetro para forzar la modificación
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -72,6 +73,30 @@ BEGIN
         RETURN;
     END;
 
+    -- Verificar si el miembro ya está en el mismo equipo
+    IF EXISTS (
+        SELECT 1
+        FROM Miembros_de_equipos
+        WHERE idUsuarios = @idUsuarios AND idEquipos = @idEquipos
+          AND idMiembros_de_equipos <> @idMiembros_de_equipos
+    )
+    BEGIN
+        SELECT -4 AS Codigo, 'El usuario ya pertenece a este equipo' AS Mensaje;
+        RETURN;
+    END;
+
+    -- Verificar si el usuario ya pertenece a otro equipo (no forzado)
+    IF @forzar = 0 AND EXISTS (
+        SELECT 1
+        FROM Miembros_de_equipos
+        WHERE idUsuarios = @idUsuarios AND idEquipos <> @idEquipos
+          AND idMiembros_de_equipos <> @idMiembros_de_equipos
+    )
+    BEGIN
+        SELECT -5 AS Codigo, 'El usuario ya pertenece a otro equipo. ¿Desea forzar la actualización?' AS Mensaje;
+        RETURN;
+    END;
+
     -- Actualizar el miembro del equipo
     UPDATE Miembros_de_equipos
     SET idEquipos = @idEquipos,
@@ -83,7 +108,8 @@ END;
 GO
 
 
-CREATE PROCEDURE [dbo].[Actualizar_Portafolio]
+
+CREATE or alter PROCEDURE [dbo].[Actualizar_Portafolio]
     @idPortafolio INT,
     @NombrePortafolio VARCHAR(300),
     @Descripcion NVARCHAR(MAX)
@@ -108,7 +134,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[Actualizar_Proyecto]
+CREATE or alter PROCEDURE [dbo].[Actualizar_Proyecto]
     @idProyectos INT,
     @NombreProyecto VARCHAR(500),
     @Descripcion NVARCHAR(MAX),
@@ -162,7 +188,7 @@ END;
 GO
 
 
-CREATE PROCEDURE Actualizar_Tarea
+CREATE or alter PROCEDURE Actualizar_Tarea
     @idTareas INT,
     @NombreTareas VARCHAR(45),
     @Descripcion NVARCHAR(MAX),
@@ -208,7 +234,7 @@ GO
 
 
 
-Create PROCEDURE [dbo].[Modificar_Usuario]
+Create or alter PROCEDURE [dbo].[Modificar_Usuario]
     @idUsuarios INT,
     @Nombre VARCHAR(200),
     @Email VARCHAR(200),
@@ -234,7 +260,7 @@ END;
 GO
 
 
-CREATE PROCEDURE [dbo].[Modificar_Permiso]
+CREATE or alter PROCEDURE [dbo].[Modificar_Permiso]
     @idPermisos INT,
     @Nombre_Permisos VARCHAR(100),
     @Activo BIT
@@ -260,7 +286,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE [dbo].[Modificar_Rol]
+CREATE or alter PROCEDURE [dbo].[Modificar_Rol]
     @idRoles INT,
     @Nombre_Roles VARCHAR(100),
     @Activo BIT,
@@ -295,7 +321,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE Actualizar_Subtarea
+CREATE or alter PROCEDURE Actualizar_Subtarea
     @idSubtareas INT,
     @NombreSubtareas VARCHAR(45),
     @Descripcion NVARCHAR(MAX),
@@ -326,7 +352,7 @@ BEGIN
 		END;
 GO
 
-CREATE PROCEDURE Actualizar_Comentario_Proyectos
+CREATE or alter PROCEDURE Actualizar_Comentario_Proyectos
     @idComentario INT,
     @Comentario NVARCHAR(MAX)
 AS
@@ -347,7 +373,7 @@ BEGIN
 END;
 go
 
-CREATE PROCEDURE Actualizar_Comentario_Tarea
+CREATE or alter PROCEDURE Actualizar_Comentario_Tarea
     @idComentario INT,
     @Comentario NVARCHAR(MAX),
     @Activo BIT
@@ -373,7 +399,7 @@ END;
 GO
 
 
-CREATE PROCEDURE Actualizar_Comentario_Subtarea
+CREATE or alter PROCEDURE Actualizar_Comentario_Subtarea
     @idComentario INT,
     @Comentario NVARCHAR(MAX),
     @Activo BIT

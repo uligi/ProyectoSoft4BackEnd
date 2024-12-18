@@ -14,5 +14,7 @@ namespace Negocio.Modelos
 
         [Required]
         public int idUsuarios { get; set; }
+
+        public bool forzar { get; set; }
     }
 }

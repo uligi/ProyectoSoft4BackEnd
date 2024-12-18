@@ -35,25 +35,27 @@ public class ApiMiembros : ControllerBase
 
 
         [HttpPost("NuevoMiembro")]
-    public async Task<IActionResult> NuevoMiembro([FromBody] MiembroEquipoRequest request)
-    {
-        try
+        public async Task<IActionResult> NuevoMiembro([FromBody] MiembroEquipoRequest request)
         {
-            var resultado = await _service.CrearMiembroEquipo(request.idEquipos, request.idUsuarios);
-            return Ok(resultado);
+            try
+            {
+                var resultado = await _service.CrearMiembroEquipo(request.idEquipos, request.idUsuarios, request.forzar);
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Mensaje = "Error del servidor", Detalle = ex.Message });
+            }
         }
-        catch (System.Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
-    }
+
+
 
         [HttpPut("ActualizarMiembro/{idMiembro}")]
         public async Task<IActionResult> ActualizarMiembro(int idMiembro, [FromBody] MiembroEquipoRequest request)
         {
             try
             {
-                var resultado = await _service.ModificarMiembroEquipo(idMiembro, request.idEquipos, request.idUsuarios);
+                var resultado = await _service.ModificarMiembroEquipo(idMiembro, request.idEquipos, request.idUsuarios, request.forzar);
                 return Ok(resultado);
             }
             catch (System.Exception ex)

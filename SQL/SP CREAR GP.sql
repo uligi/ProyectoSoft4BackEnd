@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE Agregar_Comentario
+CREATE or alter PROCEDURE Agregar_Comentario
     @Comentario NVARCHAR(MAX),
     @FechaCreacion DATETIME,
     @Tareas_idTareas INT = NULL,
@@ -26,7 +26,7 @@ END;
 GO
 
 
-CREATE PROCEDURE [dbo].[Crear_Equipo]
+CREATE or alter PROCEDURE [dbo].[Crear_Equipo]
     @NombreEquipos VARCHAR(45),
     @Activo BIT = 1
 AS
@@ -48,7 +48,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE [dbo].[Crear_HistorialCambio]
+CREATE or alter PROCEDURE [dbo].[Crear_HistorialCambio]
     @idTareas INT = NULL,
     @idProyectos INT = NULL,
     @idPortafolio INT = NULL,
@@ -65,7 +65,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[Crear_Proyecto]
+CREATE or alter PROCEDURE [dbo].[Crear_Proyecto]
     @NombreProyecto VARCHAR(500),
     @Descripcion NVARCHAR(MAX),
     @FechaEstimada DATE,
@@ -167,7 +167,7 @@ END;
 GO
 
 
-Create PROCEDURE [dbo].[Crear_Usuario]
+Create or alter PROCEDURE [dbo].[Crear_Usuario]
     @Nombre VARCHAR(200),
     @Email VARCHAR(200),
     @Contrasena VARCHAR(500),
@@ -184,9 +184,10 @@ END;
 GO
 
 
-Create PROCEDURE Crear_Miembro_Equipo
+Create or ALTER PROCEDURE Crear_Miembro_Equipo
     @idEquipos INT,
-    @idUsuarios INT
+    @idUsuarios INT,
+    @forzar BIT = 0 -- Parámetro para forzar la inserción
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -205,12 +206,22 @@ BEGIN
         RETURN;
     END;
 
-    -- Verificar si ya está asignado al equipo
+    -- Verificar si ya está asignado al mismo equipo
     IF EXISTS (SELECT 1 FROM Miembros_de_equipos WHERE idEquipos = @idEquipos AND idUsuarios = @idUsuarios)
     BEGIN
-        SELECT -3 AS Codigo, 'El usuario ya está asignado al equipo' AS Mensaje;
+        SELECT -3 AS Codigo, 'El usuario ya pertenece a este equipo' AS Mensaje;
         RETURN;
     END;
+
+    -- Verificar si el usuario ya está en otro equipo
+   -- Verificar si el usuario ya está en otro equipo
+IF @forzar = 0 AND EXISTS (SELECT 1 FROM Miembros_de_equipos WHERE idUsuarios = @idUsuarios AND idEquipos <> @idEquipos)
+BEGIN
+    PRINT 'Condición de @forzar = 0 y usuario en otro equipo se cumple';
+    SELECT -4 AS Codigo, 'El usuario ya pertenece a otro equipo. ¿Está seguro de agregarlo a este equipo?' AS Mensaje;
+    RETURN;
+END;
+
 
     -- Insertar el miembro al equipo
     INSERT INTO Miembros_de_equipos (idEquipos, idUsuarios)
@@ -223,7 +234,9 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[Crear_Rol]
+
+
+CREATE or alter PROCEDURE [dbo].[Crear_Rol]
     @Nombre_Roles VARCHAR(100),
     @Activo BIT = 1,
     @idPermisos INT
@@ -255,7 +268,7 @@ END;
 GO
 
 
-CREATE PROCEDURE [dbo].[Crear_Portafolio]
+CREATE or alter PROCEDURE [dbo].[Crear_Portafolio]
     @NombrePortafolio VARCHAR(300),
     @Descripcion NVARCHAR(MAX),
     @Activo BIT = 1
@@ -273,7 +286,7 @@ GO
 
 
 
-CREATE PROCEDURE Crear_Permiso
+CREATE or alter  PROCEDURE Crear_Permiso
     @Nombre_Permisos VARCHAR(100),
     @Activo BIT
 	
@@ -289,7 +302,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE Agregar_Comentario_Proyectos
+CREATE or alter  PROCEDURE Agregar_Comentario_Proyectos
     @Comentario NVARCHAR(MAX),
     @FechaCreacion DATETIME,
     @idProyecto INT,
@@ -303,7 +316,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE Agregar_Comentario_Tarea
+CREATE or alter PROCEDURE Agregar_Comentario_Tarea
     @Comentario NVARCHAR(MAX),
     @FechaCreacion DATETIME,
     @idTarea INT,
@@ -317,7 +330,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE Agregar_Comentario_Subtarea
+CREATE or alter  PROCEDURE Agregar_Comentario_Subtarea
     @Comentario NVARCHAR(MAX),
     @FechaCreacion DATETIME,
     @idSubtarea INT,
