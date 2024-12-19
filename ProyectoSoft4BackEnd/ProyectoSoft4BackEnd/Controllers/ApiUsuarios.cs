@@ -22,13 +22,13 @@ namespace ProyectoSoft4BackEnd.Controllers
         }
 
 
-        // Método para crear un nuevo usuario
         [HttpPost("NuevoUsuario")]
         public async Task<IActionResult> NuevoUsuario([FromBody] UsuarioRequest usuarioRequest)
         {
             try
             {
-                // Mapear UsuarioRequest a Usuarios
+                Console.WriteLine($"Datos recibidos: Nombre={usuarioRequest.Nombre}, Email={usuarioRequest.Email}, idRoles={usuarioRequest.idRoles}");
+
                 var usuario = new Usuarios
                 {
                     Nombre = usuarioRequest.Nombre,
@@ -39,11 +39,9 @@ namespace ProyectoSoft4BackEnd.Controllers
                     FechaRegistro = DateTime.Now
                 };
 
-                // Generar una contraseña aleatoria y encriptarla
                 string claveGenerada = _recursos.GenerarClave();
                 usuario.contrasena = _recursos.ConvertirSha256(claveGenerada);
 
-                // Crear el usuario
                 var resultadoNuevoUsuario = await _service.CrearUsuario(usuario);
 
                 if (resultadoNuevoUsuario != null && resultadoNuevoUsuario.Any())
@@ -60,9 +58,11 @@ namespace ProyectoSoft4BackEnd.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Error al crear usuario: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
+
 
 
 
@@ -148,6 +148,74 @@ namespace ProyectoSoft4BackEnd.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("ReactivarUsuario/{id}")]
+        public async Task<IActionResult> ReactivarUsuario(int id)
+        {
+            try
+            {
+                var resultadoReactivarUsuario = await _service.ReactivarUsuario(id);
+
+                if (resultadoReactivarUsuario != null && resultadoReactivarUsuario.Any())
+                {
+                    return Ok(resultadoReactivarUsuario);
+                }
+                return BadRequest("No se pudo reactivar el usuario.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("RestablecerContrasena/{id}")]
+        public async Task<IActionResult> RestablecerContrasena(int id)
+        {
+            try
+            {
+                // Generar y restablecer la contraseña
+                string nuevaContrasena = await _service.RestablecerContrasena(id);
+
+                // Obtener datos del usuario
+                var usuario = await _service.ObtenerUsuariosPorId(id);
+
+                // Enviar la nueva contraseña al correo del usuario
+                string asunto = "Restablecimiento de contraseña";
+                string mensaje = $"Su nueva contraseña es: {nuevaContrasena}";
+
+                await _recursos.EnviarCorreo(usuario.Email, asunto, mensaje);
+
+                return Ok(new { Codigo = 1, Mensaje = "Contraseña restablecida y enviada al correo" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpGet("ListaUsuariosActivos")]
+        public async Task<IActionResult> ListaUsuariosActivos()
+        {
+            try
+            {
+                var usuariosActivos = await _service.ObtenerUsuariosActivos();
+
+                if (usuariosActivos == null || !usuariosActivos.Any())
+                {
+                    return NotFound("No se encontraron usuarios activos.");
+                }
+
+                return Ok(usuariosActivos);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al obtener usuarios activos: {ex.Message}");
+            }
+        }
+
+
+
 
 
     }

@@ -157,7 +157,7 @@ BEGIN
         u.FechaRegistro,
         u.RestablecerContrasena,
         u.idRoles,
-        r.Nombre_Roles AS NombreRol,
+        r.Nombre_Roles AS Nombre_Roles,
         p.Nombre_Permisos AS PermisoRelacionado,
 		u.contrasena
     FROM Usuarios u
@@ -165,6 +165,30 @@ BEGIN
     LEFT JOIN Permisos p ON r.idPermisos = p.idPermisos; -- Cambiado a idPermisos
 END;
 GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_Listar_Usuarios_Activos]
+AS
+BEGIN
+    SET NOCOUNT ON; -- Evita mensajes adicionales que puedan interferir con los resultados.
+
+    SELECT 
+        u.idUsuarios,
+        u.Nombre,
+        u.Email,
+        u.Activo,
+        u.FechaRegistro,
+        u.RestablecerContrasena,
+        u.idRoles,
+        r.Nombre_Roles AS Nombre_Roles,
+        p.Nombre_Permisos AS PermisoRelacionado,
+        u.contrasena
+    FROM Usuarios u
+    LEFT JOIN Roles r ON u.idRoles = r.idRoles
+    LEFT JOIN Permisos p ON r.idPermisos = p.idPermisos
+    WHERE u.Activo = 1; -- Filtra solo los usuarios activos.
+END;
+GO
+
 
 
 CREATE or alter PROCEDURE [dbo].[Listar_Portafolios]

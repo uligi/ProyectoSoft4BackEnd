@@ -4,6 +4,8 @@ using Negocio.Data;
 using Negocio.Modelos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Negocio.Controllers;
+using Negocio.Repositories;
 
 namespace Negocio.Controllers
 {
@@ -14,6 +16,13 @@ namespace Negocio.Controllers
         Task<IEnumerable<MensajeUsuario>> ActualizarUsuario(int idUsuario, string nombre, string email, int idRoles);
         Task<IEnumerable<MensajeUsuario>> EliminarUsuario(int idUsuario);
         Task<IEnumerable<MensajeUsuario>> AsignarUsuarioAEquipo(int idUsuario, int idEquipo);
+        Task<IEnumerable<MensajeUsuario>> ReactivarUsuario(int idUsuario);
+
+        Task<string> RestablecerContrasena(int idUsuario);
+        Task<Usuarios> ObtenerUsuariosPorId(int idUsuario);
+        Task<IEnumerable<Usuarios>> ObtenerUsuariosActivos();
+
+
 
     }
 
@@ -21,10 +30,12 @@ namespace Negocio.Controllers
     public class UsuariosRepository : IUsuariosRepository
     {
         private readonly ContextData _context;
+        private readonly IRecursosRepository _recursos;
 
-        public UsuariosRepository(ContextData context)
+        public UsuariosRepository(ContextData context, IRecursosRepository recursos)
         {
             _context = context;
+            _recursos = recursos;
         }
 
         // Método para obtener todos los usuarios
@@ -36,7 +47,25 @@ namespace Negocio.Controllers
                 .ToListAsync();
         }
 
+        public async Task<Usuarios> ObtenerUsuariosPorId(int idUsuario)
+        {
+            var usuario = await _context.Usuarios
+                .Include(u => u.Rol) // Incluye los datos del rol relacionado
+                .FirstOrDefaultAsync(u => u.idUsuarios == idUsuario);
 
+            if (usuario == null)
+            {
+                throw new Exception("Usuario no encontrado");
+            }
+
+            return usuario;
+        }
+        public async Task<IEnumerable<Usuarios>> ObtenerUsuariosActivos()
+        {
+            return await _context.Usuarios
+                .FromSqlRaw("EXEC [dbo].[sp_Listar_Usuarios_Activos]")
+                .ToListAsync();
+        }
 
 
         // Método para crear un nuevo usuario
@@ -107,6 +136,38 @@ namespace Negocio.Controllers
                 .FromSqlRaw("EXEC sp_Asignar_Usuario_A_Equipo @idUsuario, @idEquipo", idUsuarioParam, idEquipoParam)
                 .ToListAsync();
         }
+       
+
+        public async Task<IEnumerable<MensajeUsuario>> ReactivarUsuario(int idUsuario)
+        {
+            var idUsuarioParam = new SqlParameter("@idUsuarios", idUsuario);
+
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Reactivar_Usuario @idUsuarios", idUsuarioParam)
+                .ToListAsync();
+        }
+
+        public async Task<string> RestablecerContrasena(int idUsuario)
+        {
+            // Generar la nueva contraseña
+            string nuevaContrasena = _recursos.GenerarClave();
+            string contrasenaEncriptada = _recursos.ConvertirSha256(nuevaContrasena);
+
+            var idUsuarioParam = new SqlParameter("@idUsuarios", idUsuario);
+            var contrasenaEncriptadaParam = new SqlParameter("@ContrasenaEncriptada", contrasenaEncriptada);
+
+            // Llamar al procedimiento almacenado para actualizar la contraseña
+            await _context.Database.ExecuteSqlRawAsync(
+                "EXEC Restablecer_Contrasena @idUsuarios, @ContrasenaEncriptada",
+                idUsuarioParam,
+                contrasenaEncriptadaParam
+            );
+
+            return nuevaContrasena; // Retorna la contraseña generada para enviarla por correo
+        }
+
+
+
 
 
     }

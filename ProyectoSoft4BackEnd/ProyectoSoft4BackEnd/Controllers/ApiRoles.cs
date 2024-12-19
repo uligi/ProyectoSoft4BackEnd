@@ -111,5 +111,25 @@ namespace ProyectoSoft4BackEnd.Controllers
             }
         }
 
+        [HttpPut("ReactivarRol/{id}")]
+        public async Task<IActionResult> ReactivarRol(int id)
+        {
+            try
+            {
+                var resultadoReactivarRol = await _service.ReactivarRol(id);
+
+                if (resultadoReactivarRol != null && resultadoReactivarRol.Any())
+                {
+                    return Ok(resultadoReactivarRol);
+                }
+                return BadRequest("No se pudo reactivar el rol.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al reactivar el rol: {ex.Message}");
+            }
+        }
+
+
     }
 }

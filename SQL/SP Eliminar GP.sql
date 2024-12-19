@@ -1,7 +1,7 @@
 USE [DB_GP]
 GO
 -- Eliminar un Equipo
-CREATE PROCEDURE [dbo].[Eliminar_Equipo]
+CREATE or alter PROCEDURE [dbo].[Eliminar_Equipo]
     @idEquipos INT
 AS
 BEGIN
@@ -26,7 +26,7 @@ GO
 
 
 -- Eliminar un Portafolio
-CREATE PROCEDURE [dbo].[Eliminar_Portafolio]
+CREATE or alter PROCEDURE [dbo].[Eliminar_Portafolio]
     @idPortafolio INT
 AS
 BEGIN
@@ -49,7 +49,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[Eliminar_Proyecto]
+CREATE or alter PROCEDURE [dbo].[Eliminar_Proyecto]
     @idProyectos INT
 AS
 BEGIN
@@ -72,7 +72,7 @@ END;
 GO
 
 
-CREATE PROCEDURE Eliminar_Tarea
+CREATE or alter PROCEDURE Eliminar_Tarea
 
     @idTareas INT
 AS
@@ -97,7 +97,7 @@ GO
 
 
 -- Eliminar una Subtarea
-Create PROCEDURE Eliminar_Subtarea
+Create or alter PROCEDURE Eliminar_Subtarea
     @idSubtareas INT
 AS
 BEGIN
@@ -116,7 +116,7 @@ GO
 
 
 
-CREATE PROCEDURE Eliminar_Comentario
+CREATE or alter PROCEDURE Eliminar_Comentario
     @idComentarios INT
 AS
 BEGIN
@@ -135,11 +135,12 @@ GO
 
 
 -- Eliminar un Permiso
-CREATE PROCEDURE Eliminar_Permiso
+CREATE or alter PROCEDURE Eliminar_Permiso
     @idPermisos INT
 AS
 BEGIN
-    DELETE FROM Permisos
+    UPDATE Permisos
+    SET Activo = 0  
     WHERE idPermisos = @idPermisos;
 
     SELECT 1 AS Codigo, 'Permiso eliminado exitosamente' AS Mensaje;
@@ -148,11 +149,12 @@ GO
 
 
 -- Eliminar un Rol
-CREATE PROCEDURE Eliminar_Rol
+CREATE or alter PROCEDURE Eliminar_Rol
     @idRoles INT
 AS
 BEGIN
-    DELETE FROM Roles
+    UPDATE Roles
+    SET Activo = 0 
     WHERE idRoles = @idRoles;
 
     SELECT 1 AS Codigo, 'Rol eliminado exitosamente' AS Mensaje;
@@ -163,7 +165,7 @@ GO
 
 
 -- Eliminar un Usuario
-Create PROCEDURE Eliminar_Usuario
+Create or alter PROCEDURE Eliminar_Usuario
     @idUsuarios INT
 AS
 BEGIN
@@ -177,7 +179,7 @@ GO
 
 
 -- Eliminar un Miembro de Equipo
-CREATE PROCEDURE Eliminar_Miembro_Equipo
+CREATE or alter PROCEDURE Eliminar_Miembro_Equipo
     @idMiembros_de_equipos INT
 AS
 BEGIN
@@ -201,7 +203,7 @@ GO
 
 
 -- Eliminar un Historial de Cambios
-CREATE PROCEDURE Eliminar_Historial_Cambio
+CREATE or alter PROCEDURE Eliminar_Historial_Cambio
     @idHistorial_de_cambios INT
 AS
 BEGIN
@@ -231,7 +233,7 @@ GO
 
 
 
-CREATE PROCEDURE Eliminar_Comentario_Tarea
+CREATE or alter PROCEDURE Eliminar_Comentario_Tarea
     @idComentario INT
 AS
 BEGIN
@@ -254,7 +256,7 @@ END;
 GO
 
 
-CREATE PROCEDURE Eliminar_Comentario_Subtarea
+CREATE or alter PROCEDURE Eliminar_Comentario_Subtarea
     @idComentario INT
 AS
 BEGIN

@@ -259,6 +259,54 @@ BEGIN
 END;
 GO
 
+CREATE OR ALTER PROCEDURE Reactivar_Usuario
+    @idUsuarios INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Verificar si el usuario existe
+    IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE idUsuarios = @idUsuarios)
+    BEGIN
+        SELECT -1 AS Codigo, 'Usuario no encontrado' AS Mensaje;
+        RETURN;
+    END;
+
+    -- Reactivar el usuario
+    UPDATE Usuarios
+    SET Activo = 1
+    WHERE idUsuarios = @idUsuarios;
+
+    SELECT 1 AS Codigo, 'Usuario reactivado exitosamente' AS Mensaje;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE Restablecer_Contrasena
+    @idUsuarios INT,
+    @ContrasenaEncriptada VARCHAR(500) -- La contraseña encriptada será proporcionada
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Verificar si el usuario existe
+    IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE idUsuarios = @idUsuarios)
+    BEGIN
+        SELECT -1 AS Codigo, 'Usuario no encontrado' AS Mensaje;
+        RETURN;
+    END;
+
+    -- Actualizar la contraseña en la base de datos
+    UPDATE Usuarios
+    SET contrasena = @ContrasenaEncriptada,
+        RestablecerContrasena = 1
+    WHERE idUsuarios = @idUsuarios;
+
+    SELECT 1 AS Codigo, 'Contraseña restablecida correctamente' AS Mensaje;
+END;
+GO
+
+
+
 
 CREATE or alter PROCEDURE [dbo].[Modificar_Permiso]
     @idPermisos INT,
@@ -320,6 +368,30 @@ BEGIN
     SELECT 1 AS Codigo, 'Rol modificado exitosamente' AS Mensaje;
 END;
 GO
+
+CREATE OR ALTER PROCEDURE [dbo].[Reactivar_Rol]
+    @idRoles INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Verificar si el rol existe y está inactivo
+    IF NOT EXISTS (SELECT 1 FROM Roles WHERE idRoles = @idRoles AND Activo = 0)
+    BEGIN
+        SELECT -1 AS Codigo, 'El rol no existe o ya está activo' AS Mensaje;
+        RETURN;
+    END;
+
+    -- Reactivar el rol
+    UPDATE Roles
+    SET Activo = 1
+    WHERE idRoles = @idRoles;
+
+    SELECT 1 AS Codigo, 'Rol reactivado exitosamente' AS Mensaje;
+END;
+GO
+
+
 
 CREATE or alter PROCEDURE Actualizar_Subtarea
     @idSubtareas INT,

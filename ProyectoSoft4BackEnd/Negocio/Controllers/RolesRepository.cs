@@ -13,6 +13,7 @@ namespace Negocio.Controllers
         Task<IEnumerable<MensajeUsuario>> CrearRol(Roles rol);
         Task<IEnumerable<MensajeUsuario>> ActualizarRol(int idRol, string nombreRol, bool activo, int idPermisos);
         Task<IEnumerable<MensajeUsuario>> EliminarRol(int idRol);
+        Task<IEnumerable<MensajeUsuario>> ReactivarRol(int idRol);
 
     }
 
@@ -32,7 +33,14 @@ namespace Negocio.Controllers
                 .Include(r => r.Permiso) // Carga la relación con Permisos
                 .ToListAsync();
         }
+        public async Task<IEnumerable<MensajeUsuario>> ReactivarRol(int idRol)
+        {
+            var idRolParam = new SqlParameter("@idRoles", idRol);
 
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Reactivar_Rol @idRoles", idRolParam)
+                .ToListAsync();
+        }
 
         // Método para crear un nuevo rol
         public async Task<IEnumerable<MensajeUsuario>> CrearRol(Roles rol)
