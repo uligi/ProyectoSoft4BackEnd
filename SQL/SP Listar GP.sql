@@ -447,3 +447,25 @@ GO
 
 
 
+CREATE OR ALTER PROCEDURE ListarTareasPorUsuario
+    @idUsuario INT
+AS
+BEGIN
+    SELECT 
+        t.idTareas,
+        t.NombreTareas,
+        t.Descripcion,
+        t.Prioridad,
+        t.FechaInicio,
+        t.FechaFinal,
+        t.Estado,
+        t.Activo,
+        t.idProyectos,
+        p.NombreProyecto,
+        u.Nombre AS NombreUsuario
+    FROM Tareas t
+    INNER JOIN Proyectos p ON t.idProyectos = p.idProyectos
+    INNER JOIN Usuarios u ON t.idUsuarios = u.idUsuarios
+    WHERE t.idUsuarios = @idUsuario AND t.Activo = 1; -- Solo tareas activas
+END;
+GO

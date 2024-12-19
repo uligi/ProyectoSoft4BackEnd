@@ -19,6 +19,8 @@ namespace Negocio.Controllers
         Task<TareasResponse> ObtenerTareaPorID(int idTarea);
         Task<IEnumerable<Subtareas>> ObtenerSubtareasPorTareaID(int idTarea);
 
+        Task<IEnumerable<TareasResponse>> ListarTareasPorUsuario(int idUsuario);
+
     }
 
     public class TareasRepository : ITareasRepository
@@ -115,5 +117,15 @@ namespace Negocio.Controllers
                 .FromSqlRaw("EXEC Eliminar_Tarea @idTareas", idParam)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<TareasResponse>> ListarTareasPorUsuario(int idUsuario)
+        {
+            var idParam = new SqlParameter("@idUsuario", idUsuario);
+
+            return await _context.Tareas
+                .FromSqlRaw("EXEC ListarTareasPorUsuario @idUsuario", idParam)
+                .ToListAsync();
+        }
+
     }
 }

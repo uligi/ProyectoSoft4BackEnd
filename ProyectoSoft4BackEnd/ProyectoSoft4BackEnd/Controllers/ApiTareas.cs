@@ -155,6 +155,21 @@ public class ApiTareas : ControllerBase
         }
     }
 
+    [HttpGet("ListarTareasPorUsuario")]
+    public async Task<IActionResult> ListarTareasPorUsuario(int idUsuario)
+    {
+        try
+        {
+            var tareas = await _service.ListarTareasPorUsuario(idUsuario);
+            return Ok(tareas);
+        }
+        catch (System.Exception ex)
+        {
+            return BadRequest($"Error: {ex.Message}");
+        }
+    }
+
+
 
 
 }
