@@ -99,6 +99,11 @@ public class AuthController : ControllerBase
             return BadRequest("Las contraseñas no coinciden.");
         }
 
+        if (!EsContrasenaValida(request.NuevaContrasena))
+        {
+            return BadRequest("La contraseña debe tener al menos 8 caracteres, una letra mayúscula, un carácter especial y un número.");
+        }
+
         var usuario = _context.Usuarios.FirstOrDefault(u => u.idUsuarios == request.IdUsuario);
 
         if (usuario == null)
@@ -112,6 +117,15 @@ public class AuthController : ControllerBase
 
         return Ok("Contraseña actualizada correctamente.");
     }
+
+    private bool EsContrasenaValida(string password)
+    {
+        var tieneMayuscula = password.Any(char.IsUpper);
+        var tieneNumero = password.Any(char.IsDigit);
+        var tieneEspecial = password.Any(ch => !char.IsLetterOrDigit(ch));
+        return password.Length >= 8 && tieneMayuscula && tieneNumero && tieneEspecial;
+    }
+
 
     [HttpGet("ObtenerPermisos")]
     public IActionResult ObtenerPermisos(int idUsuario)
