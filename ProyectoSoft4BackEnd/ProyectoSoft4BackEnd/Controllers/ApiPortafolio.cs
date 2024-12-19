@@ -31,6 +31,24 @@ public class ApiPortafolio : ControllerBase
         }
     }
 
+    [HttpGet("ListaPortafoliosActivos")]
+    public async Task<IActionResult> ListaPortafoliosActivos()
+    {
+        try
+        {
+            var resultado = await _service.ObtenerPortafoliosActivos();
+            if (resultado != null && resultado.Any())
+            {
+                return Ok(resultado);
+            }
+            return NotFound("No se encontraron portafolios.");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
     [HttpPost("NuevoPortafolio")]
     public async Task<IActionResult> NuevoPortafolio([FromBody] PortafolioRequest portafolioRequest)
     {
@@ -100,5 +118,26 @@ public class ApiPortafolio : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpPut("ReactivarPortafolio/{id}")]
+    public async Task<IActionResult> ReactivarPortafolio(int id)
+    {
+        try
+        {
+            var resultado = await _service.ReactivarPortafolio(id);
+
+            if (resultado != null && resultado.Any())
+            {
+                return Ok(resultado);
+            }
+
+            return NotFound("No se pudo reactivar el portafolio.");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
 
 }

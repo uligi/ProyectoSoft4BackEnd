@@ -10,9 +10,12 @@ namespace Negocio.Controllers
     public interface IPortafolioRepository
     {
         Task<IEnumerable<Portafolio>> ObtenerPortafolios();
+        Task<IEnumerable<Portafolio>> ObtenerPortafoliosActivos();
         Task<IEnumerable<MensajeUsuario>> CrearPortafolio(Portafolio portafolio);
         Task<IEnumerable<MensajeUsuario>> ActualizarPortafolio(Portafolio portafolio); // Cambiado para aceptar un objeto
         Task<IEnumerable<MensajeUsuario>> EliminarPortafolio(int idPortafolio);
+        Task<IEnumerable<MensajeUsuario>> ReactivarPortafolio(int idPortafolio);
+
     }
 
 
@@ -30,7 +33,18 @@ namespace Negocio.Controllers
         {
             return await _context.Portafolio.ToListAsync();
         }
+        public async Task<IEnumerable<Portafolio>> ObtenerPortafoliosActivos()
+        {
+            return await _context.Portafolio.Where(e => e.Activo).ToListAsync();
+        }
+        public async Task<IEnumerable<MensajeUsuario>> ReactivarPortafolio(int idPortafolio)
+        {
+            var idParam = new SqlParameter("@idPortafolio", idPortafolio);
 
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Reactivar_Portafolio @idPortafolio", idParam)
+                .ToListAsync();
+        }
         public async Task<IEnumerable<MensajeUsuario>> CrearPortafolio(Portafolio portafolio)
         {
             var nombreParam = new SqlParameter("@NombrePortafolio", portafolio.NombrePortafolio);

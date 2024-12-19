@@ -28,6 +28,19 @@ public class ApiEquipos : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+    [HttpGet("ListaEquiposActivos")]
+    public async Task<IActionResult> ListaEquiposActivos()
+    {
+        try
+        {
+            var resultado = await _service.ObtenerEquiposActivos();
+            return Ok(resultado);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 
     [HttpPost("NuevoEquipo")]
     public async Task<IActionResult> NuevoEquipo([FromBody] EquiposRequest request)
@@ -71,6 +84,26 @@ public class ApiEquipos : ControllerBase
         {
             var resultado = await _service.EliminarEquipo(id);
             return Ok(resultado);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPut("ReactivarEquipos/{id}")]
+    public async Task<IActionResult> ReactivarEquipos(int id)
+    {
+        try
+        {
+            var resultado = await _service.ReactivarEquipos(id);
+
+            if (resultado != null && resultado.Any())
+            {
+                return Ok(resultado);
+            }
+
+            return NotFound("No se pudo reactivar el Equipo.");
         }
         catch (Exception ex)
         {

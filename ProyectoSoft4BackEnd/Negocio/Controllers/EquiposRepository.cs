@@ -16,9 +16,12 @@ namespace Negocio.Controllers
         public interface IEquiposRepository
         {
             Task<IEnumerable<Equipos>> ObtenerEquipos();
+            Task<IEnumerable<Equipos>> ObtenerEquiposActivos();
             Task<IEnumerable<MensajeUsuario>> CrearEquipo(Equipos equipo);
             Task<IEnumerable<MensajeUsuario>> ActualizarEquipo(int idEquipos, string nombreEquipos);
             Task<IEnumerable<MensajeUsuario>> EliminarEquipo(int idEquipos);
+
+            Task<IEnumerable<MensajeUsuario>> ReactivarEquipos(int idEquipos);
         }
     }
 
@@ -33,11 +36,23 @@ namespace Negocio.Controllers
                 _context = context;
             }
 
-            public async Task<IEnumerable<Equipos>> ObtenerEquipos()
+            public async Task<IEnumerable<Equipos>> ObtenerEquiposActivos()
             {
                 return await _context.Equipos.Where(e => e.Activo).ToListAsync();
             }
+        public async Task<IEnumerable<Equipos>> ObtenerEquipos()
+        {
+            return await _context.Equipos.ToListAsync();
+        }
 
+        public async Task<IEnumerable<MensajeUsuario>> ReactivarEquipos(int idEquipos)
+        {
+            var idParam = new SqlParameter("@idEquipos", idEquipos);
+
+            return await _context.MensajeUsuario
+                .FromSqlRaw("EXEC Reactivar_Equipos @idEquipos", idParam)
+                .ToListAsync();
+        }
         public async Task<IEnumerable<MensajeUsuario>> CrearEquipo(Equipos equipo)
         {
             var nombreParam = new SqlParameter("@NombreEquipos", equipo.NombreEquipos);

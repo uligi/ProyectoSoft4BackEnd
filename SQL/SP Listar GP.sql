@@ -200,7 +200,29 @@ BEGIN
 END;
 GO
 
+CREATE OR ALTER PROCEDURE [dbo].[Listar_Portafolios_Activos]
+AS
+BEGIN
+    SELECT idPortafolio, NombrePortafolio, Descripcion, Activo, FechaCreacion
+    FROM Portafolio
+    WHERE Activo = 1
+    ORDER BY FechaCreacion DESC;
+END;
+GO
+
+
 CREATE or alter PROCEDURE [dbo].[Listar_Equipos]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT idEquipos, NombreEquipos, Activo, Fecha_Registro
+    FROM Equipos
+   
+END;
+GO
+
+CREATE or alter PROCEDURE [dbo].[Listar_Equipos_Activos]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -210,7 +232,6 @@ BEGIN
     WHERE Activo = 1;
 END;
 GO
-
 CREATE or alter PROCEDURE [dbo].[Listar_Comentarios_Proyectos]
 AS
 BEGIN

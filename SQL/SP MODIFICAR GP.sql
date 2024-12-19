@@ -42,6 +42,29 @@ BEGIN
 END;
 GO
 
+CREATE OR ALTER PROCEDURE Reactivar_Equipos
+    @idEquipos INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Verificar si el portafolio existe
+    IF NOT EXISTS (SELECT 1 FROM Equipos WHERE idEquipos = @idEquipos)
+    BEGIN
+        SELECT -1 AS Codigo, 'El portafolio no existe' AS Mensaje;
+        RETURN;
+    END;
+
+    -- Reactivar el portafolio
+    UPDATE Equipos
+    SET Activo = 1
+    WHERE idEquipos = @idEquipos;
+
+    -- Confirmar la reactivación
+    SELECT 1 AS Codigo, 'Portafolio reactivado exitosamente' AS Mensaje;
+END;
+GO
+
 
 CREATE OR ALTER PROCEDURE Modificar_Miembro_Equipo
     @idMiembros_de_equipos INT,
@@ -129,6 +152,29 @@ BEGIN
     WHERE idPortafolio = @idPortafolio;
 
     SELECT 1 AS Codigo, 'Portafolio actualizado exitosamente' AS Mensaje;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE Reactivar_Portafolio
+    @idPortafolio INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Verificar si el portafolio existe
+    IF NOT EXISTS (SELECT 1 FROM Portafolio WHERE idPortafolio = @idPortafolio)
+    BEGIN
+        SELECT -1 AS Codigo, 'El portafolio no existe' AS Mensaje;
+        RETURN;
+    END;
+
+    -- Reactivar el portafolio
+    UPDATE Portafolio
+    SET Activo = 1
+    WHERE idPortafolio = @idPortafolio;
+
+    -- Confirmar la reactivación
+    SELECT 1 AS Codigo, 'Portafolio reactivado exitosamente' AS Mensaje;
 END;
 GO
 
