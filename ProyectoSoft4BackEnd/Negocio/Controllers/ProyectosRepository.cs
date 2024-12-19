@@ -14,6 +14,7 @@ namespace Negocio.Controllers
         Task<IEnumerable<MensajeUsuario>> ActualizarProyecto(Proyectos proyecto);
         Task<IEnumerable<MensajeUsuario>> EliminarProyecto(int idProyectos);
         Task<IEnumerable<Proyectos>> ObtenerProyectosPorUsuario(int idUsuario);
+        Task<IEnumerable<Proyectos2>> ObtenerProyectosPorPortafolio(int idPortafolio);
     }
 
     public class ProyectosRepository : IProyectosRepository
@@ -38,6 +39,34 @@ namespace Negocio.Controllers
                 .FromSqlRaw("EXEC ListarProyectosPorUsuario @idUsuario", idParam)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Proyectos2>> ObtenerProyectosPorPortafolio(int idPortafolio)
+        {
+            var idParam = new SqlParameter("@idPortafolio", idPortafolio);
+
+            // Ejecuta la consulta y obtén la lista como el modelo Proyectos
+            var proyectos = await _context.Proyectos2
+                .FromSqlRaw("EXEC sp_Listar_Proyectos_Por_Portafolio @idPortafolio", idParam)
+                .ToListAsync();
+
+            // Mapea manualmente cada proyecto a Proyectos2
+            return proyectos.Select(p => new Proyectos2
+            {
+                idProyectos = p.idProyectos,
+                NombreProyecto = p.NombreProyecto,
+                Descripcion = p.Descripcion,
+                Activo = p.Activo,
+                FechaEstimada = p.FechaEstimada,
+                FechaInicio = p.FechaInicio,
+                FechaFinal = p.FechaFinal,
+                Prioridad = p.Prioridad,
+                idPortafolio = p.idPortafolio,
+                Equipos_idEquipos = p.Equipos_idEquipos,
+                Estado = p.Estado,
+                NombreEquipos = p.NombreEquipos // Asegúrate de que este campo está disponible en Proyectos
+            }).ToList();
+        }
+
 
 
         public async Task<IEnumerable<MensajeUsuario>> CrearProyecto(Proyectos proyecto)

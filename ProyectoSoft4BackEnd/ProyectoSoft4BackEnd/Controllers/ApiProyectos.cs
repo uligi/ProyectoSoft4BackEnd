@@ -142,5 +142,22 @@ public class ApiProyectos : ControllerBase
         }
     }
 
+    [HttpGet("ListaProyectosPorPortafolio/{idPortafolio}")]
+    public async Task<IActionResult> ListaProyectosPorPortafolio(int idPortafolio)
+    {
+        try
+        {
+            var proyectos = await _service.ObtenerProyectosPorPortafolio(idPortafolio);
+            if (proyectos == null || !proyectos.Any())
+                return NotFound("No se encontraron proyectos para este portafolio.");
+
+            return Ok(proyectos);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Error: {ex.Message}");
+        }
+    }
+
 
 }

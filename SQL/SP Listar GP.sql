@@ -25,8 +25,60 @@ END;
 
 GO
 
+CREATE or alter PROCEDURE [dbo].[sp_Listar_Proyectos_Activos]
+AS
+BEGIN
+SELECT 
+    p.idProyectos,
+    p.NombreProyecto,
+    p.Descripcion,
+    p.FechaEstimada,
+    p.FechaInicio,
+    p.FechaFinal,
+    p.Prioridad,
+	p.Estado,
+    pf.NombrePortafolio,
+    e.NombreEquipos,
+    p.Activo
+FROM Proyectos p
+INNER JOIN Portafolio pf ON p.idPortafolio = pf.idPortafolio
+INNER JOIN Equipos e ON p.Equipos_idEquipos = e.idEquipos
+WHERE p.Activo = 1;
+
+END;
+
+GO
+
+CREATE OR ALTER PROCEDURE [dbo].[sp_Listar_Proyectos_Por_Portafolio]
+    @idPortafolio INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+ SELECT 
+    p.idProyectos,
+    p.NombreProyecto,
+    p.Descripcion,
+    p.FechaEstimada,
+    p.FechaInicio,
+    p.FechaFinal,
+    p.Prioridad,
+    p.Estado,
+    p.Activo,
+    e.NombreEquipos,
+    p.Equipos_idEquipos,
+    p.idPortafolio
+FROM Proyectos p
+INNER JOIN Equipos e ON p.Equipos_idEquipos = e.idEquipos
+WHERE p.idPortafolio = @idPortafolio AND p.Activo = 1;
+
+    RETURN;
+END;
+GO
+
+
 -- Stored Procedure para la tabla Tareas con JOIN a Proyectos y Usuarios
-CREATE or alter PROCEDURE Listar_Tareas
+CREATE or alter PROCEDURE Listar_Tareas_Activas
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -48,6 +100,31 @@ BEGIN
     LEFT JOIN Proyectos p ON t.idProyectos = p.idProyectos
     LEFT JOIN Usuarios u ON t.idUsuarios = u.idUsuarios
 	WHERE t.Activo = 1; -- Solo tareas activas;
+END;
+GO
+
+CREATE or alter PROCEDURE Listar_Tareas
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        t.idTareas,
+        t.NombreTareas,
+        t.Descripcion,
+        t.Prioridad,
+        t.FechaInicio,
+        t.FechaFinal,
+        t.Activo,
+        t.idProyectos,
+        t.idUsuarios,
+		t.Estado,
+        p.NombreProyecto,
+        u.Nombre AS NombreUsuario
+    FROM Tareas t
+    LEFT JOIN Proyectos p ON t.idProyectos = p.idProyectos
+    LEFT JOIN Usuarios u ON t.idUsuarios = u.idUsuarios;
+	
 END;
 GO
 

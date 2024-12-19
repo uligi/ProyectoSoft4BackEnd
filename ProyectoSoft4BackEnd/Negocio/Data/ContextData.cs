@@ -22,6 +22,8 @@ namespace Negocio.Data
         public DbSet<Permisos> Permisos { get; set; }
         public DbSet<Portafolio> Portafolio { get; set; }
         public DbSet<Proyectos> Proyectos { get; set; }
+        public DbSet<Proyectos2> Proyectos2 { get; set; }
+
         public DbSet<Roles> Roles { get; set; }
 
         public DbSet<ProyectoReporte> ProyectoReportes { get; set; }
