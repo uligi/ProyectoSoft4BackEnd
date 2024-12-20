@@ -168,7 +168,7 @@ GO
 
 
 Create or alter PROCEDURE [dbo].[Crear_Usuario]
-    @Nombre VARCHAR(200),
+       @Nombre VARCHAR(200),
     @Email VARCHAR(200),
     @Contrasena VARCHAR(500),
     @idRoles INT
@@ -176,9 +176,18 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- Verificar si el correo ya existe
+    IF EXISTS (SELECT 1 FROM Usuarios WHERE Email = @Email)
+    BEGIN
+        SELECT NULL AS idUsuarios, 0 AS Codigo, 'Error: El correo ya está registrado.' AS Mensaje;
+        RETURN;
+    END
+
+    -- Insertar nuevo usuario si el correo no existe
     INSERT INTO Usuarios (Nombre, Email, Contrasena, RestablecerContrasena, Activo, FechaRegistro, idRoles)
     VALUES (@Nombre, @Email, @Contrasena, 1, 1, GETDATE(), @idRoles);
 
+    -- Devolver el ID del nuevo usuario
     SELECT SCOPE_IDENTITY() AS idUsuarios, 1 AS Codigo, 'Usuario creado exitosamente.' AS Mensaje;
 END;
 GO
